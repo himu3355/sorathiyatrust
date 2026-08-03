@@ -1,0 +1,74 @@
+@extends('layouts.app')
+
+@section('title', 'અમારા વિશે - શ્રી દશા સોરાઠિયા વાણિયા સમાજ')
+
+@section('content')
+    <x-page-header icon="fa-solid fa-landmark" title="અમારા વિશે (About Trust)" subtitle="શ્રી દશા સોરાઠિયા વાણિયા સમાજ (મહાજન), રાજકોટ" />
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
+        <!-- History & Mission -->
+        <div class="bg-white rounded-2xl p-6 sm:p-10 border border-slate-200 shadow-sm space-y-6">
+            <h2 class="text-2xl font-extrabold text-slate-900 font-gujarati flex items-center gap-3">
+                <i class="fa-solid fa-landmark text-amber-600"></i>
+                <span>ટ્રસ્ટનો ઇતિહાસ અને ઉદ્દેશ્યો (History & Objectives)</span>
+            </h2>
+            <p class="text-base text-slate-700 leading-relaxed font-gujarati">
+                શ્રી દશા સોરાઠિયા વાણિયા સમાજ (મહાજન), રાજકોટ એ સમાજના બંધુઓના શૈક્ષણિક, સામાજિક, સાંસ્કૃતિક અને આર્થિક ઉત્કર્ષ અર્થે કાર્યરત એક અગ્રણી અને પ્રતિષ્ઠિત ટ્રસ્ટ છે.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
+                <div class="p-5 bg-amber-50 rounded-2xl border border-amber-200/60 space-y-2">
+                    <h3 class="text-lg font-bold text-amber-900 font-gujarati flex items-center gap-2">
+                        <i class="fa-solid fa-graduation-cap text-amber-700"></i>
+                        <span>શિક્ષણ સહાય</span>
+                    </h3>
+                    <p class="text-xs sm:text-sm text-slate-600 font-gujarati">સમાજના તેજસ્વી અને જરુરિયાતમંદ વિદ્યાર્થીઓને શિષ્યવૃત્તિ અને પ્રોત્સાહન ઇનામો.</p>
+                </div>
+                <div class="p-5 bg-teal-50 rounded-2xl border border-teal-200/60 space-y-2">
+                    <h3 class="text-lg font-bold text-teal-900 font-gujarati flex items-center gap-2">
+                        <i class="fa-solid fa-handshake text-teal-700"></i>
+                        <span>સામાજિક સંગઠન</span>
+                    </h3>
+                    <p class="text-xs sm:text-sm text-slate-600 font-gujarati">વાર્ષિક મહોત્સવ, રક્તદાન શિબિર અને કૌટુંબિક સ્નેહમિલન આયોજન.</p>
+                </div>
+                <div class="p-5 bg-emerald-50 rounded-2xl border border-emerald-200/60 space-y-2">
+                    <h3 class="text-lg font-bold text-emerald-900 font-gujarati flex items-center gap-2">
+                        <i class="fa-solid fa-address-card text-emerald-700"></i>
+                        <span>વસ્તીપત્રક અને માહિતી</span>
+                    </h3>
+                    <p class="text-xs sm:text-sm text-slate-600 font-gujarati">સમાજના તમામ પરિવારોનું સચોટ ડિજિટલ વસ્તીપત્રક અને સંપર્ક સંગ્રહ.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Committee Members Section -->
+        @if($trustees->count() > 0)
+            <div>
+                <h2 class="text-2xl font-extrabold text-slate-900 font-gujarati mb-6 flex items-center gap-3">
+                    <i class="fa-solid fa-users-gear text-amber-600"></i>
+                    <span>ટ્રસ્ટી મંડળ (Board of Trustees)</span>
+                </h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                    @foreach($trustees as $trustee)
+                        <x-card class="p-6 text-center space-y-3">
+                            <div class="w-20 h-20 mx-auto rounded-full overflow-hidden border-4 border-amber-300 shadow-sm">
+                                @if($trustee->photo_path)
+                                    <img src="{{ Storage::url($trustee->photo_path) }}" alt="{{ $trustee->name }}" class="w-full h-full object-cover">
+                                @else
+                                    <div class="w-full h-full gradient-header text-amber-300 font-bold text-xl flex items-center justify-center">
+                                        {{ mb_substr($trustee->name, 0, 1) }}
+                                    </div>
+                                @endif
+                            </div>
+                            <h3 class="text-base font-bold text-slate-900 font-gujarati">
+                                {{ $trustee->gujarati_name ?? $trustee->name }}
+                            </h3>
+                            <p class="text-xs font-semibold text-amber-800 font-gujarati">
+                                {{ $trustee->designation ?? 'ટ્રસ્ટી' }}
+                            </p>
+                        </x-card>
+                    @endforeach
+                </div>
+            </div>
+        @endif
+    </div>
+@endsection
