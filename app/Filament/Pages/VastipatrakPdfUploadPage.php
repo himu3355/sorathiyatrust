@@ -9,6 +9,7 @@ use UnitEnum;
 
 class VastipatrakPdfUploadPage extends Page
 {
+    protected static bool $shouldRegisterNavigation = false;
     protected static ?string $navigationLabel = 'PDF AI Extraction';
 
     protected static ?string $title = 'PDF AI Data Extraction (વસ્તીપત્રક PDF ઇમ્પોર્ટ)';
