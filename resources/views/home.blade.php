@@ -91,28 +91,28 @@
                     <div class="w-12 h-12 mx-auto rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-2xl mb-3">
                         <i class="fa-solid fa-users"></i>
                     </div>
-                    <div class="text-2xl sm:text-4xl font-extrabold text-amber-300 font-sans">૧૫૦૦+</div>
+                    <div class="text-2xl sm:text-4xl font-extrabold text-amber-300 font-sans">{{ $stats['members'] ?? '૧૫૦૦+' }}</div>
                     <div class="text-xs sm:text-sm text-slate-300 font-semibold mt-1 font-gujarati">નોંધાયેલ સમાજ સભ્યો</div>
                 </div>
                 <div class="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xs hover:bg-white/10 transition-all">
                     <div class="w-12 h-12 mx-auto rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-2xl mb-3">
                         <i class="fa-solid fa-landmark"></i>
                     </div>
-                    <div class="text-2xl sm:text-4xl font-extrabold text-amber-300 font-sans">૫૦+</div>
+                    <div class="text-2xl sm:text-4xl font-extrabold text-amber-300 font-sans">{{ $stats['years'] ?? '૫૦+' }}</div>
                     <div class="text-xs sm:text-sm text-slate-300 font-semibold mt-1 font-gujarati">વર્ષોની સેવા પરંપરા</div>
                 </div>
                 <div class="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xs hover:bg-white/10 transition-all">
                     <div class="w-12 h-12 mx-auto rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-2xl mb-3">
                         <i class="fa-solid fa-calendar-check"></i>
                     </div>
-                    <div class="text-2xl sm:text-4xl font-extrabold text-amber-300 font-sans">૨૫+</div>
+                    <div class="text-2xl sm:text-4xl font-extrabold text-amber-300 font-sans">{{ $stats['events'] ?? '૨૫+' }}</div>
                     <div class="text-xs sm:text-sm text-slate-300 font-semibold mt-1 font-gujarati">વાર્ષિક સ્નેહ મિલન અને કાર્યક્રમો</div>
                 </div>
                 <div class="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xs hover:bg-white/10 transition-all">
                     <div class="w-12 h-12 mx-auto rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-2xl mb-3">
                         <i class="fa-solid fa-hand-holding-heart"></i>
                     </div>
-                    <div class="text-2xl sm:text-4xl font-extrabold text-amber-300 font-sans">૧૦૦%</div>
+                    <div class="text-2xl sm:text-4xl font-extrabold text-amber-300 font-sans">{{ $stats['commitment'] ?? '૧૦૦%' }}</div>
                     <div class="text-xs sm:text-sm text-slate-300 font-semibold mt-1 font-gujarati">સમાજ કલ્યાણ સમર્પણ</div>
                 </div>
             </div>

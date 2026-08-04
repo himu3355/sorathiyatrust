@@ -1,10 +1,12 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\Admin\PdfUploadController;
+use App\Http\Controllers\Admin\ToolController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\FamilyController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\MemberController;
 use App\Http\Controllers\NewsController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,11 +23,25 @@ Route::get('/events/upcoming', [EventController::class, 'upcoming'])->name('even
 Route::get('/events/past', [EventController::class, 'past'])->name('events.past');
 Route::get('/events/{event:slug}', [EventController::class, 'show'])->name('events.show');
 
-// Community Member Routes
-Route::get('/members', [MemberController::class, 'index'])->name('members.index');
-Route::get('/members/{member}', [MemberController::class, 'show'])->name('members.show');
+// Family Directory Routes
+Route::get('/families', [FamilyController::class, 'index'])->name('families.index');
+Route::get('/families/{family}', [FamilyController::class, 'show'])->name('families.show');
+Route::get('/members', [FamilyController::class, 'index'])->name('members.index');
+Route::get('/members/{family}', [FamilyController::class, 'show'])->name('members.show');
+
+// Admin Actions & Ingestion Endpoints (Used by Filament Admin Panel)
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::post('/pdf-upload/process', [PdfUploadController::class, 'processPdf'])->name('pdf.process');
+    Route::post('/pdf-upload/save', [PdfUploadController::class, 'saveExtractedData'])->name('pdf.save');
+
+    Route::get('/tools/export-families', [ToolController::class, 'exportFamilies'])->name('tools.export.families');
+    Route::get('/tools/export-members', [ToolController::class, 'exportMembers'])->name('tools.export.members');
+    Route::get('/tools/duplicates', [ToolController::class, 'checkDuplicates'])->name('tools.duplicates');
+});
 
 // About & Contact
 Route::get('/about', AboutController::class)->name('about');
 Route::get('/contact', [ContactController::class, 'show'])->name('contact');
 Route::post('/contact', [ContactController::class, 'submit'])->name('contact.submit');
+
+

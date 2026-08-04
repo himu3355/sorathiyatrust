@@ -2,9 +2,8 @@
 
 namespace App\Filament\Widgets;
 
-use App\Models\CommunityMember;
+use App\Models\FamilyMember;
 use Filament\Tables\Columns\IconColumn;
-use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Filament\Widgets\TableWidget as BaseWidget;
@@ -15,28 +14,28 @@ class LatestMembersWidget extends BaseWidget
 
     protected int|string|array $columnSpan = 'full';
 
-    protected static ?string $heading = 'તાજેતરના ઉમેરાયેલ સમાજ સભ્યો (Recent Community Members)';
+    protected static ?string $heading = 'તાજેતરના ઉમેરાયેલ પરિવાર સભ્યો (Recent Family Members)';
 
     public function table(Table $table): Table
     {
         return $table
             ->query(
-                CommunityMember::latest()->limit(5)
+                FamilyMember::with('family')->latest()->limit(5)
             )
             ->columns([
-                ImageColumn::make('photo_path')
-                    ->label('Photo')
-                    ->circular()
-                    ->disk('public'),
-                TextColumn::make('gujarati_name')
+                TextColumn::make('member_name_guj')
                     ->label('Name (ગુજરાતી)')
                     ->searchable(),
-                TextColumn::make('designation')
-                    ->label('Designation'),
-                TextColumn::make('mobile_number')
+                TextColumn::make('relation')
+                    ->label('Relation'),
+                TextColumn::make('family.surname_guj')
+                    ->label('Surname'),
+                TextColumn::make('family.village')
+                    ->label('Village'),
+                TextColumn::make('mobile')
                     ->label('Mobile'),
-                IconColumn::make('is_committee_member')
-                    ->label('Committee')
+                IconColumn::make('is_active')
+                    ->label('Active')
                     ->boolean(),
                 TextColumn::make('created_at')
                     ->label('Added Date')

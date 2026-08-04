@@ -3,7 +3,8 @@
 namespace App\Filament\Widgets;
 
 use App\Models\Advertisement;
-use App\Models\CommunityMember;
+use App\Models\Family;
+use App\Models\FamilyMember;
 use App\Models\Event;
 use App\Models\News;
 use App\Models\Slider;
@@ -21,8 +22,8 @@ class TrustStatsOverviewWidget extends Widget
 
     protected function getViewData(): array
     {
-        $totalMembers = CommunityMember::count();
-        $committeeMembers = CommunityMember::where('is_committee_member', true)->count();
+        $totalMembers = FamilyMember::count();
+        $totalFamilies = Family::count();
         $activeNews = News::active()->count();
         $upcomingEvents = Event::upcoming()->count();
         $activeAds = Advertisement::where('is_active', true)->count();
@@ -32,18 +33,18 @@ class TrustStatsOverviewWidget extends Widget
             'stats' => [
                 [
                     'value' => number_format($totalMembers),
-                    'label_gu' => 'સમાજ સભ્યો',
-                    'label_en' => 'Members',
+                    'label_gu' => 'વસ્તીપત્રક સભ્યો',
+                    'label_en' => 'Total Members',
                     'icon' => 'heroicon-o-user-group',
                     'accent' => '#D97706',
                     'tint' => 'rgba(217, 119, 6, 0.25)',
                     'iconColor' => '#F59E0B',
                 ],
                 [
-                    'value' => $activeNews,
-                    'label_gu' => 'તાજા સમાચાર',
-                    'label_en' => 'News',
-                    'icon' => 'heroicon-o-newspaper',
+                    'value' => number_format($totalFamilies),
+                    'label_gu' => 'વસ્તીપત્રક પરિવારો',
+                    'label_en' => 'Total Families',
+                    'icon' => 'heroicon-o-home',
                     'accent' => '#059669',
                     'tint' => 'rgba(5, 150, 105, 0.25)',
                     'iconColor' => '#10B981',
@@ -67,7 +68,7 @@ class TrustStatsOverviewWidget extends Widget
                     'iconColor' => '#60A5FA',
                 ],
             ],
-            'committeeMembers' => $committeeMembers,
+            'committeeMembers' => $totalFamilies,
         ];
     }
 }

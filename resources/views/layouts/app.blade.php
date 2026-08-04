@@ -189,15 +189,31 @@
                     </p>
                     <!-- Social Media Links -->
                     <div class="flex items-center gap-3 pt-2">
-                        <a href="https://wa.me/919876543210" target="_blank" class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-emerald-400 hover:bg-emerald-600 hover:text-white hover:border-emerald-500 transition-all">
-                            <i class="fa-brands fa-whatsapp text-lg"></i>
-                        </a>
-                        <a href="#" class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-blue-400 hover:bg-blue-600 hover:text-white hover:border-blue-500 transition-all">
-                            <i class="fa-brands fa-facebook-f text-base"></i>
-                        </a>
-                        <a href="#" class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-red-500 hover:bg-red-600 hover:text-white hover:border-red-500 transition-all">
-                            <i class="fa-brands fa-youtube text-base"></i>
-                        </a>
+                        @if($waNumber = \App\Models\SiteSetting::get('whatsapp_number'))
+                            <a href="https://wa.me/{{ $waNumber }}" target="_blank" class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-emerald-400 hover:bg-emerald-600 hover:text-white hover:border-emerald-500 transition-all" title="WhatsApp">
+                                <i class="fa-brands fa-whatsapp text-lg"></i>
+                            </a>
+                        @endif
+                        @if($fbUrl = \App\Models\SiteSetting::get('facebook_url'))
+                            <a href="{{ $fbUrl }}" target="_blank" class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-blue-400 hover:bg-blue-600 hover:text-white hover:border-blue-500 transition-all" title="Facebook">
+                                <i class="fa-brands fa-facebook-f text-base"></i>
+                            </a>
+                        @endif
+                        @if($ytUrl = \App\Models\SiteSetting::get('youtube_url'))
+                            <a href="{{ $ytUrl }}" target="_blank" class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-red-500 hover:bg-red-600 hover:text-white hover:border-red-500 transition-all" title="YouTube">
+                                <i class="fa-brands fa-youtube text-base"></i>
+                            </a>
+                        @endif
+                        @if($instaUrl = \App\Models\SiteSetting::get('instagram_url'))
+                            <a href="{{ $instaUrl }}" target="_blank" class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-pink-500 hover:bg-pink-600 hover:text-white hover:border-pink-500 transition-all" title="Instagram">
+                                <i class="fa-brands fa-instagram text-base"></i>
+                            </a>
+                        @endif
+                        @if($twUrl = \App\Models\SiteSetting::get('twitter_url'))
+                            <a href="{{ $twUrl }}" target="_blank" class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-sky-400 hover:bg-sky-600 hover:text-white hover:border-sky-500 transition-all" title="Twitter / X">
+                                <i class="fa-brands fa-x-twitter text-base"></i>
+                            </a>
+                        @endif
                     </div>
                 </div>
 
@@ -216,7 +232,7 @@
                 <div>
                     <h4 class="text-xs font-extrabold text-amber-400 uppercase tracking-widest mb-4">સભ્યો અને માહિતી</h4>
                     <ul class="space-y-2.5 text-sm font-medium">
-                        <li><a href="{{ route('members.index') }}" class="hover:text-amber-300 transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-amber-500"></i> સમાજ સભ્ય ડિરેક્ટરી</a></li>
+                        <li><a href="{{ route('families.index') }}" class="hover:text-amber-300 transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-amber-500"></i> વસ્તીપત્રક ડિરેક્ટરી</a></li>
                         <li><a href="{{ route('about') }}" class="hover:text-amber-300 transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-amber-500"></i> ટ્રસ્ટ વિશે અને સમિતિ</a></li>
                         <li><a href="{{ route('contact') }}" class="hover:text-amber-300 transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-amber-500"></i> સંપર્ક વિગત અને નકશો</a></li>
                         <li><a href="/admin" class="hover:text-amber-300 transition-colors text-amber-400 font-bold flex items-center gap-2"><i class="fa-solid fa-user-shield text-xs"></i> એડમિન પેનલ</a></li>
@@ -228,15 +244,15 @@
                     <h4 class="text-xs font-extrabold text-amber-400 uppercase tracking-widest mb-4">ટ્રસ્ટ સંપર્ક (Contact)</h4>
                     <p class="text-slate-400 text-xs sm:text-sm flex items-start gap-2.5">
                         <i class="fa-solid fa-location-dot text-amber-400 mt-1"></i>
-                        <span>મહાજન વાડી, રાજકોટ, ગુજરાત.</span>
+                        <span>{{ \App\Models\SiteSetting::get('office_address', 'મહાજન વાડી, રાજકોટ, ગુજરાત.') }}</span>
                     </p>
                     <p class="text-slate-400 text-xs sm:text-sm flex items-center gap-2.5">
                         <i class="fa-solid fa-phone-volume text-amber-400"></i>
-                        <span>+91 98765 43210</span>
+                        <span>{{ \App\Models\SiteSetting::get('phone_number', '+91 98765 43210') }}</span>
                     </p>
                     <p class="text-slate-400 text-xs sm:text-sm flex items-center gap-2.5">
                         <i class="fa-solid fa-envelope text-amber-400"></i>
-                        <span>info@trustwebsite.org</span>
+                        <span>{{ \App\Models\SiteSetting::get('contact_email', 'info@trustwebsite.org') }}</span>
                     </p>
                 </div>
             </div>
