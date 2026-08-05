@@ -10,7 +10,7 @@
                 @foreach($sliders as $index => $slider)
                     <div x-show="activeSlide === {{ $index }}" x-cloak transition:enter="transition ease-out duration-700" transition:enter-start="opacity-0 scale-95" transition:enter-end="opacity-100 scale-100" class="absolute inset-0 w-full h-full">
                         @if($slider->image_path)
-                            <img src="{{ Storage::url($slider->image_path) }}" alt="{{ $slider->title }}" class="w-full h-full object-cover opacity-40">
+                            <img src="{{ asset('storage/' . $slider->image_path) }}" alt="{{ $slider->title }}" class="w-full h-full object-cover opacity-40">
                         @else
                             <div class="w-full h-full gradient-header opacity-90"></div>
                         @endif
