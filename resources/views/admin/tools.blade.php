@@ -13,7 +13,7 @@
             </h1>
             <p class="text-xs sm:text-sm text-slate-500 mt-1">એક્સેલ એક્સપોર્ટ, ડુપ્લીકેટ ચકાસણી અને ડેટાબેઝ મેનેજમેન્ટ.</p>
         </div>
-        <a href="{{ url('/admin') }}" class="px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold text-xs rounded-xl transition-colors">
+        <a href="{{ config('app.url') }}/admin" class="px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold text-xs rounded-xl transition-colors">
             <i class="fa-solid fa-arrow-left me-1"></i> એડમિન પોર્ટલ
         </a>
     </div>
