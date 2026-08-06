@@ -105,7 +105,7 @@
 
                 <!-- Admin Link & Mobile Menu Toggle -->
                 <div class="flex items-center gap-3">
-                    <a href="/admin" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 text-xs font-bold text-amber-950 bg-gradient-to-r from-amber-200 to-amber-300 hover:from-amber-300 hover:to-amber-400 border border-amber-400/60 rounded-xl transition-all shadow-xs hover:scale-105">
+                    <a href="{{ url('/admin') }}" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 text-xs font-bold text-amber-950 bg-gradient-to-r from-amber-200 to-amber-300 hover:from-amber-300 hover:to-amber-400 border border-amber-400/60 rounded-xl transition-all shadow-xs hover:scale-105">
                         <i class="fa-solid fa-user-shield text-amber-900"></i>
                         <span>એડમિન પોર્ટલ</span>
                     </a>
@@ -143,7 +143,7 @@
                 <i class="fa-solid fa-address-book w-5 text-center"></i>
                 <span>સંપર્ક (Contact)</span>
             </a>
-            <a href="/admin" class="flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-base font-bold bg-gradient-to-r from-amber-200 to-amber-300 text-amber-950 border border-amber-400 text-center shadow-xs">
+            <a href="{{ url('/admin') }}" class="flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-base font-bold bg-gradient-to-r from-amber-200 to-amber-300 text-amber-950 border border-amber-400 text-center shadow-xs">
                 <i class="fa-solid fa-user-shield"></i>
                 <span>એડમિન પોર્ટલ (Admin Login)</span>
             </a>

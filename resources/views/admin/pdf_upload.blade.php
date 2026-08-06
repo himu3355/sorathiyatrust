@@ -14,7 +14,7 @@
             </h1>
             <p class="text-xs sm:text-sm text-slate-500 mt-1">વસ્તીપત્રક PDF ફાઈલ અપલોડ કરી AI દ્વારા ઓટોમેટિક ડેટાબેઝ ઇમ્પોર્ટ કરો.</p>
         </div>
-        <a href="/admin" class="px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold text-xs rounded-xl transition-colors">
+        <a href="{{ url('/admin') }}" class="px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold text-xs rounded-xl transition-colors">
             <i class="fa-solid fa-arrow-left me-1"></i> એડમિન પોર્ટલ
         </a>
     </div>
