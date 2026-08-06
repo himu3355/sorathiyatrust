@@ -37,6 +37,11 @@ class FamilyMember extends Model
         return $this->belongsTo(Family::class, 'family_id');
     }
 
+    public function scopeActive($query)
+    {
+        return $query->where('is_active', true);
+    }
+
     public function getInitialsAttribute(): string
     {
         $name = $this->member_name_guj ?: $this->member_name_eng;

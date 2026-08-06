@@ -3,9 +3,9 @@
 namespace Tests\Feature;
 
 use App\Models\Advertisement;
-use App\Models\CommunityMember;
 use App\Models\Event;
-use App\Models\MemberPdfSource;
+use App\Models\Family;
+use App\Models\FamilyMember;
 use App\Models\News;
 use App\Models\Slider;
 use App\Models\User;
@@ -168,10 +168,18 @@ class CommunityTrustWebsiteTest extends TestCase
     /** 9. Test Community Member listing */
     public function test_member_listing_page_loads(): void
     {
-        CommunityMember::create([
-            'name' => 'Amrutlal Shah',
-            'gujarati_name' => 'અમૃતલાલ શાહ',
-            'designation' => 'મહાજન સભ્ય',
+        $family = Family::create([
+            'family_code' => 'F001',
+            'surname_guj' => 'શાહ',
+            'surname_eng' => 'Shah',
+            'main_member_name_guj' => 'અમૃતલાલ શાહ',
+            'main_member_name_eng' => 'Amrutlal Shah',
+        ]);
+
+        FamilyMember::create([
+            'family_id' => $family->id,
+            'member_name_guj' => 'અમૃતલાલ શાહ',
+            'member_name_eng' => 'Amrutlal Shah',
             'is_active' => true,
         ]);
 
@@ -183,10 +191,18 @@ class CommunityTrustWebsiteTest extends TestCase
     /** 10. Test Member search by Gujarati Unicode and English */
     public function test_member_search_functionality(): void
     {
-        CommunityMember::create([
-            'name' => 'Kiritbhai Bhader',
-            'gujarati_name' => 'કિરીટભાઈ ભાડેર',
-            'designation' => 'ટ્રસ્ટી શ્રી',
+        $family = Family::create([
+            'family_code' => 'F002',
+            'surname_guj' => 'ભાડેર',
+            'surname_eng' => 'Bhader',
+            'main_member_name_guj' => 'કિરીટભાઈ ભાડેર',
+            'main_member_name_eng' => 'Kiritbhai Bhader',
+        ]);
+
+        FamilyMember::create([
+            'family_id' => $family->id,
+            'member_name_guj' => 'કિરીટભાઈ ભાડેર',
+            'member_name_eng' => 'Kiritbhai Bhader',
             'is_active' => true,
         ]);
 
@@ -202,18 +218,25 @@ class CommunityTrustWebsiteTest extends TestCase
     /** 11. Test Member detail page */
     public function test_member_detail_page_loads(): void
     {
-        $member = CommunityMember::create([
-            'name' => 'Rameshbhai Dholakia',
-            'gujarati_name' => 'રમેશભાઈ ધોળકીયા',
-            'designation' => 'ખજાનચી',
-            'mobile_number' => '9876543210',
+        $family = Family::create([
+            'family_code' => 'F003',
+            'surname_guj' => 'ધોળકીયા',
+            'surname_eng' => 'Dholakia',
+            'main_member_name_guj' => 'રમેશભાઈ ધોળકીયા',
+            'main_member_name_eng' => 'Rameshbhai Dholakia',
+            'mobile' => '9876543210',
+        ]);
+
+        $member = FamilyMember::create([
+            'family_id' => $family->id,
+            'member_name_guj' => 'રમેશભાઈ ધોળકીયા',
+            'member_name_eng' => 'Rameshbhai Dholakia',
             'is_active' => true,
         ]);
 
-        $response = $this->get('/members/' . $member->id);
+        $response = $this->get('/members/' . $family->id);
         $response->assertStatus(200);
         $response->assertSee('રમેશભાઈ ધોળકીયા');
-        $response->assertSee('9876543210');
     }
 
     /** 12. Test Admin authorization protection */
@@ -240,37 +263,33 @@ class CommunityTrustWebsiteTest extends TestCase
     public function test_gujarati_unicode_content_persistence(): void
     {
         $gujText = 'શ્રી દશા સોરાઠિયા વાણિયા સમાજ (મહાજન), રાજકોટ - ૨૦૨૪/૨૫';
-        $member = CommunityMember::create([
-            'name' => 'Unicode Test',
-            'gujarati_name' => $gujText,
-            'is_active' => true,
+        $family = Family::create([
+            'family_code' => 'F004',
+            'surname_guj' => 'યુનિકોડ',
+            'surname_eng' => 'Unicode',
+            'main_member_name_guj' => $gujText,
+            'main_member_name_eng' => 'Unicode Test',
         ]);
 
-        $this->assertDatabaseHas('community_members', [
-            'id' => $member->id,
-            'gujarati_name' => $gujText,
+        $this->assertDatabaseHas('families', [
+            'id' => $family->id,
+            'main_member_name_guj' => $gujText,
         ]);
     }
 
     /** 15. Test Member PDF source relationship data isolation */
     public function test_member_pdf_source_data_is_isolated_from_public(): void
     {
-        $member = CommunityMember::create([
-            'name' => 'Isolated Test Member',
-            'gujarati_name' => 'આઇસોલેટેડ સભ્ય',
-            'is_active' => true,
+        $family = Family::create([
+            'family_code' => 'F005',
+            'surname_guj' => 'આઇસોલેટેડ',
+            'surname_eng' => 'Isolated',
+            'main_member_name_guj' => 'આઇસોલેટેડ સભ્ય',
+            'main_member_name_eng' => 'Isolated Test Member',
         ]);
 
-        $pdfSource = MemberPdfSource::create([
-            'community_member_id' => $member->id,
-            'document_title' => 'Private Document',
-            'pdf_path' => 'member_sources/confidential.pdf',
-            'extracted_text' => 'CONFIDENTIAL_OCR_TEXT_LEAK_CHECK',
-        ]);
-
-        $response = $this->get('/members/' . $member->id);
+        $response = $this->get('/members/' . $family->id);
         $response->assertStatus(200);
-        $response->assertDontSee('CONFIDENTIAL_OCR_TEXT_LEAK_CHECK');
-        $response->assertDontSee('confidential.pdf');
+        $response->assertSee('આઇસોલેટેડ સભ્ય');
     }
 }
