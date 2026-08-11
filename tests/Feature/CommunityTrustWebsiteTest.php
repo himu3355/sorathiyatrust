@@ -23,7 +23,7 @@ class CommunityTrustWebsiteTest extends TestCase
     {
         $response = $this->get('/');
         $response->assertStatus(200);
-        $response->assertSee('દશા સોરાઠિયા વાણિયા સમાજ');
+        $response->assertSee('દશા સોરાઠિયા વણિક સમાજ');
     }
 
     /** 2. Test Slider visibility (only active sliders ordered by sort_order) */
@@ -262,7 +262,7 @@ class CommunityTrustWebsiteTest extends TestCase
     /** 14. Test Gujarati Unicode content persistence */
     public function test_gujarati_unicode_content_persistence(): void
     {
-        $gujText = 'શ્રી દશા સોરાઠિયા વાણિયા સમાજ (મહાજન), રાજકોટ - ૨૦૨૪/૨૫';
+        $gujText = 'શ્રી દશા સોરાઠિયા વણિક સમાજ (મહાજન), રાજકોટ - ૨૦૨૪/૨૫';
         $family = Family::create([
             'family_code' => 'F004',
             'surname_guj' => 'યુનિકોડ',

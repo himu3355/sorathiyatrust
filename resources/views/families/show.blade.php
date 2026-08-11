@@ -1,21 +1,24 @@
 @extends('layouts.app')
 
 @section('meta_title', 'પરિવાર પ્રોફાઈલ - શ્રી ' . $family->main_member_name_guj . ' | વસ્તીપત્રક')
-@section('meta_description', 'શ્રી ' . $family->main_member_name_guj . ' પરિવાર પ્રોફાઈલ અને સભ્યોની વિગત - શ્રી દશા સોરાઠિયા વાણિયા સમાજ (મહાજન), રાજકોટ.')
+@section('meta_description', 'શ્રી ' . $family->main_member_name_guj . ' પરિવાર પ્રોફાઈલ અને સભ્યોની વિગત - શ્રી દશા
+    સોરાઠિયા વણિક સમાજ (મહાજન), રાજકોટ.')
 
 @section('content')
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        
+
         <!-- Back Navigation Button -->
         <div class="mb-6">
-            <a href="{{ route('families.index') }}" class="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-slate-300 text-slate-800 hover:bg-emerald-800 hover:text-white font-bold text-xs rounded-2xl transition-all shadow-xs group">
+            <a href="{{ route('families.index') }}"
+                class="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-slate-300 text-slate-800 hover:bg-emerald-800 hover:text-white font-bold text-xs rounded-2xl transition-all shadow-xs group">
                 <i class="fa-solid fa-arrow-left text-emerald-800 group-hover:text-white transition-colors"></i>
                 <span class="group-hover:text-white">પાછા જાઓ (Back to Directory)</span>
             </a>
         </div>
 
         <!-- Family Banner Header Card -->
-        <div class="bg-gradient-to-r from-emerald-950 via-emerald-900 to-teal-900 text-white rounded-3xl p-6 sm:p-10 shadow-xl relative overflow-hidden mb-10 border border-emerald-800/80">
+        <div
+            class="bg-gradient-to-r from-emerald-950 via-emerald-900 to-teal-900 text-white rounded-3xl p-6 sm:p-10 shadow-xl relative overflow-hidden mb-10 border border-emerald-800/80">
             <!-- Decorative Background Pattern -->
             <div class="absolute -right-10 -bottom-10 opacity-10 text-[180px] pointer-events-none text-white font-bold">
                 <i class="fa-solid fa-users"></i>
@@ -23,34 +26,40 @@
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10 items-center">
                 <div class="md:col-span-2 space-y-4">
-                    @if($family->family_code)
-                        <span class="inline-block text-xs font-extrabold uppercase tracking-widest bg-amber-400 text-amber-950 px-3.5 py-1 rounded-full shadow-xs">
+                    @if ($family->family_code)
+                        <span
+                            class="inline-block text-xs font-extrabold uppercase tracking-widest bg-amber-400 text-amber-950 px-3.5 py-1 rounded-full shadow-xs">
                             <i class="fa-solid fa-hashtag me-1"></i> પરિવાર કોડ: {{ $family->family_code }}
                         </span>
                     @endif
                     <h1 class="text-2xl sm:text-4xl font-extrabold leading-tight text-white font-gujarati drop-shadow-xs">
                         શ્રી {{ $family->main_member_name_guj }}
                     </h1>
-                    @if($family->main_member_name_eng)
-                        <p class="text-emerald-200 text-sm font-semibold tracking-wide">{{ $family->main_member_name_eng }}</p>
+                    @if ($family->main_member_name_eng)
+                        <p class="text-emerald-200 text-sm font-semibold tracking-wide">{{ $family->main_member_name_eng }}
+                        </p>
                     @endif
 
                     <div class="flex flex-wrap gap-3 pt-2">
-                        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-white/15 backdrop-blur-md text-white text-xs sm:text-sm font-bold border border-white/20">
+                        <span
+                            class="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-white/15 backdrop-blur-md text-white text-xs sm:text-sm font-bold border border-white/20">
                             <i class="fa-solid fa-location-dot text-amber-400"></i>
                             <span>મૂળ ગામ: {{ $family->village ?: 'રાજકોટ' }}</span>
                         </span>
-                        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-white/15 backdrop-blur-md text-white text-xs sm:text-sm font-bold border border-white/20">
+                        <span
+                            class="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-white/15 backdrop-blur-md text-white text-xs sm:text-sm font-bold border border-white/20">
                             <i class="fa-solid fa-users text-amber-400"></i>
                             <span>અટક: {{ $family->surname_guj }}</span>
                         </span>
                     </div>
                 </div>
 
-                <div class="border-t md:border-t-0 md:border-l border-emerald-700/60 pt-6 md:pt-0 md:pl-8 space-y-4 text-xs sm:text-sm">
-                    @if($family->address)
+                <div
+                    class="border-t md:border-t-0 md:border-l border-emerald-700/60 pt-6 md:pt-0 md:pl-8 space-y-4 text-xs sm:text-sm">
+                    @if ($family->address)
                         <div>
-                            <div class="text-amber-400 font-bold uppercase tracking-wider text-[11px] mb-1 flex items-center gap-1">
+                            <div
+                                class="text-amber-400 font-bold uppercase tracking-wider text-[11px] mb-1 flex items-center gap-1">
                                 <i class="fa-solid fa-house"></i>
                                 <span>ઘર સરનામું</span>
                             </div>
@@ -60,9 +69,10 @@
                         </div>
                     @endif
 
-                    @if($family->mobile)
+                    @if ($family->mobile)
                         <div>
-                            <div class="text-amber-400 font-bold uppercase tracking-wider text-[11px] mb-1 flex items-center gap-1">
+                            <div
+                                class="text-amber-400 font-bold uppercase tracking-wider text-[11px] mb-1 flex items-center gap-1">
                                 <i class="fa-solid fa-phone"></i>
                                 <span>સંપર્ક નંબર</span>
                             </div>
@@ -83,28 +93,40 @@
             </h2>
         </div>
 
-        @if($family->activeMembers->count() > 0)
+        @if ($family->activeMembers->count() > 0)
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 @php
-                    $avatarColors = ['bg-emerald-800', 'bg-teal-800', 'bg-cyan-800', 'bg-amber-700', 'bg-indigo-800', 'bg-rose-800', 'bg-blue-800'];
+                    $avatarColors = [
+                        'bg-emerald-800',
+                        'bg-teal-800',
+                        'bg-cyan-800',
+                        'bg-amber-700',
+                        'bg-indigo-800',
+                        'bg-rose-800',
+                        'bg-blue-800',
+                    ];
                 @endphp
 
-                @foreach($family->activeMembers as $index => $member)
+                @foreach ($family->activeMembers as $index => $member)
                     @php
                         $bgColor = $avatarColors[$index % count($avatarColors)];
                     @endphp
-                    <div class="bg-white rounded-3xl border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col group">
+                    <div
+                        class="bg-white rounded-3xl border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col group">
                         <!-- Member Header -->
                         <div class="p-5 border-b border-slate-100 flex items-center gap-4 bg-slate-50/70">
-                            <div class="w-14 h-14 rounded-2xl {{ $bgColor }} text-white font-bold text-lg flex items-center justify-center shadow-md flex-shrink-0">
+                            <div
+                                class="w-14 h-14 rounded-2xl {{ $bgColor }} text-white font-bold text-lg flex items-center justify-center shadow-md flex-shrink-0">
                                 {{ $member->initials }}
                             </div>
                             <div>
-                                <h3 class="text-base font-bold text-slate-900 font-gujarati leading-tight group-hover:text-emerald-800 transition-colors">
+                                <h3
+                                    class="text-base font-bold text-slate-900 font-gujarati leading-tight group-hover:text-emerald-800 transition-colors">
                                     {{ $member->member_name_guj }}
                                 </h3>
-                                @if($member->relation)
-                                    <span class="inline-block mt-1 px-2.5 py-0.5 rounded-lg bg-emerald-100 text-emerald-950 text-xs font-extrabold border border-emerald-300">
+                                @if ($member->relation)
+                                    <span
+                                        class="inline-block mt-1 px-2.5 py-0.5 rounded-lg bg-emerald-100 text-emerald-950 text-xs font-extrabold border border-emerald-300">
                                         {{ $member->relation }}
                                     </span>
                                 @endif
@@ -115,23 +137,29 @@
                         <div class="p-6 space-y-4 text-xs sm:text-sm text-slate-800 flex-grow">
                             <div class="grid grid-cols-2 gap-3 pb-3 border-b border-slate-100">
                                 <div>
-                                    <span class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider">ઉંમર</span>
-                                    <span class="font-bold text-slate-900">{{ $member->age ? $member->age . ' વર્ષ' : '-' }}</span>
+                                    <span
+                                        class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider">ઉંમર</span>
+                                    <span
+                                        class="font-bold text-slate-900">{{ $member->age ? $member->age . ' વર્ષ' : '-' }}</span>
                                 </div>
                                 <div>
-                                    <span class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider">સ્થિતિ</span>
+                                    <span
+                                        class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider">સ્થિતિ</span>
                                     <span class="font-bold text-slate-900">{{ $member->formatted_marital_status }}</span>
                                 </div>
                             </div>
 
                             <div class="grid grid-cols-2 gap-3 pb-3 border-b border-slate-100">
                                 <div>
-                                    <span class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider">જન્મ સ્થળ</span>
+                                    <span class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider">જન્મ
+                                        સ્થળ</span>
                                     <span class="font-medium text-slate-800">{{ $member->birth_place ?: '-' }}</span>
                                 </div>
                                 <div>
-                                    <span class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider">જન્મ તારીખ</span>
-                                    <span class="font-medium text-slate-800">{{ $member->birth_date ? $member->birth_date->format('d-m-Y') : '-' }}</span>
+                                    <span class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider">જન્મ
+                                        તારીખ</span>
+                                    <span
+                                        class="font-medium text-slate-800">{{ $member->birth_date ? $member->birth_date->format('d-m-Y') : '-' }}</span>
                                 </div>
                             </div>
 
@@ -139,7 +167,8 @@
                                 <div class="flex items-start gap-2.5">
                                     <i class="fa-solid fa-graduation-cap w-4 text-emerald-800 text-center mt-1"></i>
                                     <div>
-                                        <span class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider">અભ્યાસ</span>
+                                        <span
+                                            class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider">અભ્યાસ</span>
                                         <span class="font-semibold text-slate-900">{{ $member->education ?: '-' }}</span>
                                     </div>
                                 </div>
@@ -147,7 +176,8 @@
                                 <div class="flex items-start gap-2.5">
                                     <i class="fa-solid fa-briefcase w-4 text-emerald-800 text-center mt-1"></i>
                                     <div>
-                                        <span class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider">વ્યવસાય</span>
+                                        <span
+                                            class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider">વ્યવસાય</span>
                                         <span class="font-semibold text-slate-900">{{ $member->occupation ?: '-' }}</span>
                                     </div>
                                 </div>
@@ -155,8 +185,11 @@
                                 <div class="flex items-start gap-2.5 pt-1">
                                     <i class="fa-solid fa-users-line w-4 text-emerald-800 text-center mt-1"></i>
                                     <div>
-                                        <span class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider">મોસાળની અટક</span>
-                                        <span class="font-bold text-emerald-900">{{ $member->maternal_surname ?: '-' }}</span>
+                                        <span
+                                            class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider">મોસાળની
+                                            અટક</span>
+                                        <span
+                                            class="font-bold text-emerald-900">{{ $member->maternal_surname ?: '-' }}</span>
                                     </div>
                                 </div>
                             </div>
