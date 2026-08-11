@@ -3,6 +3,7 @@
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\Admin\PdfUploadController;
 use App\Http\Controllers\Admin\ToolController;
+use App\Http\Controllers\BaithakController;
 use App\Http\Controllers\CommitteeController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\EventController;
@@ -30,6 +31,9 @@ Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery.index
 
 // Committee Members Route
 Route::get('/committee', [CommitteeController::class, 'index'])->name('committee.index');
+
+// 84 Baithakji Route
+Route::get('/baithakji', [BaithakController::class, 'index'])->name('baithak.index');
 
 // Family Directory Routes
 Route::get('/families', [FamilyController::class, 'index'])->name('families.index');

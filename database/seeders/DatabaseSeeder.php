@@ -29,6 +29,9 @@ class DatabaseSeeder extends Seeder
         // Committee Members
         $this->call(CommitteeMemberSeeder::class);
 
+        // Baithaks (84 Baithakji)
+        $this->call(BaithakSeeder::class);
+
         // Sliders
         Slider::firstOrCreate(
             ['title' => 'શ્રી દશા સોરાઠિયા વણિક સમાજ (મહાજન), રાજકોટ'],

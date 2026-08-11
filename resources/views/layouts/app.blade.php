@@ -105,6 +105,12 @@
                             class="fa-solid fa-user-tie text-xs {{ request()->routeIs('committee.*') ? 'text-amber-200' : 'text-slate-400' }}"></i>
                         <span>હોદ્દેદારો અને કારોબારી</span>
                     </a>
+                    <a href="{{ route('baithak.index') }}"
+                        class="px-3.5 py-2.5 rounded-xl text-sm transition-all flex items-center gap-2 {{ request()->routeIs('baithak.*') ? 'bg-amber-600 text-white shadow-xs font-semibold' : 'hover:bg-amber-50 hover:text-amber-800' }}">
+                        <i
+                            class="fa-solid fa-building-columns text-xs {{ request()->routeIs('baithak.*') ? 'text-amber-200' : 'text-slate-400' }}"></i>
+                        <span>૮૪ બેઠકજી</span>
+                    </a>
                     <a href="{{ route('news.index') }}"
                         class="px-3.5 py-2.5 rounded-xl text-sm transition-all flex items-center gap-2 {{ request()->routeIs('news.*') ? 'bg-amber-600 text-white shadow-xs font-semibold' : 'hover:bg-amber-50 hover:text-amber-800' }}">
                         <i
@@ -166,6 +172,11 @@
                 class="flex items-center gap-3 px-4 py-3 rounded-xl text-base font-semibold {{ request()->routeIs('committee.*') ? 'bg-amber-600 text-white' : 'text-slate-700 hover:bg-slate-50' }}">
                 <i class="fa-solid fa-user-tie w-5 text-center"></i>
                 <span>હોદ્દેદારો અને કારોબારી (Committee)</span>
+            </a>
+            <a href="{{ route('baithak.index') }}"
+                class="flex items-center gap-3 px-4 py-3 rounded-xl text-base font-semibold {{ request()->routeIs('baithak.*') ? 'bg-amber-600 text-white' : 'text-slate-700 hover:bg-slate-50' }}">
+                <i class="fa-solid fa-building-columns w-5 text-center"></i>
+                <span>૮૪ બેઠકજી (84 Baithakji)</span>
             </a>
             <a href="{{ route('news.index') }}"
                 class="flex items-center gap-3 px-4 py-3 rounded-xl text-base font-semibold {{ request()->routeIs('news.*') ? 'bg-amber-600 text-white' : 'text-slate-700 hover:bg-slate-50' }}">
@@ -291,6 +302,9 @@
                         <li><a href="{{ route('committee.index') }}"
                                 class="hover:text-amber-300 transition-colors flex items-center gap-2"><i
                                     class="fa-solid fa-chevron-right text-[10px] text-amber-500"></i> હોદ્દેદારો અને કારોબારી સભ્યો</a></li>
+                        <li><a href="{{ route('baithak.index') }}"
+                                class="hover:text-amber-300 transition-colors flex items-center gap-2"><i
+                                    class="fa-solid fa-chevron-right text-[10px] text-amber-500"></i> શ્રી મહાપ્રભુજીના ૮૪ બેઠકજી</a></li>
                         <li><a href="{{ route('gallery.index') }}"
                                 class="hover:text-amber-300 transition-colors flex items-center gap-2"><i
                                     class="fa-solid fa-chevron-right text-[10px] text-amber-500"></i> તસવીર અને વીડિયો ગેલેરી</a></li>

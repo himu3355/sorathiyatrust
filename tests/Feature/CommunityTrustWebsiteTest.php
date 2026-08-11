@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\Advertisement;
+use App\Models\Baithak;
 use App\Models\CommitteeMember;
 use App\Models\Event;
 use App\Models\Family;
@@ -359,5 +360,27 @@ class CommunityTrustWebsiteTest extends TestCase
         $response->assertSee('પ્રમુખ');
         $response->assertSee('શ્રી નિર્મળભાઈ આર. શેઠ');
         $response->assertSee('કારોબારી સભ્ય');
+    }
+
+    /** 19. Test 84 Baithakji directory page and search */
+    public function test_baithakji_directory_page_and_search(): void
+    {
+        Baithak::create([
+            'number' => 1,
+            'city_village_guj' => 'શ્રીમદ્ ગોકુળ',
+            'address_guj' => 'ગોવિંદ ઘાટની બાજુમાં, મુ. ગોકુળ',
+            'contact_person_guj' => 'સુરેશભાઈ મુખ્યજી',
+            'contact_numbers' => '0565-2745270',
+            'is_active' => true,
+        ]);
+
+        $response = $this->get('/baithakji');
+        $response->assertStatus(200);
+        $response->assertSee('શ્રીમદ્ ગોકુળ');
+        $response->assertSee('સુરેશભાઈ મુખ્યજી');
+
+        $responseSearch = $this->get('/baithakji?search=' . urlencode('ગોકુળ'));
+        $responseSearch->assertStatus(200);
+        $responseSearch->assertSee('શ્રીમદ્ ગોકુળ');
     }
 }
