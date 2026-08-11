@@ -99,12 +99,6 @@
                             class="fa-solid fa-house text-xs {{ request()->routeIs('home') ? 'text-amber-200' : 'text-slate-400' }}"></i>
                         <span>મુખ્ય પૃષ્ઠ</span>
                     </a>
-                    <a href="{{ route('committee.index') }}"
-                        class="px-3.5 py-2.5 rounded-xl text-sm transition-all flex items-center gap-2 {{ request()->routeIs('committee.*') ? 'bg-amber-600 text-white shadow-xs font-semibold' : 'hover:bg-amber-50 hover:text-amber-800' }}">
-                        <i
-                            class="fa-solid fa-user-tie text-xs {{ request()->routeIs('committee.*') ? 'text-amber-200' : 'text-slate-400' }}"></i>
-                        <span>હોદ્દેદારો અને કારોબારી</span>
-                    </a>
                     <a href="{{ route('baithak.index') }}"
                         class="px-3.5 py-2.5 rounded-xl text-sm transition-all flex items-center gap-2 {{ request()->routeIs('baithak.*') ? 'bg-amber-600 text-white shadow-xs font-semibold' : 'hover:bg-amber-50 hover:text-amber-800' }}">
                         <i
@@ -141,6 +135,12 @@
                             class="fa-solid fa-circle-info text-xs {{ request()->routeIs('about') ? 'text-amber-200' : 'text-slate-400' }}"></i>
                         <span>અમારા વિશે</span>
                     </a>
+                    <a href="{{ route('contact') }}"
+                        class="px-3.5 py-2.5 rounded-xl text-sm transition-all flex items-center gap-2 {{ request()->routeIs('contact') ? 'bg-amber-600 text-white shadow-xs font-semibold' : 'hover:bg-amber-50 hover:text-amber-800' }}">
+                        <i
+                            class="fa-solid fa-envelope text-xs {{ request()->routeIs('contact') ? 'text-amber-200' : 'text-slate-400' }}"></i>
+                        <span>સંપર્ક</span>
+                    </a>
                 </nav>
 
                 <!-- Admin Link & Mobile Menu Toggle -->
@@ -167,11 +167,6 @@
                 class="flex items-center gap-3 px-4 py-3 rounded-xl text-base font-semibold {{ request()->routeIs('home') ? 'bg-amber-600 text-white' : 'text-slate-700 hover:bg-slate-50' }}">
                 <i class="fa-solid fa-house w-5 text-center"></i>
                 <span>મુખ્ય પૃષ્ઠ (Home)</span>
-            </a>
-            <a href="{{ route('committee.index') }}"
-                class="flex items-center gap-3 px-4 py-3 rounded-xl text-base font-semibold {{ request()->routeIs('committee.*') ? 'bg-amber-600 text-white' : 'text-slate-700 hover:bg-slate-50' }}">
-                <i class="fa-solid fa-user-tie w-5 text-center"></i>
-                <span>હોદ્દેદારો અને કારોબારી (Committee)</span>
             </a>
             <a href="{{ route('baithak.index') }}"
                 class="flex items-center gap-3 px-4 py-3 rounded-xl text-base font-semibold {{ request()->routeIs('baithak.*') ? 'bg-amber-600 text-white' : 'text-slate-700 hover:bg-slate-50' }}">
@@ -299,7 +294,7 @@
                                 class="hover:text-amber-300 transition-colors flex items-center gap-2"><i
                                     class="fa-solid fa-chevron-right text-[10px] text-amber-500"></i> મુખ્ય પૃષ્ઠ
                                 (Home)</a></li>
-                        <li><a href="{{ route('committee.index') }}"
+                        <li><a href="{{ route('about') }}#committee"
                                 class="hover:text-amber-300 transition-colors flex items-center gap-2"><i
                                     class="fa-solid fa-chevron-right text-[10px] text-amber-500"></i> હોદ્દેદારો અને કારોબારી સભ્યો</a></li>
                         <li><a href="{{ route('baithak.index') }}"

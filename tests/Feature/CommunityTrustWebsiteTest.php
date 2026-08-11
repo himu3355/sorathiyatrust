@@ -354,7 +354,10 @@ class CommunityTrustWebsiteTest extends TestCase
             'is_active' => true,
         ]);
 
-        $response = $this->get('/committee');
+        $redirectResponse = $this->get('/committee');
+        $redirectResponse->assertRedirect();
+
+        $response = $this->get('/about');
         $response->assertStatus(200);
         $response->assertSee('શ્રી જયેશ કનુભાઈ ધ્રુવ');
         $response->assertSee('પ્રમુખ');
