@@ -105,8 +105,106 @@
             @endif
         </div>
 
-        <!-- 2. Hero Advertisement Banner -->
-        <x-ad-banner :ad="$heroAd" class="mt-6" />
+        <!-- 2. Home Hero Advertisements Slider Carousel Section (Shows 3 Ads at a time with Left / Right Arrows) -->
+        @if ($heroAds->count() > 0)
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12" x-data="{
+                activeSlide: 0,
+                total: {{ $heroAds->count() }},
+                get maxSlide() {
+                    const width = window.innerWidth;
+                    const visibleCount = width >= 1024 ? 3 : (width >= 640 ? 2 : 1);
+                    return Math.max(0, this.total - visibleCount);
+                },
+                next() {
+                    if (this.activeSlide < this.maxSlide) {
+                        this.activeSlide++;
+                    } else {
+                        this.activeSlide = 0;
+                    }
+                },
+                prev() {
+                    if (this.activeSlide > 0) {
+                        this.activeSlide--;
+                    } else {
+                        this.activeSlide = this.maxSlide;
+                    }
+                }
+            }">
+                <!-- Section Header matching Latest News / Upcoming Events with Arrow Controls -->
+                <div class="flex items-center justify-between mb-6 border-b border-slate-200 pb-4 gap-2">
+                    <div>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-gujarati flex items-center gap-3">
+                            <i class="fa-solid fa-rectangle-ad text-amber-700"></i>
+                            <span>સમાજ સ્પોન્સર્સ અને જાહેરાતો (Sponsors & Advertisements)</span>
+                        </h2>
+                        <p class="text-xs sm:text-sm text-slate-500 font-medium mt-1 font-gujarati">
+                            સમાજના શુભેચ્છકો અને સહયોગી સંસ્થાઓની જાહેરાતો
+                        </p>
+                    </div>
+
+                    <!-- Left & Right Navigation Arrow Buttons -->
+                    @if ($heroAds->count() > 1)
+                        <div class="flex items-center gap-2 flex-shrink-0">
+                            <button @click="prev()"
+                                class="w-10 h-10 rounded-2xl bg-white border border-slate-200 text-slate-700 hover:bg-amber-600 hover:text-white hover:border-amber-600 shadow-sm flex items-center justify-center transition-all duration-200 active:scale-95"
+                                title="પાછળની જાહેરાત (Previous)">
+                                <i class="fa-solid fa-chevron-left text-sm"></i>
+                            </button>
+                            <button @click="next()"
+                                class="w-10 h-10 rounded-2xl bg-white border border-slate-200 text-slate-700 hover:bg-amber-600 hover:text-white hover:border-amber-600 shadow-sm flex items-center justify-center transition-all duration-200 active:scale-95"
+                                title="આગળની જાહેરાત (Next)">
+                                <i class="fa-solid fa-chevron-right text-sm"></i>
+                            </button>
+                        </div>
+                    @endif
+                </div>
+
+                <!-- Ad Cards Slider Track -->
+                <div class="relative overflow-hidden py-2">
+                    <div class="flex transition-transform duration-500 ease-out gap-6"
+                        :style="'transform: translateX(-' + (activeSlide * (window.innerWidth >= 1024 ? (100 / 3) : (window.innerWidth >= 640 ? 50 : 100))) + '%)'">
+                        @foreach ($heroAds as $ad)
+                            <div class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex-shrink-0 flex">
+                                <div class="w-full bg-white rounded-3xl border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col group">
+                                    <!-- Uncropped Full Image Display Container -->
+                                    <div class="relative w-full h-56 sm:h-64 bg-slate-950/95 p-3 flex items-center justify-center border-b border-slate-100 overflow-hidden">
+                                        @if ($ad->image_path)
+                                            <img src="{{ Storage::url($ad->image_path) }}" alt="{{ $ad->title }}"
+                                                class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                                                loading="lazy">
+                                        @else
+                                            <div class="w-full h-full gradient-header text-amber-200 font-extrabold text-xl flex items-center justify-center p-4 text-center font-gujarati">
+                                                📣 {{ $ad->title }}
+                                            </div>
+                                        @endif
+                                        <span class="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-amber-500/90 backdrop-blur-md text-slate-950 text-[10px] font-extrabold uppercase tracking-wider shadow-xs font-gujarati">
+                                            સ્પોન્સર
+                                        </span>
+                                    </div>
+
+                                    <!-- Ad Body Details -->
+                                    <div class="p-5 flex flex-col flex-grow justify-between space-y-3 bg-white">
+                                        <h3 class="text-base font-bold text-slate-900 font-gujarati line-clamp-2 leading-snug group-hover:text-amber-700 transition-colors">
+                                            {{ $ad->title }}
+                                        </h3>
+
+                                        @if ($ad->link_url)
+                                            <div>
+                                                <a href="{{ $ad->link_url }}" target="_blank" rel="noopener"
+                                                    class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-amber-50 hover:bg-amber-600 text-amber-900 hover:text-white border border-amber-200/80 text-xs font-bold transition-all duration-200 font-gujarati group/link">
+                                                    <span>લીંક જુઓ (Visit Link)</span>
+                                                    <i class="fa-solid fa-arrow-up-right-from-square text-[10px] group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform"></i>
+                                                </a>
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        @endif
 
         <!-- 3. Community Impact & Statistics Section -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
