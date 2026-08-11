@@ -121,9 +121,9 @@
             @endif
         </div>
 
-        <!-- 2. Home Hero Advertisements Slider Carousel Section (Shows up to 4 Ads at a time with Left / Right Arrows) -->
+        <!-- 2. Home Hero Advertisements Slider Carousel Section (Clean Poster Cards with Side Navigation Arrows) -->
         @if ($heroAds->count() > 0)
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12" x-data="{
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 sm:mt-12" x-data="{
                 activeSlide: 0,
                 total: {{ $heroAds->count() }},
                 get maxSlide() {
@@ -146,86 +146,80 @@
                     }
                 }
             }">
-                <!-- Section Header with Arrow Controls -->
-                <div class="flex items-center justify-between mb-6 border-b border-slate-200 pb-4 gap-2">
-                    <div>
-                        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-gujarati flex items-center gap-3">
-                            <i class="fa-solid fa-rectangle-ad text-amber-700"></i>
-                            <span>સમાજ સ્પોન્સર્સ અને જાહેરાતો (Sponsors & Advertisements)</span>
-                        </h2>
-                        <p class="text-xs sm:text-sm text-slate-500 font-medium mt-1 font-gujarati">
-                            સમાજના શુભેચ્છકો અને સહયોગી સંસ્થાઓની જાહેરાતો
-                        </p>
-                    </div>
-
-                    <!-- Left & Right Navigation Arrow Buttons -->
-                    @if ($heroAds->count() > 1)
-                        <div class="flex items-center gap-2 flex-shrink-0">
-                            <button @click="prev()"
-                                class="w-10 h-10 rounded-2xl bg-white border border-slate-200 text-slate-700 hover:bg-amber-600 hover:text-white hover:border-amber-600 shadow-sm flex items-center justify-center transition-all duration-200 active:scale-95"
-                                title="પાછળની જાહેરાત (Previous)">
-                                <i class="fa-solid fa-chevron-left text-sm"></i>
-                            </button>
-                            <button @click="next()"
-                                class="w-10 h-10 rounded-2xl bg-white border border-slate-200 text-slate-700 hover:bg-amber-600 hover:text-white hover:border-amber-600 shadow-sm flex items-center justify-center transition-all duration-200 active:scale-95"
-                                title="આગળની જાહેરાત (Next)">
-                                <i class="fa-solid fa-chevron-right text-sm"></i>
-                            </button>
-                        </div>
-                    @endif
+                <!-- Section Header -->
+                <div class="mb-6 border-b border-slate-200 pb-4">
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-gujarati flex items-center gap-3">
+                        <i class="fa-solid fa-rectangle-ad text-amber-700"></i>
+                        <span>સમાજ સ્પોન્સર્સ અને જાહેરાતો (Sponsors & Advertisements)</span>
+                    </h2>
+                    <p class="text-xs sm:text-sm text-slate-500 font-medium mt-1 font-gujarati">
+                        સમાજના શુભેચ્છકો અને સહયોગી સંસ્થાઓની જાહેરાતો
+                    </p>
                 </div>
 
-                <!-- Ad Cards Slider Track -->
-                <div class="relative overflow-hidden py-2">
-                    <div class="flex transition-transform duration-500 ease-out gap-5"
-                        :style="'transform: translateX(-' + (activeSlide * (window.innerWidth >= 1024 ? 25 : (window.innerWidth >= 640 ? 50 : 100))) + '%)'">
-                        @foreach ($heroAds as $ad)
-                            <div class="w-full sm:w-[calc(50%-10px)] lg:w-[calc(25%-15px)] flex-shrink-0 flex">
-                                <div class="w-full bg-white rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col group cursor-pointer"
-                                    @click="openAdModal('{{ $ad->image_path ? Storage::url($ad->image_path) : '' }}', '{{ addslashes($ad->title) }}', '{{ $ad->link_url ?? '' }}')">
-                                    
-                                    <!-- Light Cream Warm Background Container (Eliminated Black Letterboxing) -->
-                                    <div class="relative w-full h-80 sm:h-96 bg-gradient-to-b from-amber-50/60 via-slate-50 to-amber-50/30 p-3.5 flex items-center justify-center border-b border-slate-200/80 overflow-hidden">
+                <!-- Ad Carousel Track Container with Flanking Arrow Buttons -->
+                <div class="relative px-2 sm:px-4">
+                    <!-- Left Navigation Arrow Button (Positioned Beside Carousel) -->
+                    @if ($heroAds->count() > 1)
+                        <button @click="prev()"
+                            class="absolute -left-2 sm:-left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/95 text-slate-800 hover:bg-amber-600 hover:text-white border border-slate-200/90 shadow-xl backdrop-blur-md flex items-center justify-center transition-all hover:scale-110 active:scale-95"
+                            title="પાછળની જાહેરાત (Previous)">
+                            <i class="fa-solid fa-chevron-left text-sm sm:text-base"></i>
+                        </button>
+                    @endif
+
+                    <!-- Right Navigation Arrow Button (Positioned Beside Carousel) -->
+                    @if ($heroAds->count() > 1)
+                        <button @click="next()"
+                            class="absolute -right-2 sm:-right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/95 text-slate-800 hover:bg-amber-600 hover:text-white border border-slate-200/90 shadow-xl backdrop-blur-md flex items-center justify-center transition-all hover:scale-110 active:scale-95"
+                            title="આગળની જાહેરાત (Next)">
+                            <i class="fa-solid fa-chevron-right text-sm sm:text-base"></i>
+                        </button>
+                    @endif
+
+                    <!-- Carousel Track -->
+                    <div class="overflow-hidden py-2 rounded-3xl">
+                        <div class="flex transition-transform duration-500 ease-out gap-4 sm:gap-6"
+                            :style="'transform: translateX(-' + (activeSlide * (window.innerWidth >= 1024 ? 25 : (window.innerWidth >= 640 ? 50 : 100))) + '%)'">
+                            @foreach ($heroAds as $ad)
+                                <div class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] flex-shrink-0 flex">
+                                    <!-- Clean Full Poster Card (Without Bottom Text Box) -->
+                                    <div class="relative w-full h-80 sm:h-96 md:h-[410px] rounded-3xl bg-gradient-to-b from-amber-50/70 via-slate-50 to-amber-50/40 p-3 sm:p-4 border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 flex items-center justify-center overflow-hidden group cursor-pointer"
+                                        @click="openAdModal('{{ $ad->image_path ? Storage::url($ad->image_path) : '' }}', '{{ addslashes($ad->title) }}', '{{ $ad->link_url ?? '' }}')">
+                                        
                                         @if ($ad->image_path)
                                             <img src="{{ Storage::url($ad->image_path) }}" alt="{{ $ad->title }}"
-                                                class="max-w-full max-h-full object-contain rounded-xl shadow-xs group-hover:scale-103 transition-transform duration-300"
+                                                class="max-w-full max-h-full object-contain rounded-2xl shadow-2xs group-hover:scale-103 transition-transform duration-300"
                                                 loading="lazy">
                                         @else
-                                            <div class="w-full h-full gradient-header text-amber-200 font-extrabold text-xl flex items-center justify-center p-4 text-center font-gujarati">
+                                            <div class="w-full h-full rounded-2xl gradient-header text-amber-200 font-extrabold text-xl flex items-center justify-center p-4 text-center font-gujarati">
                                                 📣 {{ $ad->title }}
                                             </div>
                                         @endif
 
-                                        <span class="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-amber-600 text-white text-[10px] font-extrabold uppercase tracking-wider shadow-sm font-gujarati">
-                                            સ્પોન્સર
-                                        </span>
 
-                                        <div class="absolute bottom-3 right-3 w-8 h-8 rounded-full bg-slate-900/80 text-white flex items-center justify-center text-xs opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
-                                            <i class="fa-solid fa-expand"></i>
+
+                                        <!-- Overlay Action Buttons (External Link & Expand Lightbox) -->
+                                        <div class="absolute bottom-3 right-3 flex items-center gap-2 z-10">
+                                            @if ($ad->link_url)
+                                                <a href="{{ $ad->link_url }}" target="_blank" rel="noopener" @click.stop
+                                                    class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-slate-900/90 hover:bg-amber-600 text-white flex items-center justify-center text-xs shadow-md transition-all hover:scale-110"
+                                                    title="લીંક જુઓ (Visit Link)">
+                                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                                </a>
+                                            @endif
+                                            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-slate-900/90 text-white flex items-center justify-center text-xs shadow-md group-hover:scale-110 transition-transform"
+                                                title="મોટું કરીને જુઓ (Enlarge)">
+                                                <i class="fa-solid fa-expand"></i>
+                                            </div>
                                         </div>
                                     </div>
-
-                                    <!-- Ad Body Details -->
-                                    <div class="p-4 flex flex-col flex-grow justify-between space-y-2.5 bg-white">
-                                        <h3 class="text-sm font-bold text-slate-900 font-gujarati line-clamp-2 leading-snug group-hover:text-amber-700 transition-colors">
-                                            {{ $ad->title }}
-                                        </h3>
-
-                                        @if ($ad->link_url)
-                                            <div class="pt-2 border-t border-slate-100 flex justify-end">
-                                                <a href="{{ $ad->link_url }}" target="_blank" rel="noopener" @click.stop
-                                                    class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900 text-white text-xs font-bold hover:bg-amber-600 transition-colors font-gujarati">
-                                                    <span>લીંક જુઓ (Visit Link)</span>
-                                                    <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                                                </a>
-                                            </div>
-                                        @endif
-                                    </div>
                                 </div>
-                            </div>
-                        @endforeach
+                            @endforeach
+                        </div>
                     </div>
                 </div>
+
             </div>
         @endif
 
