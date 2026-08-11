@@ -3,6 +3,7 @@
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\Admin\PdfUploadController;
 use App\Http\Controllers\Admin\ToolController;
+use App\Http\Controllers\CommitteeController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\FamilyController;
@@ -26,6 +27,9 @@ Route::get('/events/{event:slug}', [EventController::class, 'show'])->name('even
 
 // Gallery Route
 Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery.index');
+
+// Committee Members Route
+Route::get('/committee', [CommitteeController::class, 'index'])->name('committee.index');
 
 // Family Directory Routes
 Route::get('/families', [FamilyController::class, 'index'])->name('families.index');

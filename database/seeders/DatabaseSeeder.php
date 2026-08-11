@@ -26,6 +26,9 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
+        // Committee Members
+        $this->call(CommitteeMemberSeeder::class);
+
         // Sliders
         Slider::firstOrCreate(
             ['title' => 'શ્રી દશા સોરાઠિયા વણિક સમાજ (મહાજન), રાજકોટ'],
@@ -89,28 +92,6 @@ class DatabaseSeeder extends Seeder
                 'type' => 'image',
                 'category' => 'મહાજન વાડી',
                 'sort_order' => 2,
-                'is_active' => true,
-            ]
-        );
-
-        GalleryItem::firstOrCreate(
-            ['title' => 'શ્રી દશા સોરાઠિયા વણિક સમાજ વાર્ષિક ઉત્સવ હાઇલાઇટ્સ'],
-            [
-                'type' => 'video',
-                'video_url' => 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-                'category' => 'સાંસ્કૃતિક કાર્યક્રમ',
-                'sort_order' => 3,
-                'is_active' => true,
-            ]
-        );
-
-        GalleryItem::firstOrCreate(
-            ['title' => 'સરસ્વતી સન્માન સમારોહ - વિદ્યાર્થીઓનું બહુમાન'],
-            [
-                'type' => 'video',
-                'video_url' => 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-                'category' => 'શિક્ષણ અને સેવા',
-                'sort_order' => 4,
                 'is_active' => true,
             ]
         );

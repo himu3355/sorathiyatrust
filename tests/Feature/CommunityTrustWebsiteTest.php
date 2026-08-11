@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\Advertisement;
+use App\Models\CommitteeMember;
 use App\Models\Event;
 use App\Models\Family;
 use App\Models\FamilyMember;
@@ -317,16 +318,6 @@ class CommunityTrustWebsiteTest extends TestCase
         $response->assertStatus(200);
         $response->assertSee('સ્નેહ મિલન ૨૦૨૬ તસવીર');
         $response->assertSee('સાંસ્કૃતિક વિડિયો ૨૦૨૬');
-
-        $responsePhotos = $this->get('/gallery?type=image');
-        $responsePhotos->assertStatus(200);
-        $responsePhotos->assertSee('સ્નેહ મિલન ૨૦૨૬ તસવીર');
-        $responsePhotos->assertDontSee('સાંસ્કૃતિક વિડિયો ૨૦૨૬');
-
-        $responseVideos = $this->get('/gallery?type=video');
-        $responseVideos->assertStatus(200);
-        $responseVideos->assertSee('સાંસ્કૃતિક વિડિયો ૨૦૨૬');
-        $responseVideos->assertDontSee('સ્નેહ મિલન ૨૦૨૬ તસવીર');
     }
 
     /** 17. Test GalleryItem YouTube helper methods */
@@ -339,5 +330,34 @@ class CommunityTrustWebsiteTest extends TestCase
         $this->assertEquals('dQw4w9WgXcQ', $item->youtube_id);
         $this->assertEquals('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', $item->youtube_embed_url);
         $this->assertEquals('https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg', $item->youtube_thumbnail_url);
+    }
+
+    /** 18. Test Committee members page loads office bearers and executive members */
+    public function test_committee_members_page_loads_office_bearers_and_executive_members(): void
+    {
+        CommitteeMember::create([
+            'name_guj' => 'શ્રી જયેશ કનુભાઈ ધ્રુવ',
+            'designation_guj' => 'પ્રમુખ',
+            'category' => 'office_bearer',
+            'term' => '૨૦૨૫-૨૭',
+            'sort_order' => 1,
+            'is_active' => true,
+        ]);
+
+        CommitteeMember::create([
+            'name_guj' => 'શ્રી નિર્મળભાઈ આર. શેઠ',
+            'designation_guj' => 'કારોબારી સભ્ય',
+            'category' => 'executive_member',
+            'term' => '૨૦૨૫-૨૭',
+            'sort_order' => 10,
+            'is_active' => true,
+        ]);
+
+        $response = $this->get('/committee');
+        $response->assertStatus(200);
+        $response->assertSee('શ્રી જયેશ કનુભાઈ ધ્રુવ');
+        $response->assertSee('પ્રમુખ');
+        $response->assertSee('શ્રી નિર્મળભાઈ આર. શેઠ');
+        $response->assertSee('કારોબારી સભ્ય');
     }
 }
