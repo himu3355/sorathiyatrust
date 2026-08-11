@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('meta_title', 'વસ્તીપત્રક પરિવાર ડિરેક્ટરી - શ્રી દશા સોરાઠિયા વણિક સમાજ (મહાજન), રાજકોટ')
+@section('title', 'વસ્તીપત્રક પરિવાર ડિરેક્ટરી - શ્રી દશા સોરાઠિયા વણિક સમાજ (મહાજન), રાજકોટ')
 @section('meta_description',
     'શ્રી દશા સોરાઠિયા વણિક સમાજ મહાજન રાજકોટ વસ્તીપત્રક પરિવાર ડિરેક્ટરી. અટક, ગામ અથવા મુખ્ય
     સભ્યના નામ પરથી શોધો.')
@@ -23,11 +23,11 @@
                     </div>
                     <input type="text" name="search" value="{{ $searchQuery }}"
                         placeholder="મુખ્ય સભ્યનું નામ, અટક અથવા ગામ થી શોધો (Search by name, surname, village)..."
-                        class="w-full pl-12 pr-4 py-3.5 rounded-2xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-red-900 bg-slate-50 text-slate-900 placeholder:text-slate-400 font-gujarati text-base shadow-inner">
+                        class="w-full pl-12 pr-4 py-3.5 rounded-2xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-amber-600 bg-slate-50 text-slate-900 placeholder:text-slate-400 font-gujarati text-base shadow-inner">
                 </div>
                 <div class="flex gap-2 w-full md:w-auto">
                     <button type="submit"
-                        class="w-full md:w-auto px-8 py-3.5 bg-red-900 hover:bg-red-950 text-white font-bold rounded-2xl transition-all shadow-md flex items-center justify-center gap-2">
+                        class="w-full md:w-auto px-8 py-3.5 bg-amber-600 hover:bg-amber-700 text-white font-bold rounded-2xl transition-all shadow-md flex items-center justify-center gap-2">
                         <i class="fa-solid fa-search"></i>
                         <span>શોધો</span>
                     </button>
@@ -44,17 +44,17 @@
         <!-- Gujarati Alphabet Index Navigation -->
         <div class="mb-10 bg-white p-4 sm:p-6 rounded-3xl border border-slate-200 shadow-sm">
             <div class="text-xs font-bold text-slate-600 uppercase tracking-wider mb-3 flex items-center gap-2">
-                <i class="fa-solid fa-font text-red-900"></i>
+                <i class="fa-solid fa-font text-amber-700"></i>
                 <span>કક્કાવારી મુજબ શોધો (Alphabet Index):</span>
             </div>
             <div class="flex flex-wrap gap-1.5 sm:gap-2">
                 <a href="{{ route('families.index', ['letter' => 'all', 'search' => $searchQuery]) }}"
-                    class="px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-bold transition-all border {{ $currentLetter === 'all' ? 'bg-red-900 text-white border-red-900 shadow-sm' : 'bg-slate-50 text-slate-800 border-slate-200 hover:bg-red-900 hover:text-white hover:border-red-900' }}">
+                    class="px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-bold transition-all border {{ $currentLetter === 'all' ? 'bg-amber-600 text-white border-amber-600 shadow-sm' : 'bg-slate-50 text-slate-800 border-slate-200 hover:bg-amber-600 hover:text-white hover:border-amber-600' }}">
                     બધા (All)
                 </a>
                 @foreach ($gujaratiLetters as $letter)
                     <a href="{{ route('families.index', ['letter' => $letter]) }}"
-                        class="px-3 py-1.5 rounded-xl text-xs sm:text-sm font-bold transition-all border {{ $currentLetter === $letter ? 'bg-red-900 text-white border-red-900 shadow-sm scale-110' : 'bg-slate-50 text-slate-800 border-slate-200 hover:bg-red-900 hover:text-white hover:border-red-900' }}">
+                        class="px-3 py-1.5 rounded-xl text-xs sm:text-sm font-bold transition-all border {{ $currentLetter === $letter ? 'bg-amber-600 text-white border-amber-600 shadow-sm scale-110' : 'bg-slate-50 text-slate-800 border-slate-200 hover:bg-amber-600 hover:text-white hover:border-amber-600' }}">
                         {{ $letter }}
                     </a>
                 @endforeach
@@ -68,48 +68,49 @@
                     <div
                         class="bg-white rounded-3xl border border-slate-200/80 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col relative group">
                         <!-- Left Accent Bar -->
-                        <div class="absolute top-0 left-0 w-1.5 h-full bg-red-900"></div>
+                        <div class="absolute top-0 left-0 w-1.5 h-full bg-amber-600"></div>
 
-                        <!-- Card Header -->
-                        <div class="p-5 border-b border-slate-100 bg-slate-50/70 flex justify-between items-center pl-6">
+                        <!-- Card Header (Surnames Bigger & Bold, Family Code Moved to Body) -->
+                        <div class="p-5 border-b border-slate-100 bg-amber-50/40 flex items-center pl-6">
                             <span
-                                class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-100 text-red-900 text-xs font-bold border border-red-200">
-                                {{-- <i class="fa-solid fa-location-dot text-red-900"></i> --}}
-                                {{ $family->surname_guj ?: '' }}
+                                class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-2xl bg-amber-600 text-white text-base sm:text-lg font-extrabold font-gujarati shadow-2xs">
+                                {{ $family->surname_guj ?: 'પરિવાર' }}
                             </span>
-                            @if ($family->family_code)
-                                <span class="text-xs font-semibold text-slate-500">
-                                    આજીવન સભ્ય ક્રમાંક: {{ $family->family_code }}
-                                </span>
-                            @endif
                         </div>
 
                         <!-- Card Body -->
                         <div class="p-6 pl-7 flex-grow space-y-4">
                             <div>
                                 <h3
-                                    class="text-lg font-bold text-slate-900 group-hover:text-red-900 transition-colors line-clamp-1 font-gujarati">
+                                    class="text-lg font-bold text-slate-900 group-hover:text-amber-700 transition-colors line-clamp-1 font-gujarati leading-tight">
                                     {{ $family->main_member_name_guj }}
                                 </h3>
                                 @if ($family->main_member_name_eng)
-                                    <p class="text-xs text-slate-600 font-medium line-clamp-1 mt-0.5">
+                                    <p class="text-xs text-slate-500 font-medium line-clamp-1 mt-0.5">
                                         {{ $family->main_member_name_eng }}</p>
                                 @endif
                             </div>
 
                             <div class="space-y-2.5 text-xs sm:text-sm text-slate-700">
+                                @if ($family->family_code)
+                                    <div class="flex items-center gap-2">
+                                        <i class="fa-solid fa-id-card w-4 text-amber-600 text-center"></i>
+                                        <span><strong class="text-slate-900">આજીવન સભ્ય ક્રમાંક:</strong> <span
+                                                class="font-mono font-bold text-amber-900">{{ $family->family_code }}</span></span>
+                                    </div>
+                                @endif
                                 <div class="flex items-center gap-2">
-                                    <i class="fa-solid fa-location-dot w-4 text-red-900 text-center"></i>
+                                    <i class="fa-solid fa-location-dot w-4 text-amber-600 text-center"></i>
                                     <span><strong class="text-slate-900">ગામ:</strong> {{ $family->village }}</span>
                                 </div>
                                 <div class="flex items-center gap-2">
-                                    <i class="fa-solid fa-user-group w-4 text-red-900 text-center"></i>
+                                    <i class="fa-solid fa-users w-4 text-amber-600 text-center"></i>
                                     <span><strong class="text-slate-900">કુલ સભ્યો:</strong>
                                         {{ $family->active_members_count }}</span>
                                 </div>
                                 @if ($family->address)
                                     <div class="flex items-start gap-2 line-clamp-2">
-                                        <i class="fa-solid fa-house w-4 text-red-900 text-center mt-1"></i>
+                                        <i class="fa-solid fa-house w-4 text-amber-600 text-center mt-1"></i>
                                         <span class="text-slate-600 text-xs leading-relaxed">{{ $family->address }}</span>
                                     </div>
                                 @endif
@@ -119,10 +120,9 @@
                         <!-- Card Footer Action -->
                         <div class="p-4 pl-7 bg-slate-50/80 border-t border-slate-100">
                             <a href="{{ route('families.show', $family->id) }}"
-                                class="w-full py-2.5 px-4 bg-white border border-slate-300 hover:bg-red-900 hover:text-white text-slate-800 text-xs font-bold rounded-2xl transition-all shadow-xs flex items-center justify-center gap-2 group/btn">
-                                <span class="group-hover/btn:text-white">પરિવાર પ્રોફાઈલ જુઓ</span>
-                                <i
-                                    class="fa-solid fa-arrow-right text-xs group-hover/btn:text-white group-hover/btn:translate-x-1 transition-all"></i>
+                                class="w-full py-2.5 px-4 bg-white border border-slate-300 hover:bg-amber-600 hover:border-amber-600 text-slate-800 hover:text-white text-xs font-bold rounded-2xl transition-all shadow-xs flex items-center justify-center gap-2 group/btn font-gujarati">
+                                <span>પરિવાર પ્રોફાઈલ જુઓ</span>
+                                <i class="fa-solid fa-arrow-right text-xs group-hover/btn:translate-x-1 transition-all"></i>
                             </a>
                         </div>
                     </div>
@@ -144,7 +144,7 @@
                 <p class="text-sm text-slate-600 max-w-md mx-auto">તમારા સર્ચ ફિલ્ટર મુજબ કોઈ પરિવાર મળ્યો નથી. કૃપા કરીને
                     અન્ય અટક અથવા ગામ થી શોધો.</p>
                 <a href="{{ route('families.index') }}"
-                    class="inline-flex items-center gap-2 px-6 py-2.5 bg-red-900 hover:bg-red-950 text-white font-bold text-xs rounded-xl transition-colors">
+                    class="inline-flex items-center gap-2 px-6 py-2.5 bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs rounded-xl transition-colors">
                     બધા રેકોર્ડ્સ જુઓ
                 </a>
             </div>
