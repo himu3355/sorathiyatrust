@@ -20,6 +20,7 @@ class FamilyController extends Controller
         ];
 
         $currentLetter = $request->input('letter', 'all');
+        $filterType = $request->input('filter_type', 'name'); // default: name
         $searchQuery = trim($request->input('search', ''));
 
         $query = Family::active()->withCount(['members as active_members_count' => function ($q) {
@@ -29,15 +30,14 @@ class FamilyController extends Controller
         if (!empty($searchQuery)) {
             $query->search($searchQuery);
         } elseif ($currentLetter !== 'all') {
-            $query->byLetter($currentLetter);
+            $query->byLetter($currentLetter, $filterType);
         }
 
-        $families = $query->orderBy('surname_guj', 'asc')
-            ->orderBy('main_member_name_guj', 'asc')
+        $families = $query->orderBy($filterType === 'surname' ? 'surname_guj' : 'main_member_name_guj', 'asc')
             ->paginate(12)
             ->withQueryString();
 
-        return view('families.index', compact('families', 'gujaratiLetters', 'currentLetter', 'searchQuery'));
+        return view('families.index', compact('families', 'gujaratiLetters', 'currentLetter', 'filterType', 'searchQuery'));
     }
 
     /**

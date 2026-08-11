@@ -56,12 +56,22 @@ class Family extends Model
         });
     }
 
-    public function scopeByLetter($query, string $letter)
+    public function scopeByLetter($query, string $letter, string $field = 'name')
     {
         if (empty($letter) || $letter === 'all') {
             return $query;
         }
 
-        return $query->where('main_member_name_guj', 'like', $letter . '%');
+        $column = ($field === 'surname') ? 'surname_guj' : 'main_member_name_guj';
+
+        return $query->where(function ($q) use ($column, $letter) {
+            $q->where($column, 'like', $letter . '%')
+              ->orWhere($column, 'like', '(' . $letter . '%')
+              ->orWhere($column, 'like', ' (' . $letter . '%')
+              ->orWhere($column, 'like', '[' . $letter . '%')
+              ->orWhere($column, 'like', '"' . $letter . '%')
+              ->orWhere($column, 'like', "'" . $letter . '%')
+              ->orWhere($column, 'like', ' ' . $letter . '%');
+        });
     }
 }

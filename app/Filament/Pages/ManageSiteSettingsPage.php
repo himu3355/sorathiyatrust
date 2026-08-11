@@ -2,15 +2,12 @@
 
 namespace App\Filament\Pages;
 
-use App\Models\FamilyMember;
 use App\Models\SiteSetting;
 use BackedEnum;
-use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
-use Filament\Schemas\Components\Section;
-
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use UnitEnum;
@@ -44,7 +41,6 @@ class ManageSiteSettingsPage extends Page
             'stat_years_label' => SiteSetting::get('stat_years_label', '૫૦+'),
             'stat_events_label' => SiteSetting::get('stat_events_label', '૨૫+'),
             'stat_commitment_label' => SiteSetting::get('stat_commitment_label', '૧૦૦%'),
-            'featured_trustee_ids' => SiteSetting::get('featured_trustee_ids', []),
         ]);
     }
 
@@ -84,19 +80,6 @@ class ManageSiteSettingsPage extends Page
                         TextInput::make('stat_commitment_label')
                             ->label('Commitment Stat Label (e.g. ૧૦૦%)'),
                     ])->columns(2),
-
-                Section::make('👥 Featured Trustees / Committee Members (ટ્રસ્ટી સમિતિ)')
-                    ->schema([
-                        Select::make('featured_trustee_ids')
-                            ->label('Select Family Members to feature on About Us / Home Page')
-                            ->multiple()
-                            ->searchable()
-                            ->options(
-                                FamilyMember::query()
-                                    ->limit(100)
-                                    ->pluck('member_name_guj', 'id')
-                            ),
-                    ]),
             ]);
     }
 

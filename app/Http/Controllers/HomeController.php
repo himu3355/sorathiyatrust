@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Advertisement;
+use App\Models\CommitteeMember;
 use App\Models\Event;
-use App\Models\FamilyMember;
 use App\Models\News;
 use App\Models\SiteSetting;
 use App\Models\Slider;
@@ -22,12 +22,8 @@ class HomeController extends Controller
         $upcomingEvents = Event::upcoming()->take(3)->get();
         $pastEvents = Event::past()->take(3)->get();
 
-        $featuredIds = SiteSetting::get('featured_trustee_ids', []);
-        if (!empty($featuredIds) && is_array($featuredIds)) {
-            $committeeMembers = FamilyMember::with('family')->whereIn('id', $featuredIds)->take(6)->get();
-        } else {
-            $committeeMembers = FamilyMember::with('family')->active()->take(6)->get();
-        }
+        // Real Office Bearers (સન્માનનીય હોદ્દેદારો)
+        $officeBearers = CommitteeMember::officeBearers()->get();
 
         $stats = [
             'members' => SiteSetting::get('stat_members_label', '૧૫૦૦+'),
@@ -44,7 +40,7 @@ class HomeController extends Controller
             'latestNews',
             'upcomingEvents',
             'pastEvents',
-            'committeeMembers',
+            'officeBearers',
             'stats'
         ));
     }

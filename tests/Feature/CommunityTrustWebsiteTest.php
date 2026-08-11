@@ -386,4 +386,21 @@ class CommunityTrustWebsiteTest extends TestCase
         $responseSearch->assertStatus(200);
         $responseSearch->assertSee('શ્રીમદ્ ગોકુળ');
     }
+
+    /** 20. Test surname with leading parenthesis matches letter filter */
+    public function test_surname_with_parenthesis_matches_letter_filter(): void
+    {
+        $family = Family::create([
+            'family_code' => 'F099',
+            'surname_guj' => '(શાહ) કડી',
+            'surname_eng' => '(Shah) Kadi',
+            'main_member_name_guj' => 'માનસીંગ શાહ',
+            'main_member_name_eng' => 'Mansingh Shah',
+            'is_active' => true,
+        ]);
+
+        $response = $this->get('/families?letter=' . urlencode('શ') . '&filter_type=surname');
+        $response->assertStatus(200);
+        $response->assertSee('(શાહ) કડી');
+    }
 }
