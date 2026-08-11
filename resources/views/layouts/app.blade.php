@@ -52,8 +52,7 @@
             </div>
             <div class="flex items-center gap-4 text-amber-100 font-medium">
                 @if ($phone = \App\Models\SiteSetting::get('phone_number', '+91 98765 43210'))
-                    <a href="tel:{{ str_replace(' ', '', $phone) }}"
-                        class="flex items-center gap-1.5 hover:text-white transition-colors">
+                    <a href="tel:{{ str_replace(' ', '', $phone) }}" class="flex items-center gap-1.5 hover:text-white transition-colors">
                         <i class="fa-solid fa-phone-volume text-amber-300"></i>
                         <span>{{ $phone }}</span>
                     </a>
@@ -76,15 +75,15 @@
                 <a href="{{ route('home') }}" class="flex items-center gap-2.5 sm:gap-3.5 group py-1"
                     title="શ્રી દશા સોરાઠિયા વણિક સમાજ (મહાજન), રાજકોટ">
                     <div
-                        class="w-11 h-11 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-xl lg:rounded-2xl bg-amber-600 p-1 lg:p-2 shadow-md border border-amber-500/60 flex items-center justify-center group-hover:scale-105 transition-transform trust-badge-glow flex-shrink-0">
-                        <img src="{{ asset('images/sorathiya-trust-logo1.png') }}"
+                        class="w-11 h-11 sm:w-16 sm:h-16 lg:w-24 lg:h-24 rounded-xl lg:rounded-2xl bg-amber-600 p-1 lg:p-2 shadow-md border border-amber-500/60 flex items-center justify-center group-hover:scale-105 transition-transform trust-badge-glow flex-shrink-0">
+                        <img src="{{ asset('images/sorathiya-trust-logo.png') }}"
                             alt="શ્રી દશા સોરાઠિયા વણિક સમાજ (મહાજન), રાજકોટ" class="w-full h-full object-contain">
                     </div>
                     <!-- Brand Title Text: Visible ONLY on Mobile/Tablet (Hidden on Desktop lg:hidden) -->
                     <div class="block lg:hidden">
                         <span
                             class="block text-sm sm:text-base font-bold text-slate-900 leading-tight group-hover:text-amber-700 transition-colors">
-                            શ્રી દશા સોરાઠિયા વણિક સમાજ
+                            દશા સોરાઠિયા વણિક સમાજ
                         </span>
                         <span class="block text-[10px] sm:text-xs font-semibold text-amber-700 tracking-wider">
                             મહાજન, રાજકોટ (ટ્રસ્ટ)
@@ -111,6 +110,12 @@
                         <i
                             class="fa-solid fa-calendar-days text-xs {{ request()->routeIs('events.*') ? 'text-amber-200' : 'text-slate-400' }}"></i>
                         <span>કાર્યક્રમો</span>
+                    </a>
+                    <a href="{{ route('gallery.index') }}"
+                        class="px-3.5 py-2.5 rounded-xl text-sm transition-all flex items-center gap-2 {{ request()->routeIs('gallery.*') ? 'bg-amber-600 text-white shadow-xs font-semibold' : 'hover:bg-amber-50 hover:text-amber-800' }}">
+                        <i
+                            class="fa-solid fa-images text-xs {{ request()->routeIs('gallery.*') ? 'text-amber-200' : 'text-slate-400' }}"></i>
+                        <span>ગેલેરી</span>
                     </a>
                     <a href="{{ route('members.index') }}"
                         class="px-3.5 py-2.5 rounded-xl text-sm transition-all flex items-center gap-2 {{ request()->routeIs('members.*') || request()->routeIs('families.*') ? 'bg-amber-600 text-white shadow-xs font-semibold' : 'hover:bg-amber-50 hover:text-amber-800' }}">
@@ -167,6 +172,11 @@
                 <i class="fa-solid fa-calendar-days w-5 text-center"></i>
                 <span>કાર્યક્રમો (Events)</span>
             </a>
+            <a href="{{ route('gallery.index') }}"
+                class="flex items-center gap-3 px-4 py-3 rounded-xl text-base font-semibold {{ request()->routeIs('gallery.*') ? 'bg-amber-600 text-white' : 'text-slate-700 hover:bg-slate-50' }}">
+                <i class="fa-solid fa-images w-5 text-center"></i>
+                <span>ગેલેરી (Gallery)</span>
+            </a>
             <a href="{{ route('members.index') }}"
                 class="flex items-center gap-3 px-4 py-3 rounded-xl text-base font-semibold {{ request()->routeIs('members.*') || request()->routeIs('families.*') ? 'bg-amber-600 text-white' : 'text-slate-700 hover:bg-slate-50' }}">
                 <i class="fa-solid fa-address-book w-5 text-center"></i>
@@ -220,10 +230,8 @@
                 <!-- Trust Overview -->
                 <div class="space-y-4 md:col-span-1">
                     <div class="flex items-center gap-3">
-                        <div
-                            class="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-amber-600 p-1.5 shadow-md border border-amber-400/40 flex items-center justify-center flex-shrink-0">
-                            <img src="{{ asset('images/sorathiya-trust-logo.png') }}" alt="દશા સોરાઠિયા વણિક સમાજ"
-                                class="w-full h-full object-contain">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-amber-600 p-1.5 shadow-md border border-amber-400/40 flex items-center justify-center flex-shrink-0">
+                            <img src="{{ asset('images/sorathiya-trust-logo.png') }}" alt="દશા સોરાઠિયા વણિક સમાજ" class="w-full h-full object-contain">
                         </div>
                         <h3 class="text-lg font-bold text-white leading-tight">
                             દશા સોરાઠિયા વણિક સમાજ
@@ -275,26 +283,23 @@
                                 class="hover:text-amber-300 transition-colors flex items-center gap-2"><i
                                     class="fa-solid fa-chevron-right text-[10px] text-amber-500"></i> મુખ્ય પૃષ્ઠ
                                 (Home)</a></li>
+                        <li><a href="{{ route('gallery.index') }}"
+                                class="hover:text-amber-300 transition-colors flex items-center gap-2"><i
+                                    class="fa-solid fa-chevron-right text-[10px] text-amber-500"></i> તસવીર અને વીડિયો ગેલેરી</a></li>
                         <li><a href="{{ route('news.index') }}"
                                 class="hover:text-amber-300 transition-colors flex items-center gap-2"><i
                                     class="fa-solid fa-chevron-right text-[10px] text-amber-500"></i> સમાચાર અને
                                 અપડેટ્સ</a></li>
                         <li><a href="{{ route('events.upcoming') }}"
                                 class="hover:text-amber-300 transition-colors flex items-center gap-2"><i
-                                    class="fa-solid fa-chevron-right text-[10px] text-amber-500"></i> આગામી
-                                કાર્યક્રમો</a>
+                                    class="fa-solid fa-chevron-right text-[10px] text-amber-500"></i> આગામી કાર્યક્રમો</a>
                         </li>
-                        <li><a href="{{ route('events.past') }}"
-                                class="hover:text-amber-300 transition-colors flex items-center gap-2"><i
-                                    class="fa-solid fa-chevron-right text-[10px] text-amber-500"></i> ગત કાર્યક્રમો
-                                સંગ્રહ</a></li>
                     </ul>
                 </div>
 
                 <!-- Directory & Trust Info Links -->
                 <div>
-                    <h4 class="text-xs font-extrabold text-amber-400 uppercase tracking-widest mb-4">વસ્તીપત્રક અને
-                        માહિતી
+                    <h4 class="text-xs font-extrabold text-amber-400 uppercase tracking-widest mb-4">વસ્તીપત્રક અને માહિતી
                     </h4>
                     <ul class="space-y-2.5 text-sm font-medium">
                         <li><a href="{{ route('members.index') }}"

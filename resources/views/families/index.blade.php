@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('meta_title', 'વસ્તીપત્રક પરિવાર ડિરેક્ટરી - શ્રી દશા સોરાઠિયા વણિક સમાજ (મહાજન), રાજકોટ')
-@section('meta_description', 'શ્રી દશા સોરાઠિયા વણિક સમાજ મહાજન રાજકોટ વસ્તીપત્રક પરિવાર ડિરેક્ટરી. અટક, ગામ અથવા મુખ્ય
+@section('meta_description',
+    'શ્રી દશા સોરાઠિયા વણિક સમાજ મહાજન રાજકોટ વસ્તીપત્રક પરિવાર ડિરેક્ટરી. અટક, ગામ અથવા મુખ્ય
     સભ્યના નામ પરથી શોધો.')
 
 @section('content')
@@ -73,12 +74,12 @@
                         <div class="p-5 border-b border-slate-100 bg-slate-50/70 flex justify-between items-center pl-6">
                             <span
                                 class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-100 text-red-900 text-xs font-bold border border-red-200">
-                                <i class="fa-solid fa-location-dot text-red-900"></i>
-                                {{ $family->village ?: 'રાજકોટ' }}
+                                {{-- <i class="fa-solid fa-location-dot text-red-900"></i> --}}
+                                {{ $family->surname_guj ?: '' }}
                             </span>
                             @if ($family->family_code)
                                 <span class="text-xs font-semibold text-slate-500">
-                                    ID: {{ $family->family_code }}
+                                    આજીવન સભ્ય ક્રમાંક: {{ $family->family_code }}
                                 </span>
                             @endif
                         </div>
@@ -98,8 +99,8 @@
 
                             <div class="space-y-2.5 text-xs sm:text-sm text-slate-700">
                                 <div class="flex items-center gap-2">
-                                    <i class="fa-solid fa-users w-4 text-red-900 text-center"></i>
-                                    <span><strong class="text-slate-900">અટક:</strong> {{ $family->surname_guj }}</span>
+                                    <i class="fa-solid fa-location-dot w-4 text-red-900 text-center"></i>
+                                    <span><strong class="text-slate-900">ગામ:</strong> {{ $family->village }}</span>
                                 </div>
                                 <div class="flex items-center gap-2">
                                     <i class="fa-solid fa-user-group w-4 text-red-900 text-center"></i>
@@ -133,7 +134,8 @@
                 {{ $families->links() }}
             </div>
         @else
-            <div class="bg-white rounded-3xl p-12 text-center text-slate-600 border border-slate-200 shadow-sm space-y-4 font-gujarati">
+            <div
+                class="bg-white rounded-3xl p-12 text-center text-slate-600 border border-slate-200 shadow-sm space-y-4 font-gujarati">
                 <div
                     class="w-16 h-16 mx-auto rounded-full bg-amber-50 text-amber-600 flex items-center justify-center text-2xl">
                     <i class="fa-solid fa-folder-open"></i>

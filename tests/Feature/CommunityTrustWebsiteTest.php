@@ -6,6 +6,7 @@ use App\Models\Advertisement;
 use App\Models\Event;
 use App\Models\Family;
 use App\Models\FamilyMember;
+use App\Models\GalleryItem;
 use App\Models\News;
 use App\Models\Slider;
 use App\Models\User;
@@ -291,5 +292,52 @@ class CommunityTrustWebsiteTest extends TestCase
         $response = $this->get('/members/' . $family->id);
         $response->assertStatus(200);
         $response->assertSee('આઇસોલેટેડ સભ્ય');
+    }
+
+    /** 16. Test Gallery page loads photos and videos */
+    public function test_gallery_page_loads_successfully_with_photos_and_videos(): void
+    {
+        GalleryItem::create([
+            'title' => 'સ્નેહ મિલન ૨૦૨૬ તસવીર',
+            'type' => 'image',
+            'image_path' => 'gallery/test.webp',
+            'category' => 'સ્નેહ મિલન',
+            'is_active' => true,
+        ]);
+
+        GalleryItem::create([
+            'title' => 'સાંસ્કૃતિક વિડિયો ૨૦૨૬',
+            'type' => 'video',
+            'video_url' => 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+            'category' => 'સાંસ્કૃતિક',
+            'is_active' => true,
+        ]);
+
+        $response = $this->get('/gallery');
+        $response->assertStatus(200);
+        $response->assertSee('સ્નેહ મિલન ૨૦૨૬ તસવીર');
+        $response->assertSee('સાંસ્કૃતિક વિડિયો ૨૦૨૬');
+
+        $responsePhotos = $this->get('/gallery?type=image');
+        $responsePhotos->assertStatus(200);
+        $responsePhotos->assertSee('સ્નેહ મિલન ૨૦૨૬ તસવીર');
+        $responsePhotos->assertDontSee('સાંસ્કૃતિક વિડિયો ૨૦૨૬');
+
+        $responseVideos = $this->get('/gallery?type=video');
+        $responseVideos->assertStatus(200);
+        $responseVideos->assertSee('સાંસ્કૃતિક વિડિયો ૨૦૨૬');
+        $responseVideos->assertDontSee('સ્નેહ મિલન ૨૦૨૬ તસવીર');
+    }
+
+    /** 17. Test GalleryItem YouTube helper methods */
+    public function test_gallery_item_youtube_embed_helpers(): void
+    {
+        $item = new GalleryItem([
+            'video_url' => 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+        ]);
+
+        $this->assertEquals('dQw4w9WgXcQ', $item->youtube_id);
+        $this->assertEquals('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', $item->youtube_embed_url);
+        $this->assertEquals('https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg', $item->youtube_thumbnail_url);
     }
 }
