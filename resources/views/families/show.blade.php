@@ -10,15 +10,15 @@
         <!-- Back Navigation Button -->
         <div class="mb-6">
             <a href="{{ route('families.index') }}"
-                class="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-slate-300 text-slate-800 hover:bg-emerald-800 hover:text-white font-bold text-xs rounded-2xl transition-all shadow-xs group">
-                <i class="fa-solid fa-arrow-left text-emerald-800 group-hover:text-white transition-colors"></i>
+                class="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-slate-300 text-slate-800 hover:bg-red-900 hover:text-white font-bold text-xs rounded-2xl transition-all shadow-xs group">
+                <i class="fa-solid fa-arrow-left text-red-900 group-hover:text-white transition-colors"></i>
                 <span class="group-hover:text-white">પાછા જાઓ (Back to Directory)</span>
             </a>
         </div>
 
         <!-- Family Banner Header Card -->
         <div
-            class="bg-gradient-to-r from-emerald-950 via-emerald-900 to-teal-900 text-white rounded-3xl p-6 sm:p-10 shadow-xl relative overflow-hidden mb-10 border border-emerald-800/80">
+            class="bg-gradient-to-r from-red-950 via-red-900 to-red-950 text-white rounded-3xl p-6 sm:p-10 shadow-xl relative overflow-hidden mb-10 border border-red-800/80">
             <!-- Decorative Background Pattern -->
             <div class="absolute -right-10 -bottom-10 opacity-10 text-[180px] pointer-events-none text-white font-bold">
                 <i class="fa-solid fa-users"></i>
@@ -36,7 +36,7 @@
                         શ્રી {{ $family->main_member_name_guj }}
                     </h1>
                     @if ($family->main_member_name_eng)
-                        <p class="text-emerald-200 text-sm font-semibold tracking-wide">{{ $family->main_member_name_eng }}
+                        <p class="text-amber-200 text-sm font-semibold tracking-wide">{{ $family->main_member_name_eng }}
                         </p>
                     @endif
 
@@ -55,7 +55,7 @@
                 </div>
 
                 <div
-                    class="border-t md:border-t-0 md:border-l border-emerald-700/60 pt-6 md:pt-0 md:pl-8 space-y-4 text-xs sm:text-sm">
+                    class="border-t md:border-t-0 md:border-l border-red-800/60 pt-6 md:pt-0 md:pl-8 space-y-4 text-xs sm:text-sm">
                     @if ($family->address)
                         <div>
                             <div
@@ -88,7 +88,7 @@
         <!-- Family Members Grid Section -->
         <div class="mb-6 flex items-center justify-between">
             <h2 class="text-xl sm:text-2xl font-bold text-slate-900 font-gujarati flex items-center gap-3">
-                <span class="w-3 h-8 bg-emerald-800 rounded-full inline-block"></span>
+                <span class="w-3 h-8 bg-red-900 rounded-full inline-block"></span>
                 <span>પરિવારના સભ્યો ({{ $family->activeMembers->count() }})</span>
             </h2>
         </div>
@@ -97,13 +97,12 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 @php
                     $avatarColors = [
-                        'bg-emerald-800',
-                        'bg-teal-800',
-                        'bg-cyan-800',
+                        'bg-red-900',
+                        'bg-red-950',
+                        'bg-amber-800',
+                        'bg-red-900',
                         'bg-amber-700',
-                        'bg-indigo-800',
-                        'bg-rose-800',
-                        'bg-blue-800',
+                        'bg-red-950',
                     ];
                 @endphp
 
@@ -116,17 +115,17 @@
                         <!-- Member Header -->
                         <div class="p-5 border-b border-slate-100 flex items-center gap-4 bg-slate-50/70">
                             <div
-                                class="w-14 h-14 rounded-2xl {{ $bgColor }} text-white font-bold text-lg flex items-center justify-center shadow-md flex-shrink-0">
+                                class="w-14 h-14 rounded-2xl {{ $bgColor }} text-amber-300 border border-amber-400/30 font-bold text-lg flex items-center justify-center shadow-md flex-shrink-0">
                                 {{ $member->initials }}
                             </div>
                             <div>
                                 <h3
-                                    class="text-base font-bold text-slate-900 font-gujarati leading-tight group-hover:text-emerald-800 transition-colors">
+                                    class="text-base font-bold text-slate-900 font-gujarati leading-tight group-hover:text-red-900 transition-colors">
                                     {{ $member->member_name_guj }}
                                 </h3>
                                 @if ($member->relation)
                                     <span
-                                        class="inline-block mt-1 px-2.5 py-0.5 rounded-lg bg-emerald-100 text-emerald-950 text-xs font-extrabold border border-emerald-300">
+                                        class="inline-block mt-1 px-2.5 py-0.5 rounded-lg bg-red-50 text-red-950 text-xs font-extrabold border border-red-200">
                                         {{ $member->relation }}
                                     </span>
                                 @endif
@@ -165,7 +164,7 @@
 
                             <div class="space-y-2.5 pt-1">
                                 <div class="flex items-start gap-2.5">
-                                    <i class="fa-solid fa-graduation-cap w-4 text-emerald-800 text-center mt-1"></i>
+                                    <i class="fa-solid fa-graduation-cap w-4 text-red-900 text-center mt-1"></i>
                                     <div>
                                         <span
                                             class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider">અભ્યાસ</span>
@@ -174,7 +173,7 @@
                                 </div>
 
                                 <div class="flex items-start gap-2.5">
-                                    <i class="fa-solid fa-briefcase w-4 text-emerald-800 text-center mt-1"></i>
+                                    <i class="fa-solid fa-briefcase w-4 text-red-900 text-center mt-1"></i>
                                     <div>
                                         <span
                                             class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider">વ્યવસાય</span>
@@ -183,13 +182,13 @@
                                 </div>
 
                                 <div class="flex items-start gap-2.5 pt-1">
-                                    <i class="fa-solid fa-users-line w-4 text-emerald-800 text-center mt-1"></i>
+                                    <i class="fa-solid fa-users-line w-4 text-red-900 text-center mt-1"></i>
                                     <div>
                                         <span
                                             class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider">મોસાળની
                                             અટક</span>
                                         <span
-                                            class="font-bold text-emerald-900">{{ $member->maternal_surname ?: '-' }}</span>
+                                            class="font-bold text-red-900">{{ $member->maternal_surname ?: '-' }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -198,7 +197,7 @@
                 @endforeach
             </div>
         @else
-            <div class="bg-white rounded-3xl p-8 text-center text-slate-600 border border-slate-200">
+            <div class="bg-white rounded-3xl p-8 text-center text-slate-600 border border-slate-200 font-gujarati">
                 પરિવારમાં કોઈ સભ્યો ઉમેરાયેલ નથી.
             </div>
         @endif

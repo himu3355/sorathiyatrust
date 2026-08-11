@@ -44,7 +44,7 @@
             @endif
 
             <div class="pt-6 border-t border-slate-100 flex justify-between items-center">
-                <a href="{{ route('events.upcoming') }}" class="text-sm font-bold text-emerald-800 hover:text-emerald-900 flex items-center gap-2 group/back">
+                <a href="{{ route('events.upcoming') }}" class="text-sm font-bold text-red-900 hover:text-red-950 flex items-center gap-2 group/back">
                     <i class="fa-solid fa-arrow-left text-xs group-hover/back:-translate-x-1 transition-transform"></i>
                     <span>પાછા જાઓ (Back to Events)</span>
                 </a>

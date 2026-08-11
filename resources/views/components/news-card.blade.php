@@ -22,7 +22,7 @@
             <span>{{ $news->published_at ? $news->published_at->format('d M Y') : $news->created_at->format('d M Y') }}</span>
         </div>
 
-        <h3 class="text-base sm:text-lg font-bold text-slate-900 font-gujarati line-clamp-2 hover:text-emerald-800 transition-colors">
+        <h3 class="text-base sm:text-lg font-bold text-slate-900 font-gujarati line-clamp-2 hover:text-amber-700 transition-colors">
             <a href="{{ route('news.show', $news->slug) }}">{{ $news->title }}</a>
         </h3>
 
@@ -33,7 +33,7 @@
         @endif
 
         <div class="pt-2">
-            <a href="{{ route('news.show', $news->slug) }}" class="text-xs font-bold text-emerald-800 hover:text-emerald-900 inline-flex items-center gap-1.5 font-gujarati group/link">
+            <a href="{{ route('news.show', $news->slug) }}" class="text-xs font-bold text-amber-700 hover:text-amber-800 inline-flex items-center gap-1.5 font-gujarati group/link">
                 <span>સંપૂર્ણ વિગત વાંચો</span>
                 <i class="fa-solid fa-arrow-right text-[11px] group-hover/link:translate-x-1 transition-transform"></i>
             </a>

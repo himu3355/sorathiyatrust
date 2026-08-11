@@ -10,11 +10,11 @@
         <div class="flex flex-col sm:flex-row justify-between items-center gap-4 mb-8">
             <div class="flex items-center gap-2 bg-slate-200/80 p-1.5 rounded-xl text-sm font-bold">
                 <a href="{{ route('events.upcoming') }}"
-                    class="px-5 py-2 rounded-lg transition-all {{ $type === 'upcoming' ? 'bg-emerald-800 text-white shadow-xs' : 'text-slate-700 hover:text-slate-900' }}">
+                    class="px-5 py-2 rounded-lg transition-all {{ $type === 'upcoming' ? 'bg-red-900 text-white shadow-xs' : 'text-slate-700 hover:text-slate-900' }}">
                     આગામી (Upcoming)
                 </a>
                 <a href="{{ route('events.past') }}"
-                    class="px-5 py-2 rounded-lg transition-all {{ $type === 'past' ? 'bg-emerald-800 text-white shadow-xs' : 'text-slate-700 hover:text-slate-900' }}">
+                    class="px-5 py-2 rounded-lg transition-all {{ $type === 'past' ? 'bg-red-900 text-white shadow-xs' : 'text-slate-700 hover:text-slate-900' }}">
                     ગત કાર્યક્રમો (Past)
                 </a>
             </div>
@@ -22,9 +22,9 @@
             <form action="{{ $type === 'upcoming' ? route('events.upcoming') : route('events.past') }}" method="GET"
                 class="w-full sm:w-auto flex gap-2">
                 <input type="text" name="search" value="{{ request('search') }}" placeholder="કાર્યક્રમ શોધો..."
-                    class="px-4 py-2 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-800 bg-white font-gujarati text-sm">
+                    class="px-4 py-2 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-red-900 bg-white font-gujarati text-sm">
                 <button type="submit"
-                    class="px-5 py-2 bg-emerald-800 text-white font-bold rounded-xl hover:bg-emerald-900 transition-colors text-sm flex items-center gap-2">
+                    class="px-5 py-2 bg-red-900 text-white font-bold rounded-xl hover:bg-red-950 transition-colors text-sm flex items-center gap-2">
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <span>શોધો</span>
                 </button>
@@ -45,11 +45,11 @@
                             </div>
                         @endif
                         <div class="p-5 space-y-3">
-                            <x-badge :color="$event->event_date >= now() ? 'emerald' : 'slate'">
+                            <x-badge :color="$event->event_date >= now() ? 'amber' : 'slate'">
                                 {{ $event->event_date >= now() ? 'આગામી' : 'પૂર્ણ' }}
                             </x-badge>
                             <h2
-                                class="text-lg font-bold text-slate-900 font-gujarati line-clamp-2 hover:text-emerald-800 transition-colors">
+                                class="text-lg font-bold text-slate-900 font-gujarati line-clamp-2 hover:text-red-900 transition-colors">
                                 <a href="{{ route('events.show', $event->slug) }}">{{ $event->title }}</a>
                             </h2>
                             <div class="space-y-1.5 text-xs text-slate-600 font-medium">
@@ -67,7 +67,7 @@
                             </div>
                             <div class="pt-2">
                                 <a href="{{ route('events.show', $event->slug) }}"
-                                    class="text-xs font-bold text-emerald-800 hover:text-emerald-900 inline-flex items-center gap-1.5 font-gujarati group/link">
+                                    class="text-xs font-bold text-red-900 hover:text-red-950 inline-flex items-center gap-1.5 font-gujarati group/link">
                                     <span>કાર્યક્રમ વિગત</span>
                                     <i
                                         class="fa-solid fa-arrow-right text-[11px] group-hover/link:translate-x-1 transition-transform"></i>
@@ -82,7 +82,7 @@
                 {{ $events->links() }}
             </div>
         @else
-            <div class="bg-white rounded-2xl p-12 text-center text-slate-500 border border-slate-200">
+            <div class="bg-white rounded-2xl p-12 text-center text-slate-500 border border-slate-200 font-gujarati">
                 કોઈ કાર્યક્રમો મળ્યા નથી.
             </div>
         @endif

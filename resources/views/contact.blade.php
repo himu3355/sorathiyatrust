@@ -59,7 +59,7 @@
                             class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1 font-gujarati">તમારું
                             નામ (Name) *</label>
                         <input type="text" name="name" required
-                            class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-800 bg-slate-50 font-gujarati text-sm">
+                            class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-red-900 bg-slate-50 font-gujarati text-sm">
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -68,14 +68,14 @@
                                 class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1 font-gujarati">મોબાઇલ
                                 નંબર (Mobile) *</label>
                             <input type="text" name="mobile" required
-                                class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-800 bg-slate-50 text-sm">
+                                class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-red-900 bg-slate-50 text-sm">
                         </div>
                         <div>
                             <label
                                 class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1 font-gujarati">ઇમેઇલ
                                 (Email)</label>
                             <input type="email" name="email"
-                                class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-800 bg-slate-50 text-sm">
+                                class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-red-900 bg-slate-50 text-sm">
                         </div>
                     </div>
 
@@ -84,7 +84,7 @@
                             class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1 font-gujarati">વિષય
                             (Subject) *</label>
                         <input type="text" name="subject" required
-                            class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-800 bg-slate-50 font-gujarati text-sm">
+                            class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-red-900 bg-slate-50 font-gujarati text-sm">
                     </div>
 
                     <div>
@@ -92,11 +92,11 @@
                             class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1 font-gujarati">સંદેશ
                             / રજૂઆત (Message) *</label>
                         <textarea name="message" rows="4" required
-                            class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-800 bg-slate-50 font-gujarati text-sm"></textarea>
+                            class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-red-900 bg-slate-50 font-gujarati text-sm"></textarea>
                     </div>
 
                     <button type="submit"
-                        class="w-full py-3 bg-emerald-800 hover:bg-emerald-900 text-white font-bold rounded-xl shadow-md transition-all text-sm font-gujarati flex items-center justify-center gap-2">
+                        class="w-full py-3 bg-red-900 hover:bg-red-950 text-white font-bold rounded-xl shadow-md transition-all text-sm font-gujarati flex items-center justify-center gap-2">
                         <i class="fa-solid fa-paper-plane"></i>
                         <span>સંદેશ મોકલો (Submit Inquiry)</span>
                     </button>

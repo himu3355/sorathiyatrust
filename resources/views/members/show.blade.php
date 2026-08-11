@@ -51,7 +51,7 @@
                             <span class="text-base font-bold text-slate-900 flex items-center gap-2">
                                 <i class="fa-solid fa-phone text-amber-600"></i>
                                 <a href="tel:{{ $member->mobile_number }}"
-                                    class="hover:text-emerald-800 transition-colors">{{ $member->mobile_number }}</a>
+                                    class="hover:text-red-900 transition-colors">{{ $member->mobile_number }}</a>
                             </span>
                         </div>
                     @endif
@@ -89,7 +89,7 @@
 
                 <div class="pt-6 border-t border-slate-100 flex justify-between items-center">
                     <a href="{{ route('members.index') }}"
-                        class="text-sm font-bold text-emerald-800 hover:text-emerald-900 flex items-center gap-2 group/back">
+                        class="text-sm font-bold text-red-900 hover:text-red-950 flex items-center gap-2 group/back">
                         <i class="fa-solid fa-arrow-left text-xs group-hover/back:-translate-x-1 transition-transform"></i>
                         <span>પાછા જાઓ (Back to Members)</span>
                     </a>

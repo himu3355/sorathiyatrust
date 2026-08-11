@@ -13,19 +13,19 @@
             <div class="w-full sm:w-1/2">
                 <input type="text" name="search" value="{{ request('search') }}"
                     placeholder="નામ, હોદ્દો અથવા મોબાઇલ નંબર શોધો (Search by name, designation, mobile)..."
-                    class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-800 bg-slate-50 font-gujarati text-sm">
+                    class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-red-900 bg-slate-50 font-gujarati text-sm">
             </div>
             <div class="flex items-center gap-2">
                 <label class="flex items-center gap-2 text-sm font-semibold text-slate-700 cursor-pointer">
                     <input type="checkbox" name="committee_only" value="1"
                         {{ request('committee_only') ? 'checked' : '' }}
-                        class="w-4 h-4 rounded text-emerald-800 focus:ring-emerald-800">
+                        class="w-4 h-4 rounded text-red-900 focus:ring-red-900">
                     <span>ફક્ત ટ્રસ્ટી સમિતિ સભ્યો (Committee Only)</span>
                 </label>
             </div>
             <div class="ml-auto flex gap-2 w-full sm:w-auto">
                 <button type="submit"
-                    class="w-full sm:w-auto px-6 py-2.5 bg-emerald-800 text-white font-bold rounded-xl hover:bg-emerald-900 transition-colors text-sm shadow-xs flex items-center justify-center gap-2">
+                    class="w-full sm:w-auto px-6 py-2.5 bg-red-900 text-white font-bold rounded-xl hover:bg-red-950 transition-colors text-sm shadow-xs flex items-center justify-center gap-2">
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <span>શોધો</span>
                 </button>
@@ -59,7 +59,7 @@
                             @endif
                             <h3 class="text-lg font-bold text-slate-900 font-gujarati pt-1">
                                 <a href="{{ route('members.show', $member->id) }}"
-                                    class="hover:text-emerald-800 transition-colors">
+                                    class="hover:text-red-900 transition-colors">
                                     {{ $member->gujarati_name ?? $member->name }}
                                 </a>
                             </h3>
@@ -78,7 +78,7 @@
                                 class="pt-2 border-t border-slate-100 text-xs font-medium text-slate-600 flex items-center justify-center gap-1.5">
                                 <i class="fa-solid fa-phone text-amber-600"></i>
                                 <a href="tel:{{ $member->mobile_number }}"
-                                    class="hover:text-emerald-800 transition-colors">{{ $member->mobile_number }}</a>
+                                    class="hover:text-red-900 transition-colors">{{ $member->mobile_number }}</a>
                             </div>
                         @endif
                         <div>
@@ -97,7 +97,7 @@
                 {{ $members->links() }}
             </div>
         @else
-            <div class="bg-white rounded-2xl p-12 text-center text-slate-500 border border-slate-200">
+            <div class="bg-white rounded-2xl p-12 text-center text-slate-500 border border-slate-200 font-gujarati">
                 કોઈ સભ્યો મળ્યા નથી.
             </div>
         @endif

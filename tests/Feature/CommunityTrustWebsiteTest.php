@@ -23,7 +23,7 @@ class CommunityTrustWebsiteTest extends TestCase
     {
         $response = $this->get('/');
         $response->assertStatus(200);
-        $response->assertSee('દશા સોરાઠિયા વણિક સમાજ');
+        $response->assertSee('શ્રી દશા સોરાઠિયા વણિક સમાજ');
     }
 
     /** 2. Test Slider visibility (only active sliders ordered by sort_order) */

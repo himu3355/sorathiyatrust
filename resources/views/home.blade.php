@@ -12,7 +12,7 @@
                         transition:enter="transition ease-out duration-700" transition:enter-start="opacity-0 scale-95"
                         transition:enter-end="opacity-100 scale-100" class="absolute inset-0 w-full h-full">
                         @if ($slider->image_path)
-                            <img src="{{ asset('storage/' . $slider->image_path) }}" alt="{{ $slider->title }}"
+                            <img src="{{ Storage::url($slider->image_path) }}" alt="{{ $slider->title }}"
                                 class="w-full h-full object-cover opacity-40">
                         @else
                             <div class="w-full h-full gradient-header opacity-90"></div>
@@ -98,7 +98,7 @@
     <!-- 3. Community Impact & Statistics Section -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
         <div
-            class="bg-gradient-to-r from-slate-900 via-emerald-950 to-slate-900 rounded-3xl p-6 sm:p-8 text-white shadow-xl border border-amber-500/20">
+            class="bg-gradient-to-r from-amber-950 via-amber-900 to-slate-950 rounded-3xl p-6 sm:p-8 text-white shadow-xl border border-amber-500/30">
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
                 <div
                     class="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xs hover:bg-white/10 transition-all">
@@ -155,7 +155,7 @@
             <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 border-b border-slate-200 pb-4 gap-2">
                 <div>
                     <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-gujarati flex items-center gap-3">
-                        <i class="fa-solid fa-newspaper text-emerald-800"></i>
+                        <i class="fa-solid fa-newspaper text-amber-700"></i>
                         <span>તાજા સમાચાર (Latest News)</span>
                     </h2>
                     <p class="text-xs sm:text-sm text-slate-500 font-medium mt-1 font-gujarati">
@@ -163,7 +163,7 @@
                     </p>
                 </div>
                 <a href="{{ route('news.index') }}"
-                    class="text-xs sm:text-sm font-bold text-emerald-800 hover:text-emerald-900 transition-colors font-gujarati whitespace-nowrap flex items-center gap-1.5 group">
+                    class="text-xs sm:text-sm font-bold text-amber-800 hover:text-amber-900 transition-colors font-gujarati whitespace-nowrap flex items-center gap-1.5 group">
                     <span>તમામ સમાચાર જુઓ</span>
                     <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
                 </a>
@@ -187,7 +187,7 @@
             <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 border-b border-slate-200 pb-4 gap-2">
                 <div>
                     <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-gujarati flex items-center gap-3">
-                        <i class="fa-solid fa-calendar-days text-emerald-800"></i>
+                        <i class="fa-solid fa-calendar-days text-amber-700"></i>
                         <span>આગામી કાર્યક્રમો (Upcoming Events)</span>
                     </h2>
                     <p class="text-xs sm:text-sm text-slate-500 font-medium mt-1 font-gujarati">
@@ -195,7 +195,7 @@
                     </p>
                 </div>
                 <a href="{{ route('events.upcoming') }}"
-                    class="text-xs sm:text-sm font-bold text-emerald-800 hover:text-emerald-900 transition-colors font-gujarati whitespace-nowrap flex items-center gap-1.5 group">
+                    class="text-xs sm:text-sm font-bold text-amber-800 hover:text-amber-900 transition-colors font-gujarati whitespace-nowrap flex items-center gap-1.5 group">
                     <span>તમામ કાર્યક્રમો જુઓ</span>
                     <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
                 </a>
@@ -222,7 +222,7 @@
             <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 border-b border-slate-200 pb-4 gap-2">
                 <div>
                     <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-gujarati flex items-center gap-3">
-                        <i class="fa-solid fa-images text-emerald-800"></i>
+                        <i class="fa-solid fa-images text-amber-700"></i>
                         <span>ગત કાર્યક્રમ આર્કાઇવ (Past Event Highlights)</span>
                     </h2>
                     <p class="text-xs sm:text-sm text-slate-500 font-medium mt-1 font-gujarati">
@@ -230,7 +230,7 @@
                     </p>
                 </div>
                 <a href="{{ route('events.past') }}"
-                    class="text-xs sm:text-sm font-bold text-emerald-800 hover:text-emerald-900 transition-colors font-gujarati whitespace-nowrap flex items-center gap-1.5 group">
+                    class="text-xs sm:text-sm font-bold text-amber-800 hover:text-amber-900 transition-colors font-gujarati whitespace-nowrap flex items-center gap-1.5 group">
                     <span>ગત કાર્યક્રમો સંગ્રહ</span>
                     <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
                 </a>
@@ -254,7 +254,7 @@
             <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 border-b border-slate-200 pb-4 gap-2">
                 <div>
                     <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-gujarati flex items-center gap-3">
-                        <i class="fa-solid fa-user-tie text-emerald-800"></i>
+                        <i class="fa-solid fa-user-tie text-amber-700"></i>
                         <span>ટ્રસ્ટી સમિતિ અને આગેવાનો (Trust Committee)</span>
                     </h2>
                     <p class="text-xs sm:text-sm text-slate-500 font-medium mt-1 font-gujarati">
@@ -262,7 +262,7 @@
                     </p>
                 </div>
                 <a href="{{ route('members.index') }}"
-                    class="text-xs sm:text-sm font-bold text-emerald-800 hover:text-emerald-900 transition-colors font-gujarati whitespace-nowrap flex items-center gap-1.5 group">
+                    class="text-xs sm:text-sm font-bold text-amber-800 hover:text-amber-900 transition-colors font-gujarati whitespace-nowrap flex items-center gap-1.5 group">
                     <span>સંપૂર્ણ સભ્ય ડિરેક્ટરી</span>
                     <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
                 </a>
@@ -288,7 +288,7 @@
             <div class="relative z-10 grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
                 <div class="lg:col-span-2 space-y-4">
                     <span
-                        class="inline-flex items-center gap-2 px-3.5 py-1 bg-amber-400/20 text-amber-300 rounded-full text-xs font-bold border border-amber-400/30 font-gujarati">
+                        class="inline-flex items-center gap-2 px-3.5 py-1 bg-white/20 text-white rounded-full text-xs font-bold border border-white/30 font-gujarati">
                         <i class="fa-solid fa-hand-holding-heart"></i>
                         <span>સમાજ સેવા અને સંપર્ક</span>
                     </span>
@@ -301,7 +301,7 @@
                 </div>
                 <div class="flex flex-col sm:flex-row lg:flex-col gap-3 justify-center">
                     <a href="{{ route('contact') }}"
-                        class="inline-block text-center px-6 py-3.5 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold rounded-xl shadow-md transition-all font-gujarati">
+                        class="inline-block text-center px-6 py-3.5 bg-white text-amber-950 hover:bg-amber-100 font-bold rounded-xl shadow-md transition-all font-gujarati">
                         📞 કાર્યાલય સંપર્ક (Contact Us)
                     </a>
                     <a href="{{ route('about') }}"

@@ -4,13 +4,17 @@
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 
+[x-cloak] {
+    display: none !important;
+}
+
 @theme {
     --font-sans: 'Hind Vadodara', 'Noto Sans Gujarati', 'Inter', system-ui, sans-serif;
     --font-gujarati: 'Hind Vadodara', 'Noto Sans Gujarati', system-ui, sans-serif;
-    --color-trust-primary: #064e3b;
-    --color-trust-primary-dark: #022c22;
-    --color-trust-secondary: #D4AF37;
-    --color-trust-accent: #10b981;
+    --color-trust-primary: #D97706;
+    --color-trust-primary-dark: #78350F;
+    --color-trust-secondary: #8B0000;
+    --color-trust-accent: #4A0000;
 }
 
 body {
@@ -24,17 +28,23 @@ body {
 }
 
 .glass-nav {
-    background: rgba(255, 255, 255, 0.92);
+    background: rgba(255, 255, 255, 0.94);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
 }
 
 .gradient-header {
-    background: linear-gradient(135deg, #022c22 0%, #064e3b 50%, #047857 100%);
+    background: linear-gradient(135deg, #78350F 0%, #B45309 50%, #D97706 100%);
 }
 
 .gradient-gold-text {
-    background: linear-gradient(135deg, #fbbf24 0%, #d97706 50%, #b45309 100%);
+    background: linear-gradient(135deg, #F59E0B 0%, #D4AF37 50%, #B45309 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.gradient-maroon-text {
+    background: linear-gradient(135deg, #8B0000 0%, #700000 50%, #4A0000 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -55,6 +65,5 @@ body {
 }
 
 .trust-badge-glow {
-    box-shadow: 0 0 15px rgba(212, 175, 55, 0.35);
+    box-shadow: 0 0 15px rgba(217, 119, 6, 0.35);
 }
-

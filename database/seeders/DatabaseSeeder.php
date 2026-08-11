@@ -3,8 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\Advertisement;
-use App\Models\CommunityMember;
 use App\Models\Event;
+use App\Models\Family;
+use App\Models\FamilyMember;
 use App\Models\News;
 use App\Models\Slider;
 use App\Models\User;
@@ -93,47 +94,22 @@ class DatabaseSeeder extends Seeder
             'is_active' => true,
         ]);
 
-        // Community Members
-        CommunityMember::create([
-            'name' => 'Rameshbhai Anandpara',
-            'gujarati_name' => 'રમેશભાઈ આણંદપરા',
-            'designation' => 'પ્રમુખ શ્રી (President)',
-            'mobile_number' => '+91 98765 11111',
-            'email' => 'ramesh@trust.org',
-            'membership_number' => 'M-001',
-            'sort_order' => 1,
-            'is_committee_member' => true,
+        // Sample Family & Members
+        $family = Family::create([
+            'family_code' => 'F-001',
+            'surname_guj' => 'આણંદપરા',
+            'surname_eng' => 'Anandpara',
+            'main_member_name_guj' => 'રમેશભાઈ આણંદપરા',
+            'main_member_name_eng' => 'Rameshbhai Anandpara',
+            'village' => 'રાજકોટ',
             'is_active' => true,
         ]);
-        CommunityMember::create([
-            'name' => 'Jitendrabhai Bhader',
-            'gujarati_name' => 'જિતેન્દ્રભાઈ ભાડેર',
-            'designation' => 'ઉપપ્રમુખ શ્રી (Vice President)',
-            'mobile_number' => '+91 98765 22222',
-            'email' => 'jitendra@trust.org',
-            'membership_number' => 'M-002',
-            'sort_order' => 2,
-            'is_committee_member' => true,
-            'is_active' => true,
-        ]);
-        CommunityMember::create([
-            'name' => 'Mansukhlal Mehta',
-            'gujarati_name' => 'મનસુખલાલ મહેતા',
-            'designation' => 'મંત્રી શ્રી (Secretary)',
-            'mobile_number' => '+91 98765 33333',
-            'membership_number' => 'M-003',
-            'sort_order' => 3,
-            'is_committee_member' => true,
-            'is_active' => true,
-        ]);
-        CommunityMember::create([
-            'name' => 'Dipakbhai Parekh',
-            'gujarati_name' => 'દીપકભાઈ પારેખ',
-            'designation' => 'ખજાનચી શ્રી (Treasurer)',
-            'mobile_number' => '+91 98765 44444',
-            'membership_number' => 'M-004',
-            'sort_order' => 4,
-            'is_committee_member' => true,
+
+        FamilyMember::create([
+            'family_id' => $family->id,
+            'member_name_guj' => 'રમેશભાઈ આણંદપરા',
+            'member_name_eng' => 'Rameshbhai Anandpara',
+            'relation' => 'મુખ્ય સભ્ય',
             'is_active' => true,
         ]);
     }

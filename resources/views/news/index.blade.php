@@ -10,9 +10,9 @@
         <!-- Search Filter -->
         <form action="{{ route('news.index') }}" method="GET" class="mb-8 max-w-xl flex gap-2">
             <input type="text" name="search" value="{{ request('search') }}" placeholder="સમાચાર શોધો (Search News...)"
-                class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-800 bg-white font-gujarati text-sm">
+                class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-red-900 bg-white font-gujarati text-sm">
             <button type="submit"
-                class="px-6 py-2.5 bg-emerald-800 text-white font-bold rounded-xl hover:bg-emerald-900 transition-colors shadow-sm text-sm flex items-center gap-2">
+                class="px-6 py-2.5 bg-red-900 text-white font-bold rounded-xl hover:bg-red-950 transition-colors shadow-sm text-sm flex items-center gap-2">
                 <i class="fa-solid fa-magnifying-glass"></i>
                 <span>શોધો</span>
             </button>
@@ -37,7 +37,7 @@
                                 <span>{{ $item->published_at ? $item->published_at->format('d M Y') : $item->created_at->format('d M Y') }}</span>
                             </div>
                             <h2
-                                class="text-lg font-bold text-slate-900 font-gujarati line-clamp-2 hover:text-emerald-800 transition-colors">
+                                class="text-lg font-bold text-slate-900 font-gujarati line-clamp-2 hover:text-red-900 transition-colors">
                                 <a href="{{ route('news.show', $item->slug) }}">{{ $item->title }}</a>
                             </h2>
                             @if ($item->summary)
@@ -47,7 +47,7 @@
                             @endif
                             <div class="pt-2">
                                 <a href="{{ route('news.show', $item->slug) }}"
-                                    class="text-xs font-bold text-emerald-800 hover:text-emerald-900 inline-flex items-center gap-1.5 font-gujarati group/link">
+                                    class="text-xs font-bold text-red-900 hover:text-red-950 inline-flex items-center gap-1.5 font-gujarati group/link">
                                     <span>વાંચો</span>
                                     <i
                                         class="fa-solid fa-arrow-right text-[11px] group-hover/link:translate-x-1 transition-transform"></i>
@@ -62,7 +62,7 @@
                 {{ $newsList->links() }}
             </div>
         @else
-            <div class="bg-white rounded-2xl p-12 text-center text-slate-500 border border-slate-200">
+            <div class="bg-white rounded-2xl p-12 text-center text-slate-500 border border-slate-200 font-gujarati">
                 કોઈ સમાચાર મળ્યા નથી.
             </div>
         @endif

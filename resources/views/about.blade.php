@@ -26,17 +26,17 @@
                     <p class="text-xs sm:text-sm text-slate-600 font-gujarati">સમાજના તેજસ્વી અને જરુરિયાતમંદ વિદ્યાર્થીઓને
                         શિષ્યવૃત્તિ અને પ્રોત્સાહન ઇનામો.</p>
                 </div>
-                <div class="p-6 bg-teal-50 rounded-2xl border border-teal-200/60 space-y-2">
-                    <h3 class="text-lg font-bold text-teal-900 font-gujarati flex items-center gap-2">
-                        <i class="fa-solid fa-handshake text-teal-700"></i>
+                <div class="p-6 bg-red-50 rounded-2xl border border-red-200/60 space-y-2">
+                    <h3 class="text-lg font-bold text-red-900 font-gujarati flex items-center gap-2">
+                        <i class="fa-solid fa-handshake text-red-800"></i>
                         <span>સામાજિક સંગઠન</span>
                     </h3>
                     <p class="text-xs sm:text-sm text-slate-600 font-gujarati">વાર્ષિક મહોત્સવ, રક્તદાન શિબિર અને કૌટુંબિક
                         સ્નેહમિલન આયોજન.</p>
                 </div>
-                <div class="p-6 bg-emerald-50 rounded-2xl border border-emerald-200/60 space-y-2">
-                    <h3 class="text-lg font-bold text-emerald-900 font-gujarati flex items-center gap-2">
-                        <i class="fa-solid fa-address-card text-emerald-700"></i>
+                <div class="p-6 bg-amber-50 rounded-2xl border border-amber-200/60 space-y-2">
+                    <h3 class="text-lg font-bold text-amber-900 font-gujarati flex items-center gap-2">
+                        <i class="fa-solid fa-address-card text-amber-700"></i>
                         <span>વસ્તીપત્રક અને માહિતી</span>
                     </h3>
                     <p class="text-xs sm:text-sm text-slate-600 font-gujarati">સમાજના તમામ પરિવારોનું સચોટ ડિજિટલ વસ્તીપત્રક
@@ -57,13 +57,13 @@
                         <div
                             class="bg-white rounded-3xl p-6 text-center space-y-3 border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
                             <div
-                                class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-r from-emerald-800 to-teal-800 text-white font-bold text-xl flex items-center justify-center shadow-md">
+                                class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-r from-red-900 to-red-950 text-amber-300 font-bold text-xl flex items-center justify-center shadow-md border border-amber-400/30">
                                 {{ $trustee->initials }}
                             </div>
                             <h3 class="text-base font-bold text-slate-900 font-gujarati">
                                 {{ $trustee->member_name_guj }}
                             </h3>
-                            <p class="text-xs font-semibold text-emerald-800 font-gujarati">
+                            <p class="text-xs font-semibold text-red-900 font-gujarati">
                                 {{ $trustee->relation ?: 'ટ્રસ્ટી/આગેવાન' }} ({{ $trustee->family->village ?? 'રાજકોટ' }})
                             </p>
                         </div>

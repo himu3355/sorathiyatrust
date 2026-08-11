@@ -10,14 +10,14 @@
             </div>
         @endif
         <div class="absolute top-3 left-3">
-            <x-badge :color="$event->event_date >= now() ? 'emerald' : 'slate'">
+            <x-badge :color="$event->event_date >= now() ? 'amber' : 'slate'">
                 {{ $event->event_date >= now() ? 'આગામી (Upcoming)' : 'ગત (Past)' }}
             </x-badge>
         </div>
     </div>
 
     <div class="p-5 space-y-3">
-        <h3 class="text-base sm:text-lg font-bold text-slate-900 font-gujarati line-clamp-2 hover:text-emerald-800 transition-colors">
+        <h3 class="text-base sm:text-lg font-bold text-slate-900 font-gujarati line-clamp-2 hover:text-amber-700 transition-colors">
             <a href="{{ route('events.show', $event->slug) }}">{{ $event->title }}</a>
         </h3>
 
@@ -35,7 +35,7 @@
         </div>
 
         <div class="pt-2">
-            <a href="{{ route('events.show', $event->slug) }}" class="text-xs font-bold text-emerald-800 hover:text-emerald-900 inline-flex items-center gap-1.5 font-gujarati group/link">
+            <a href="{{ route('events.show', $event->slug) }}" class="text-xs font-bold text-amber-700 hover:text-amber-800 inline-flex items-center gap-1.5 font-gujarati group/link">
                 <span>કાર્યક્રમ વિગત</span>
                 <i class="fa-solid fa-arrow-right text-[11px] group-hover/link:translate-x-1 transition-transform"></i>
             </a>

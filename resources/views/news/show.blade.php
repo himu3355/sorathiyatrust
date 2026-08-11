@@ -36,7 +36,7 @@
 
                 <div class="pt-6 border-t border-slate-100 flex justify-between items-center">
                     <a href="{{ route('news.index') }}"
-                        class="text-sm font-bold text-emerald-800 hover:text-emerald-900 font-gujarati flex items-center gap-2 group/back">
+                        class="text-sm font-bold text-red-900 hover:text-red-950 font-gujarati flex items-center gap-2 group/back">
                         <i class="fa-solid fa-arrow-left text-xs group-hover/back:-translate-x-1 transition-transform"></i>
                         <span>તમામ સમાચાર (Back to News)</span>
                     </a>
@@ -67,7 +67,7 @@
                                     @endif
                                     <div class="space-y-1">
                                         <h4
-                                            class="text-xs sm:text-sm font-bold text-slate-900 font-gujarati group-hover:text-emerald-800 transition-colors line-clamp-2">
+                                            class="text-xs sm:text-sm font-bold text-slate-900 font-gujarati group-hover:text-red-900 transition-colors line-clamp-2">
                                             <a href="{{ route('news.show', $recent->slug) }}">{{ $recent->title }}</a>
                                         </h4>
                                         <p class="text-[11px] text-slate-400 font-medium flex items-center gap-1">
