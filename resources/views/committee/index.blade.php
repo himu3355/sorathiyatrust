@@ -25,7 +25,9 @@
             <div class="border-b border-slate-200 pb-4 mb-8 flex items-center justify-between">
                 <div>
                     <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-gujarati flex items-center gap-3">
-                        <span class="w-10 h-10 rounded-xl bg-amber-500 text-slate-950 flex items-center justify-center text-xl shadow-md">👑</span>
+                        <span class="w-10 h-10 rounded-xl bg-amber-500 text-slate-950 flex items-center justify-center text-lg shadow-md">
+                            <i class="fa-solid fa-crown text-slate-950"></i>
+                        </span>
                         <span>સન્માનનીય હોદ્દેદારો (Office Bearers)</span>
                     </h2>
                     <p class="text-xs sm:text-sm text-slate-500 font-medium mt-1 font-gujarati">
@@ -43,7 +45,7 @@
                                 'name_eng' => $member->name_eng,
                                 'designation_guj' => $member->designation_guj,
                                 'designation_eng' => $member->designation_eng,
-                                'category' => '👑 સન્માનનીય હોદ્દેદાર (Office Bearer)',
+                                'category' => 'સન્માનનીય હોદ્દેદાર (Office Bearer)',
                                 'photo' => $member->photo_path ? Storage::url($member->photo_path) : null,
                                 'initial' => $member->initial,
                                 'mobile' => $member->mobile,
@@ -104,7 +106,9 @@
             <div class="border-b border-slate-200 pb-4 mb-8 flex items-center justify-between">
                 <div>
                     <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-gujarati flex items-center gap-3">
-                        <span class="w-10 h-10 rounded-xl bg-slate-900 text-amber-400 flex items-center justify-center text-xl shadow-md">👔</span>
+                        <span class="w-10 h-10 rounded-xl bg-slate-900 text-amber-400 flex items-center justify-center text-lg shadow-md">
+                            <i class="fa-solid fa-user-group text-amber-400"></i>
+                        </span>
                         <span>કારોબારી સમિતિ સભ્યો (Executive Committee Members)</span>
                     </h2>
                     <p class="text-xs sm:text-sm text-slate-500 font-medium mt-1 font-gujarati">
@@ -125,7 +129,7 @@
                                 'name_eng' => $member->name_eng,
                                 'designation_guj' => $member->designation_guj,
                                 'designation_eng' => $member->designation_eng,
-                                'category' => '👔 કારોબારી સમિતિ સભ્ય (Executive Member)',
+                                'category' => 'કારોબારી સમિતિ સભ્ય (Executive Member)',
                                 'photo' => $member->photo_path ? Storage::url($member->photo_path) : null,
                                 'initial' => $member->initial,
                                 'mobile' => $member->mobile,
@@ -178,7 +182,10 @@
                     <button @click="closeModal()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/20 hover:bg-white/30 text-white flex items-center justify-center transition-colors">
                         <i class="fa-solid fa-xmark text-lg"></i>
                     </button>
-                    <span class="inline-block px-3.5 py-1 rounded-full bg-amber-400/30 text-amber-200 text-xs font-bold border border-amber-400/40 font-gujarati" x-text="member?.category"></span>
+                    <span class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-amber-400/30 text-amber-200 text-xs font-bold border border-amber-400/40 font-gujarati">
+                        <i class="fa-solid fa-user-shield text-amber-300 text-xs"></i>
+                        <span x-text="member?.category"></span>
+                    </span>
                 </div>
 
                 <!-- Body Details -->
