@@ -13,6 +13,22 @@
         closeModal() {
             this.modalOpen = false;
             this.member = null;
+        },
+        adModalOpen: false,
+        activeAdImage: null,
+        activeAdTitle: null,
+        activeAdLink: null,
+        openAdModal(image, title, link) {
+            this.activeAdImage = image;
+            this.activeAdTitle = title;
+            this.activeAdLink = link;
+            this.adModalOpen = true;
+        },
+        closeAdModal() {
+            this.adModalOpen = false;
+            this.activeAdImage = null;
+            this.activeAdTitle = null;
+            this.activeAdLink = null;
         }
     }">
 
@@ -105,14 +121,14 @@
             @endif
         </div>
 
-        <!-- 2. Home Hero Advertisements Slider Carousel Section (Shows 3 Ads at a time with Left / Right Arrows) -->
+        <!-- 2. Home Hero Advertisements Slider Carousel Section (Shows up to 4 Ads at a time with Left / Right Arrows) -->
         @if ($heroAds->count() > 0)
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12" x-data="{
                 activeSlide: 0,
                 total: {{ $heroAds->count() }},
                 get maxSlide() {
                     const width = window.innerWidth;
-                    const visibleCount = width >= 1024 ? 3 : (width >= 640 ? 2 : 1);
+                    const visibleCount = width >= 1024 ? 4 : (width >= 640 ? 2 : 1);
                     return Math.max(0, this.total - visibleCount);
                 },
                 next() {
@@ -130,7 +146,7 @@
                     }
                 }
             }">
-                <!-- Section Header matching Latest News / Upcoming Events with Arrow Controls -->
+                <!-- Section Header with Arrow Controls -->
                 <div class="flex items-center justify-between mb-6 border-b border-slate-200 pb-4 gap-2">
                     <div>
                         <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-gujarati flex items-center gap-3">
@@ -161,39 +177,46 @@
 
                 <!-- Ad Cards Slider Track -->
                 <div class="relative overflow-hidden py-2">
-                    <div class="flex transition-transform duration-500 ease-out gap-6"
-                        :style="'transform: translateX(-' + (activeSlide * (window.innerWidth >= 1024 ? (100 / 3) : (window.innerWidth >= 640 ? 50 : 100))) + '%)'">
+                    <div class="flex transition-transform duration-500 ease-out gap-5"
+                        :style="'transform: translateX(-' + (activeSlide * (window.innerWidth >= 1024 ? 25 : (window.innerWidth >= 640 ? 50 : 100))) + '%)'">
                         @foreach ($heroAds as $ad)
-                            <div class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex-shrink-0 flex">
-                                <div class="w-full bg-white rounded-3xl border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col group">
-                                    <!-- Uncropped Full Image Display Container -->
-                                    <div class="relative w-full h-56 sm:h-64 bg-slate-950/95 p-3 flex items-center justify-center border-b border-slate-100 overflow-hidden">
+                            <div class="w-full sm:w-[calc(50%-10px)] lg:w-[calc(25%-15px)] flex-shrink-0 flex">
+                                <div class="w-full bg-white rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col group cursor-pointer"
+                                    @click="openAdModal('{{ $ad->image_path ? Storage::url($ad->image_path) : '' }}', '{{ addslashes($ad->title) }}', '{{ $ad->link_url ?? '' }}')">
+                                    
+                                    <!-- Light Cream Warm Background Container (Eliminated Black Letterboxing) -->
+                                    <div class="relative w-full h-80 sm:h-96 bg-gradient-to-b from-amber-50/60 via-slate-50 to-amber-50/30 p-3.5 flex items-center justify-center border-b border-slate-200/80 overflow-hidden">
                                         @if ($ad->image_path)
                                             <img src="{{ Storage::url($ad->image_path) }}" alt="{{ $ad->title }}"
-                                                class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                                                class="max-w-full max-h-full object-contain rounded-xl shadow-xs group-hover:scale-103 transition-transform duration-300"
                                                 loading="lazy">
                                         @else
                                             <div class="w-full h-full gradient-header text-amber-200 font-extrabold text-xl flex items-center justify-center p-4 text-center font-gujarati">
                                                 📣 {{ $ad->title }}
                                             </div>
                                         @endif
-                                        <span class="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-amber-500/90 backdrop-blur-md text-slate-950 text-[10px] font-extrabold uppercase tracking-wider shadow-xs font-gujarati">
+
+                                        <span class="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-amber-600 text-white text-[10px] font-extrabold uppercase tracking-wider shadow-sm font-gujarati">
                                             સ્પોન્સર
                                         </span>
+
+                                        <div class="absolute bottom-3 right-3 w-8 h-8 rounded-full bg-slate-900/80 text-white flex items-center justify-center text-xs opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
+                                            <i class="fa-solid fa-expand"></i>
+                                        </div>
                                     </div>
 
                                     <!-- Ad Body Details -->
-                                    <div class="p-5 flex flex-col flex-grow justify-between space-y-3 bg-white">
-                                        <h3 class="text-base font-bold text-slate-900 font-gujarati line-clamp-2 leading-snug group-hover:text-amber-700 transition-colors">
+                                    <div class="p-4 flex flex-col flex-grow justify-between space-y-2.5 bg-white">
+                                        <h3 class="text-sm font-bold text-slate-900 font-gujarati line-clamp-2 leading-snug group-hover:text-amber-700 transition-colors">
                                             {{ $ad->title }}
                                         </h3>
 
                                         @if ($ad->link_url)
-                                            <div>
-                                                <a href="{{ $ad->link_url }}" target="_blank" rel="noopener"
-                                                    class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-amber-50 hover:bg-amber-600 text-amber-900 hover:text-white border border-amber-200/80 text-xs font-bold transition-all duration-200 font-gujarati group/link">
+                                            <div class="pt-2 border-t border-slate-100 flex justify-end">
+                                                <a href="{{ $ad->link_url }}" target="_blank" rel="noopener" @click.stop
+                                                    class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900 text-white text-xs font-bold hover:bg-amber-600 transition-colors font-gujarati">
                                                     <span>લીંક જુઓ (Visit Link)</span>
-                                                    <i class="fa-solid fa-arrow-up-right-from-square text-[10px] group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform"></i>
+                                                    <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
                                                 </a>
                                             </div>
                                         @endif
@@ -502,7 +525,7 @@
 
                 <!-- Body Details -->
                 <div class="px-6 pb-6 space-y-5 text-center">
-                    <!-- Member Photo or Avatar Container (Positioned in notch) -->
+                    <!-- Member Photo or Avatar Container -->
                     <div class="relative w-28 h-28 mx-auto -mt-14">
                         <template x-if="member?.photo">
                             <img :src="member.photo" :alt="member.name_guj" class="w-full h-full object-cover rounded-3xl shadow-xl border-4 border-white bg-slate-900">
@@ -565,6 +588,49 @@
                     </div>
                 </div>
 
+            </div>
+        </div>
+
+        <!-- 12. Fullscreen High-Res Advertisement Preview Lightbox Modal -->
+        <div x-show="adModalOpen" x-cloak x-transition.opacity
+            class="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-3 sm:p-6"
+            @keydown.escape.window="closeAdModal()">
+            <div class="relative w-full max-w-3xl max-h-[92vh] bg-white rounded-3xl overflow-hidden shadow-2xl border border-amber-500/40 flex flex-col"
+                @click.away="closeAdModal()">
+                
+                <!-- Modal Header -->
+                <div class="px-6 py-4 bg-gradient-to-r from-amber-950 via-amber-900 to-slate-950 text-white flex items-center justify-between">
+                    <div class="flex items-center gap-2 min-w-0">
+                        <i class="fa-solid fa-rectangle-ad text-amber-400 text-lg"></i>
+                        <h3 class="text-base sm:text-lg font-bold font-gujarati truncate" x-text="activeAdTitle"></h3>
+                    </div>
+                    <button @click="closeAdModal()" class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors flex-shrink-0">
+                        <i class="fa-solid fa-xmark text-lg"></i>
+                    </button>
+                </div>
+
+                <!-- Full Size Graphic View (Scrollable / Zoom Container) -->
+                <div class="p-4 bg-amber-50/50 flex-grow overflow-auto flex items-center justify-center min-h-[300px]">
+                    <template x-if="activeAdImage">
+                        <img :src="activeAdImage" :alt="activeAdTitle" class="max-w-full max-h-[72vh] object-contain rounded-2xl shadow-md border border-slate-200">
+                    </template>
+                    <template x-if="!activeAdImage">
+                        <div class="p-12 text-center text-slate-500 font-gujarati font-bold" x-text="activeAdTitle"></div>
+                    </template>
+                </div>
+
+                <!-- Modal Footer -->
+                <div class="p-4 bg-white border-t border-slate-200 flex items-center justify-between gap-4">
+                    <template x-if="activeAdLink">
+                        <a :href="activeAdLink" target="_blank" rel="noopener" class="px-5 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-700 text-white text-xs sm:text-sm font-bold transition-colors font-gujarati flex items-center gap-2 shadow-sm">
+                            <span>લીંક પર જાઓ (Visit Target Link)</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                        </a>
+                    </template>
+                    <button @click="closeAdModal()" class="ml-auto px-6 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs sm:text-sm font-bold rounded-xl transition-colors font-gujarati">
+                        બંધ કરો (Close)
+                    </button>
+                </div>
             </div>
         </div>
 
