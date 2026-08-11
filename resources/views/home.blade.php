@@ -121,7 +121,93 @@
             @endif
         </div>
 
-        <!-- 2. Home Hero Advertisements Slider Carousel Section (Clean Poster Cards with Side Navigation Arrows) -->
+        <!-- 2. Honorable Office Bearers (સન્માનનીય હોદ્દેદારો) Section -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 sm:mt-12">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 border-b border-slate-200 pb-4 gap-2">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-gujarati flex items-center gap-3">
+                        <span class="w-9 h-9 rounded-xl bg-amber-500 text-slate-950 flex items-center justify-center text-base shadow-sm">
+                            <i class="fa-solid fa-crown text-slate-950"></i>
+                        </span>
+                        <span>સન્માનનીય હોદ્દેદારો (Office Bearers)</span>
+                    </h2>
+                    <p class="text-xs sm:text-sm text-slate-500 font-medium mt-1 font-gujarati">
+                        સમાજના વહીવટ અને માર્ગદર્શન અર્થે વરાયેલ મુખ્ય હોદ્દેદારો
+                    </p>
+                </div>
+                <a href="{{ route('about') }}#committee"
+                    class="text-xs sm:text-sm font-bold text-amber-800 hover:text-amber-900 transition-colors font-gujarati whitespace-nowrap flex items-center gap-1.5 group">
+                    <span>હોદ્દેદારો અને કારોબારી સભ્યો</span>
+                    <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            </div>
+
+            @if ($officeBearers->count() > 0)
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    @foreach ($officeBearers as $member)
+                        <div class="bg-white rounded-3xl p-6 text-center space-y-4 border border-slate-200/80 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group cursor-pointer"
+                            @click="openMemberModal({{ json_encode([
+                                'name_guj' => $member->name_guj,
+                                'name_eng' => $member->name_eng,
+                                'designation_guj' => $member->designation_guj,
+                                'designation_eng' => $member->designation_eng,
+                                'category' => 'સન્માનનીય હોદ્દેદાર (Office Bearer)',
+                                'photo' => $member->photo_path ? Storage::url($member->photo_path) : null,
+                                'initial' => $member->initial,
+                                'mobile' => $member->mobile,
+                                'email' => $member->email,
+                            ]) }})">
+                            <!-- Top Accent Ribbon -->
+                            <div class="absolute top-0 left-0 right-0 h-1.5 gradient-header"></div>
+
+                            <!-- Photo / Avatar -->
+                            <div class="relative w-24 h-24 mx-auto">
+                                @if ($member->photo_path)
+                                    <img src="{{ Storage::url($member->photo_path) }}" alt="{{ $member->name_guj }}"
+                                        class="w-full h-full object-cover rounded-2xl shadow-md border-2 border-amber-400 group-hover:scale-105 transition-transform" loading="lazy">
+                                @else
+                                    <div class="w-full h-full rounded-2xl gradient-header text-white font-extrabold text-3xl flex items-center justify-center shadow-md border-2 border-amber-400 font-gujarati">
+                                        {{ $member->initial }}
+                                    </div>
+                                @endif
+                                <div class="absolute -bottom-2 right-0 w-7 h-7 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center text-xs shadow-md border-2 border-white">
+                                    <i class="fa-solid fa-crown text-[10px]"></i>
+                                </div>
+                            </div>
+
+                            <!-- Name & Designation -->
+                            <div class="space-y-1.5">
+                                <h3 class="text-base sm:text-lg font-bold text-slate-900 font-gujarati leading-tight group-hover:text-amber-700 transition-colors">
+                                    {{ $member->name_guj }}
+                                </h3>
+                                @if ($member->name_eng)
+                                    <p class="text-xs text-slate-400 font-medium">{{ $member->name_eng }}</p>
+                                @endif
+                                <div>
+                                    <span class="inline-block px-3 py-1 rounded-xl bg-amber-600 text-white text-xs font-extrabold shadow-2xs font-gujarati">
+                                        {{ $member->designation_guj }}
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!-- View Details Helper Button -->
+                            <div class="pt-2 border-t border-slate-100">
+                                <span class="inline-flex items-center gap-1.5 text-xs font-bold text-amber-700 group-hover:text-amber-800 font-gujarati">
+                                    <span>સંપૂર્ણ વિગત જુઓ</span>
+                                    <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
+                                </span>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            @else
+                <div class="bg-white rounded-2xl p-8 text-center text-slate-500 border border-slate-200 font-gujarati">
+                    સન્માનનીય હોદ્દેદારોની યાદી અહિયાં દર્શાવાશે.
+                </div>
+            @endif
+        </div>
+
+        <!-- 3. Home Hero Advertisements Slider Carousel Section (Clean Poster Cards with Side Navigation Arrows) -->
         @if ($heroAds->count() > 0)
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 sm:mt-12" x-data="{
                 activeSlide: 0,
@@ -377,93 +463,7 @@
                 @endif
             </div>
 
-            <!-- 8. Real Office Bearers (સન્માનનીય હોદ્દેદારો) Section -->
-            <div>
-                <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 border-b border-slate-200 pb-4 gap-2">
-                    <div>
-                        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-gujarati flex items-center gap-3">
-                            <span class="w-9 h-9 rounded-xl bg-amber-500 text-slate-950 flex items-center justify-center text-base shadow-sm">
-                                <i class="fa-solid fa-crown text-slate-950"></i>
-                            </span>
-                            <span>સન્માનનીય હોદ્દેદારો (Office Bearers)</span>
-                        </h2>
-                        <p class="text-xs sm:text-sm text-slate-500 font-medium mt-1 font-gujarati">
-                            સમાજના વહીવટ અને માર્ગદર્શન અર્થે વરાયેલ મુખ્ય હોદ્દેદારો
-                        </p>
-                    </div>
-                    <a href="{{ route('about') }}#committee"
-                        class="text-xs sm:text-sm font-bold text-amber-800 hover:text-amber-900 transition-colors font-gujarati whitespace-nowrap flex items-center gap-1.5 group">
-                        <span>હોદ્દેદારો અને કારોબારી સભ્યો</span>
-                        <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
-                    </a>
-                </div>
-
-                @if ($officeBearers->count() > 0)
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                        @foreach ($officeBearers as $member)
-                            <div class="bg-white rounded-3xl p-6 text-center space-y-4 border border-slate-200/80 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group cursor-pointer"
-                                @click="openMemberModal({{ json_encode([
-                                    'name_guj' => $member->name_guj,
-                                    'name_eng' => $member->name_eng,
-                                    'designation_guj' => $member->designation_guj,
-                                    'designation_eng' => $member->designation_eng,
-                                    'category' => 'સન્માનનીય હોદ્દેદાર (Office Bearer)',
-                                    'photo' => $member->photo_path ? Storage::url($member->photo_path) : null,
-                                    'initial' => $member->initial,
-                                    'mobile' => $member->mobile,
-                                    'email' => $member->email,
-                                ]) }})">
-                                <!-- Top Accent Ribbon -->
-                                <div class="absolute top-0 left-0 right-0 h-1.5 gradient-header"></div>
-
-                                <!-- Photo / Avatar -->
-                                <div class="relative w-24 h-24 mx-auto">
-                                    @if ($member->photo_path)
-                                        <img src="{{ Storage::url($member->photo_path) }}" alt="{{ $member->name_guj }}"
-                                            class="w-full h-full object-cover rounded-2xl shadow-md border-2 border-amber-400 group-hover:scale-105 transition-transform" loading="lazy">
-                                    @else
-                                        <div class="w-full h-full rounded-2xl gradient-header text-white font-extrabold text-3xl flex items-center justify-center shadow-md border-2 border-amber-400 font-gujarati">
-                                            {{ $member->initial }}
-                                        </div>
-                                    @endif
-                                    <div class="absolute -bottom-2 right-0 w-7 h-7 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center text-xs shadow-md border-2 border-white">
-                                        <i class="fa-solid fa-crown text-[10px]"></i>
-                                    </div>
-                                </div>
-
-                                <!-- Name & Designation -->
-                                <div class="space-y-1.5">
-                                    <h3 class="text-base sm:text-lg font-bold text-slate-900 font-gujarati leading-tight group-hover:text-amber-700 transition-colors">
-                                        {{ $member->name_guj }}
-                                    </h3>
-                                    @if ($member->name_eng)
-                                        <p class="text-xs text-slate-400 font-medium">{{ $member->name_eng }}</p>
-                                    @endif
-                                    <div>
-                                        <span class="inline-block px-3 py-1 rounded-xl bg-amber-600 text-white text-xs font-extrabold shadow-2xs font-gujarati">
-                                            {{ $member->designation_guj }}
-                                        </span>
-                                    </div>
-                                </div>
-
-                                <!-- View Details Helper Button -->
-                                <div class="pt-2 border-t border-slate-100">
-                                    <span class="inline-flex items-center gap-1.5 text-xs font-bold text-amber-700 group-hover:text-amber-800 font-gujarati">
-                                        <span>સંપૂર્ણ વિગત જુઓ</span>
-                                        <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
-                                    </span>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                @else
-                    <div class="bg-white rounded-2xl p-8 text-center text-slate-500 border border-slate-200 font-gujarati">
-                        સન્માનનીય હોદ્દેદારોની યાદી અહિયાં દર્શાવાશે.
-                    </div>
-                @endif
-            </div>
-
-            <!-- 9. Additional Trust Information Banner -->
+            <!-- 8. Additional Trust Information Banner -->
             <div class="gradient-header rounded-3xl p-8 sm:p-12 text-white shadow-xl relative overflow-hidden">
                 <div class="absolute -right-10 -bottom-10 w-72 h-72 bg-amber-500/10 rounded-full blur-3xl pointer-events-none">
                 </div>
@@ -494,7 +494,7 @@
                 </div>
             </div>
 
-            <!-- 10. Footer Advertisement Banner -->
+            <!-- 9. Footer Advertisement Banner -->
             <x-ad-banner :ad="$footerAd" />
 
         </div>
