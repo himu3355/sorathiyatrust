@@ -34,12 +34,12 @@ class User extends Authenticatable implements FilamentUser
     public function canAccessPanel(Panel $panel): bool
     {
         // Option 1: Allow everyone (Not recommended for actual production security, but good for testing)
-        // return true; 
+        return true;
 
         // Option 2: Restrict by email domain
         // return str_ends_with($this->email, '@yourcompany.com') && $this->hasVerifiedEmail();
 
         // Option 3: Restrict by a boolean column in your database
-        return $this->is_admin === 1;
+        // return $this->is_admin === 1;
     }
 }
