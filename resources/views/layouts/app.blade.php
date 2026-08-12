@@ -83,7 +83,7 @@
                     <div class="block lg:hidden">
                         <span
                             class="block text-sm sm:text-base font-bold text-slate-900 leading-tight group-hover:text-amber-700 transition-colors">
-                            દશા સોરાઠિયા વણિક સમાજ
+                            શ્રી દશા સોરાઠિયા વણિક સમાજ
                         </span>
                         <span class="block text-[10px] sm:text-xs font-semibold text-amber-700 tracking-wider">
                             મહાજન, રાજકોટ (ટ્રસ્ટ)
