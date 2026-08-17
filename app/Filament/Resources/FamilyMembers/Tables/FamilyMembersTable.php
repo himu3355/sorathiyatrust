@@ -33,6 +33,9 @@ class FamilyMembersTable
                 TextColumn::make('marital_status')
                     ->label('Marital Status')
                     ->sortable(),
+                TextColumn::make('birth_date')
+                    ->label('Birth Date')
+                    ->sortable(),
                 TextColumn::make('maternal_surname')
                     ->label('Mosal Surname')
                     ->searchable(),

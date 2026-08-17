@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
         User::updateOrCreate(
             ['email' => 'admin@trust.org'],
             [
-                'name' => 'શ્રી મહાજન ટ્રસ્ટ Admin',
+                'name' => 'શ્રી મહાજન Admin',
                 'password' => Hash::make('password'),
             ]
         );

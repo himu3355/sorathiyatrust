@@ -86,7 +86,7 @@
                             શ્રી દશા સોરાઠિયા વણિક સમાજ
                         </span>
                         <span class="block text-[10px] sm:text-xs font-semibold text-amber-700 tracking-wider">
-                            મહાજન, રાજકોટ (ટ્રસ્ટ)
+                            મહાજન, રાજકોટ
                         </span>
                     </div>
                 </a>
@@ -242,15 +242,14 @@
                 <div class="space-y-4 md:col-span-1">
                     <div class="flex items-center gap-3">
                         <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-amber-600 p-1.5 shadow-md border border-amber-400/40 flex items-center justify-center flex-shrink-0">
-                            <img src="{{ asset('images/sorathiya-trust-logo.png') }}" alt="દશા સોરાઠિયા વણિક સમાજ" class="w-full h-full object-contain">
+                            <img src="{{ asset('images/sorathiya-trust-logo.png') }}" alt="શ્રી દશા સોરાઠિયા વણિક સમાજ" class="w-full h-full object-contain">
                         </div>
                         <h3 class="text-lg font-bold text-white leading-tight">
-                            દશા સોરાઠિયા વણિક સમાજ
+                            શ્રી દશા સોરાઠિયા વણિક સમાજ
                         </h3>
                     </div>
                     <p class="text-xs sm:text-sm text-slate-400 leading-relaxed font-gujarati">
-                        શ્રી દશા સોરાઠિયા વણિક સમાજ (મહાજન), રાજકોટ. સમાજ કલ્યાણ, શિક્ષણ, સંસ્કૃતિ અને વિકાસ અર્થે
-                        સમર્પિત ટ્રસ્ટ.
+                        શ્રી દશા સોરાઠિયા વણિક સમાજ (મહાજન), રાજકોટ. સમાજ કલ્યાણ, શિક્ષણ, સંસ્કૃતિ અને વિકાસ અર્થે સમર્પિત.
                     </p>
                     <!-- Social Media Links -->
                     <div class="flex items-center gap-3 pt-2">

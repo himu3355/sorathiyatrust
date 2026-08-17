@@ -283,7 +283,7 @@
                         </template>
 
                         <template x-if="!member?.mobile && !member?.email">
-                            <p class="text-xs text-slate-500 font-gujarati">સંપર્ક વિગત ટ્રસ્ટ કાર્યાલય ખાતે ઉપલબ્ધ છે.</p>
+                            <p class="text-xs text-slate-500 font-gujarati">સંપર્ક વિગત કાર્યાલય ખાતે ઉપલબ્ધ છે.</p>
                         </template>
                     </div>
 

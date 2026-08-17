@@ -12,13 +12,13 @@
             <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
                 <h2 class="text-xl font-extrabold text-slate-900 font-gujarati flex items-center gap-2.5">
                     <i class="fa-solid fa-location-dot text-amber-600"></i>
-                    <span>ટ્રસ્ટ કાર્યાલય સરનામું (Office Address)</span>
+                    <span>કાર્યાલય સરનામું (Office Address)</span>
                 </h2>
                 <div class="space-y-4 text-sm text-slate-700 font-gujarati">
                     <p class="flex items-start gap-3">
                         <i class="fa-solid fa-landmark text-amber-600 text-lg mt-0.5"></i>
                         <span>
-                            <strong>મહાજન વાડી / ટ્રસ્ટ ભવન:</strong><br>
+                            <strong>મહાજન વાડી:</strong><br>
                             શ્રી દશા સોરાઠિયા વણિક સમાજ (મહાજન),<br>
                             રાજકોટ, ગુજરાત - ૩૬૦૦૦૧.
                         </span>
