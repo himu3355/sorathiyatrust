@@ -35,6 +35,7 @@ class FamilyMembersTable
                     ->sortable(),
                 TextColumn::make('birth_date')
                     ->label('Birth Date')
+                    ->date('d-m-Y')
                     ->sortable(),
                 TextColumn::make('maternal_surname')
                     ->label('Mosal Surname')
