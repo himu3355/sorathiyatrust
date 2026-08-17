@@ -38,13 +38,15 @@ class FamilyMemberForm
                     ->label('Birth Place / જન્મ સ્થળ')
                     ->maxLength(150),
                 DatePicker::make('birth_date')
-                    ->label('Birth Date / જન્મ તારીખ'),
+                    ->label('Birth Date / જન્મ તારીખ')
+                    ->displayFormat('d-m-Y'),
                 Select::make('marital_status')
                     ->label('Marital Status / સ્થિતિ')
                     ->options([
                         'Married' => 'પરિણીત (Married)',
                         'Unmarried' => 'અપરિણીત (Unmarried)',
                         'Widowed' => 'વિધવા/વિધુર (Widowed)',
+                        'Divorced' => 'છૂટાછેડા (Divorced)'
                     ]),
                 TextInput::make('maternal_surname')
                     ->label('Mosal Surname / મોસાળની અટક')
