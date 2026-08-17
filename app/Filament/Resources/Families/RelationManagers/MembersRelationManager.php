@@ -44,13 +44,15 @@ class MembersRelationManager extends RelationManager
                     ->label('Birth Place / જન્મ સ્થળ')
                     ->maxLength(150),
                 DatePicker::make('birth_date')
-                    ->label('Birth Date / જન્મ તારીખ'),
+                    ->label('Birth Date / જન્મ તારીખ')
+                    ->displayFormat('d-m-Y'),
                 Select::make('marital_status')
-                    ->label('Marital Status / સ્થિતિ')
+                    ->label('Marital Status / લગ્ન સ્થિતિ')
                     ->options([
                         'Married' => 'પરિણીત (Married)',
                         'Unmarried' => 'અપરિણીત (Unmarried)',
                         'Widowed' => 'વિધવા/વિધુર (Widowed)',
+                        'Divorced' => 'છૂટાછેડા (Divorced)'
                     ]),
                 TextInput::make('maternal_surname')
                     ->label('Mosal Surname / મોસાળની અટક')
@@ -95,8 +97,10 @@ class MembersRelationManager extends RelationManager
                     ->label('Education'),
                 TextColumn::make('occupation')
                     ->label('Occupation'),
-                TextColumn::make('mobile')
-                    ->label('Mobile'),
+                TextColumn::make('birth_date')
+                    ->label('Birth Date')
+                    ->date('d-m-Y')
+                    ->sortable(),
                 IconColumn::make('is_active')
                     ->label('Active')
                     ->boolean(),

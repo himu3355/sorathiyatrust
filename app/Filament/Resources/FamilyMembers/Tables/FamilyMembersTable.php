@@ -40,9 +40,6 @@ class FamilyMembersTable
                 TextColumn::make('maternal_surname')
                     ->label('Mosal Surname')
                     ->searchable(),
-                TextColumn::make('mobile')
-                    ->label('Mobile')
-                    ->searchable(),
                 IconColumn::make('is_active')
                     ->label('Active')
                     ->boolean()
