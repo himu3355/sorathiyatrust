@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'મુખ્ય પૃષ્ઠ - શ્રી દશા સોરાઠિયા વણિક સમાજ (મહાજન), રાજકોટ')
+@section('title', 'મુખ્ય પૃષ્ઠ - શ્રી દશા સોરઠિયા વણિક જ્ઞાતિ સમાજ (મહાજન), રાજકોટ')
 
 @section('content')
     <div x-data="{
@@ -33,7 +33,8 @@
     }">
 
         <!-- 1. Hero Slider Section -->
-        <div class="relative bg-slate-900 text-white overflow-hidden shadow-xl" x-data="{ activeSlide: 0, totalSlides: {{ $sliders->count() > 0 ? $sliders->count() : 1 }} }" x-init="if (totalSlides > 1) { setInterval(() => { activeSlide = (activeSlide + 1) % totalSlides }, 6000) }">
+        <div class="relative bg-slate-900 text-white overflow-hidden shadow-xl" x-data="{ activeSlide: 0, totalSlides: {{ $sliders->count() > 0 ? $sliders->count() : 1 }} }"
+            x-init="if (totalSlides > 1) { setInterval(() => { activeSlide = (activeSlide + 1) % totalSlides }, 6000) }">
             @if ($sliders->count() > 0)
                 <div class="relative min-h-[380px] sm:min-h-[500px] flex items-center">
                     @foreach ($sliders as $index => $slider)
@@ -85,7 +86,8 @@
                     <div class="absolute bottom-4 left-0 right-0 z-20 flex justify-center gap-2">
                         @foreach ($sliders as $index => $slider)
                             <button @click="activeSlide = {{ $index }}" class="w-3 h-3 rounded-full transition-all"
-                                :class="activeSlide === {{ $index }} ? 'bg-amber-400 w-8' : 'bg-white/40 hover:bg-white/70'"></button>
+                                :class="activeSlide === {{ $index }} ? 'bg-amber-400 w-8' :
+                                    'bg-white/40 hover:bg-white/70'"></button>
                         @endforeach
                     </div>
                 @endif
@@ -100,7 +102,7 @@
                             </span>
                             <h1
                                 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white font-gujarati leading-tight">
-                                શ્રી દશા સોરાઠિયા વણિક સમાજ (મહાજન), રાજકોટ
+                                શ્રી દશા સોરઠિયા વણિક જ્ઞાતિ સમાજ (મહાજન), રાજકોટ
                             </h1>
                             <p class="text-base sm:text-xl text-amber-100/90 leading-relaxed font-gujarati">
                                 સમાજના બંધુઓ અને પરિવારો માટે એકતા, પ્રગતિ અને સંસ્કૃતિને સમર્પિત ડીજિટલ પોર્ટલ.
@@ -126,7 +128,8 @@
             <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 border-b border-slate-200 pb-4 gap-2">
                 <div>
                     <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-gujarati flex items-center gap-3">
-                        <span class="w-9 h-9 rounded-xl bg-amber-500 text-slate-950 flex items-center justify-center text-base shadow-sm">
+                        <span
+                            class="w-9 h-9 rounded-xl bg-amber-500 text-slate-950 flex items-center justify-center text-base shadow-sm">
                             <i class="fa-solid fa-crown text-slate-950"></i>
                         </span>
                         <span>સન્માનનીય હોદ્દેદારો (Office Bearers)</span>
@@ -164,27 +167,32 @@
                             <div class="relative w-24 h-24 mx-auto">
                                 @if ($member->photo_path)
                                     <img src="{{ Storage::url($member->photo_path) }}" alt="{{ $member->name_guj }}"
-                                        class="w-full h-full object-cover rounded-2xl shadow-md border-2 border-amber-400 group-hover:scale-105 transition-transform" loading="lazy">
+                                        class="w-full h-full object-cover rounded-2xl shadow-md border-2 border-amber-400 group-hover:scale-105 transition-transform"
+                                        loading="lazy">
                                 @else
-                                    <div class="w-full h-full rounded-2xl gradient-header text-white font-extrabold text-3xl flex items-center justify-center shadow-md border-2 border-amber-400 font-gujarati">
+                                    <div
+                                        class="w-full h-full rounded-2xl gradient-header text-white font-extrabold text-3xl flex items-center justify-center shadow-md border-2 border-amber-400 font-gujarati">
                                         {{ $member->initial }}
                                     </div>
                                 @endif
-                                <div class="absolute -bottom-2 right-0 w-7 h-7 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center text-xs shadow-md border-2 border-white">
+                                <div
+                                    class="absolute -bottom-2 right-0 w-7 h-7 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center text-xs shadow-md border-2 border-white">
                                     <i class="fa-solid fa-crown text-[10px]"></i>
                                 </div>
                             </div>
 
                             <!-- Name & Designation -->
                             <div class="space-y-1.5">
-                                <h3 class="text-base sm:text-lg font-bold text-slate-900 font-gujarati leading-tight group-hover:text-amber-700 transition-colors">
+                                <h3
+                                    class="text-base sm:text-lg font-bold text-slate-900 font-gujarati leading-tight group-hover:text-amber-700 transition-colors">
                                     {{ $member->name_guj }}
                                 </h3>
                                 @if ($member->name_eng)
                                     <p class="text-xs text-slate-400 font-medium">{{ $member->name_eng }}</p>
                                 @endif
                                 <div>
-                                    <span class="inline-block px-3 py-1 rounded-xl bg-amber-600 text-white text-xs font-extrabold shadow-2xs font-gujarati">
+                                    <span
+                                        class="inline-block px-3 py-1 rounded-xl bg-amber-600 text-white text-xs font-extrabold shadow-2xs font-gujarati">
                                         {{ $member->designation_guj }}
                                     </span>
                                 </div>
@@ -192,9 +200,11 @@
 
                             <!-- View Details Helper Button -->
                             <div class="pt-2 border-t border-slate-100">
-                                <span class="inline-flex items-center gap-1.5 text-xs font-bold text-amber-700 group-hover:text-amber-800 font-gujarati">
+                                <span
+                                    class="inline-flex items-center gap-1.5 text-xs font-bold text-amber-700 group-hover:text-amber-800 font-gujarati">
                                     <span>સંપૂર્ણ વિગત જુઓ</span>
-                                    <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
+                                    <i
+                                        class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
                                 </span>
                             </div>
                         </div>
@@ -266,19 +276,21 @@
                     <!-- Carousel Track -->
                     <div class="overflow-hidden py-2 rounded-3xl">
                         <div class="flex transition-transform duration-500 ease-out gap-4 sm:gap-6"
-                            :style="'transform: translateX(-' + (activeSlide * (window.innerWidth >= 1024 ? 25 : (window.innerWidth >= 640 ? 50 : 100))) + '%)'">
+                            :style="'transform: translateX(-' + (activeSlide * (window.innerWidth >= 1024 ? 25 : (window
+                                .innerWidth >= 640 ? 50 : 100))) + '%)'">
                             @foreach ($heroAds as $ad)
                                 <div class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] flex-shrink-0 flex">
                                     <!-- Clean Full Poster Card (Without Bottom Text Box) -->
                                     <div class="relative w-full h-80 sm:h-96 md:h-[410px] rounded-3xl bg-gradient-to-b from-amber-50/70 via-slate-50 to-amber-50/40 p-3 sm:p-4 border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 flex items-center justify-center overflow-hidden group cursor-pointer"
                                         @click="openAdModal('{{ $ad->image_path ? Storage::url($ad->image_path) : '' }}', '{{ addslashes($ad->title) }}', '{{ $ad->link_url ?? '' }}')">
-                                        
+
                                         @if ($ad->image_path)
                                             <img src="{{ Storage::url($ad->image_path) }}" alt="{{ $ad->title }}"
                                                 class="max-w-full max-h-full object-contain rounded-2xl shadow-2xs group-hover:scale-103 transition-transform duration-300"
                                                 loading="lazy">
                                         @else
-                                            <div class="w-full h-full rounded-2xl gradient-header text-amber-200 font-extrabold text-xl flex items-center justify-center p-4 text-center font-gujarati">
+                                            <div
+                                                class="w-full h-full rounded-2xl gradient-header text-amber-200 font-extrabold text-xl flex items-center justify-center p-4 text-center font-gujarati">
                                                 📣 {{ $ad->title }}
                                             </div>
                                         @endif
@@ -344,7 +356,8 @@
                         </div>
                         <div class="text-2xl sm:text-4xl font-extrabold text-amber-300 font-sans">
                             {{ $stats['events'] ?? '૨૫+' }}</div>
-                        <div class="text-xs sm:text-sm text-slate-300 font-semibold mt-1 font-gujarati">વાર્ષિક સ્નેહ મિલન અને
+                        <div class="text-xs sm:text-sm text-slate-300 font-semibold mt-1 font-gujarati">વાર્ષિક સ્નેહ મિલન
+                            અને
                             કાર્યક્રમો</div>
                     </div>
                     <div
@@ -355,7 +368,8 @@
                         </div>
                         <div class="text-2xl sm:text-4xl font-extrabold text-amber-300 font-sans">
                             {{ $stats['commitment'] ?? '૧૦૦%' }}</div>
-                        <div class="text-xs sm:text-sm text-slate-300 font-semibold mt-1 font-gujarati">સમાજ કલ્યાણ સમર્પણ</div>
+                        <div class="text-xs sm:text-sm text-slate-300 font-semibold mt-1 font-gujarati">સમાજ કલ્યાણ સમર્પણ
+                        </div>
                     </div>
                 </div>
             </div>
@@ -366,9 +380,11 @@
 
             <!-- 4. Latest News Section -->
             <div>
-                <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 border-b border-slate-200 pb-4 gap-2">
+                <div
+                    class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 border-b border-slate-200 pb-4 gap-2">
                     <div>
-                        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-gujarati flex items-center gap-3">
+                        <h2
+                            class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-gujarati flex items-center gap-3">
                             <i class="fa-solid fa-newspaper text-amber-700"></i>
                             <span>તાજા સમાચાર (Latest News)</span>
                         </h2>
@@ -398,9 +414,11 @@
 
             <!-- 5. Upcoming Events Section -->
             <div>
-                <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 border-b border-slate-200 pb-4 gap-2">
+                <div
+                    class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 border-b border-slate-200 pb-4 gap-2">
                     <div>
-                        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-gujarati flex items-center gap-3">
+                        <h2
+                            class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-gujarati flex items-center gap-3">
                             <i class="fa-solid fa-calendar-days text-amber-700"></i>
                             <span>આગામી કાર્યક્રમો (Upcoming Events)</span>
                         </h2>
@@ -433,9 +451,11 @@
 
             <!-- 7. Past Events Highlights Section -->
             <div>
-                <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 border-b border-slate-200 pb-4 gap-2">
+                <div
+                    class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 border-b border-slate-200 pb-4 gap-2">
                     <div>
-                        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-gujarati flex items-center gap-3">
+                        <h2
+                            class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-gujarati flex items-center gap-3">
                             <i class="fa-solid fa-images text-amber-700"></i>
                             <span>ગત કાર્યક્રમ આર્કાઇવ (Past Event Highlights)</span>
                         </h2>
@@ -465,7 +485,8 @@
 
             <!-- 8. Additional Trust Information Banner -->
             <div class="gradient-header rounded-3xl p-8 sm:p-12 text-white shadow-xl relative overflow-hidden">
-                <div class="absolute -right-10 -bottom-10 w-72 h-72 bg-amber-500/10 rounded-full blur-3xl pointer-events-none">
+                <div
+                    class="absolute -right-10 -bottom-10 w-72 h-72 bg-amber-500/10 rounded-full blur-3xl pointer-events-none">
                 </div>
                 <div class="relative z-10 grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
                     <div class="lg:col-span-2 space-y-4">
@@ -505,13 +526,15 @@
             @keydown.escape.window="closeModal()">
             <div class="relative w-full max-w-md bg-white rounded-3xl overflow-hidden shadow-2xl border border-amber-500/30 flex flex-col"
                 @click.away="closeModal()">
-                
+
                 <!-- Header Banner with Close Button -->
                 <div class="gradient-header pt-6 pb-16 px-6 text-white text-center relative overflow-hidden">
-                    <button @click="closeModal()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/20 hover:bg-white/30 text-white flex items-center justify-center transition-colors">
+                    <button @click="closeModal()"
+                        class="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/20 hover:bg-white/30 text-white flex items-center justify-center transition-colors">
                         <i class="fa-solid fa-xmark text-lg"></i>
                     </button>
-                    <span class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-amber-400/30 text-amber-200 text-xs font-bold border border-amber-400/40 font-gujarati">
+                    <span
+                        class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-amber-400/30 text-amber-200 text-xs font-bold border border-amber-400/40 font-gujarati">
                         <i class="fa-solid fa-user-shield text-amber-300 text-xs"></i>
                         <span x-text="member?.category"></span>
                     </span>
@@ -522,16 +545,19 @@
                     <!-- Member Photo or Avatar Container -->
                     <div class="relative w-28 h-28 mx-auto -mt-14">
                         <template x-if="member?.photo">
-                            <img :src="member.photo" :alt="member.name_guj" class="w-full h-full object-cover rounded-3xl shadow-xl border-4 border-white bg-slate-900">
+                            <img :src="member.photo" :alt="member.name_guj"
+                                class="w-full h-full object-cover rounded-3xl shadow-xl border-4 border-white bg-slate-900">
                         </template>
                         <template x-if="!member?.photo">
-                            <div class="w-full h-full rounded-3xl gradient-header text-white font-extrabold text-4xl flex items-center justify-center shadow-xl border-4 border-white font-gujarati" x-text="member?.initial"></div>
+                            <div class="w-full h-full rounded-3xl gradient-header text-white font-extrabold text-4xl flex items-center justify-center shadow-xl border-4 border-white font-gujarati"
+                                x-text="member?.initial"></div>
                         </template>
                     </div>
 
                     <!-- Member Name & Subtitle -->
                     <div class="space-y-1">
-                        <h3 class="text-xl sm:text-2xl font-extrabold font-gujarati text-slate-900 leading-tight" x-text="member?.name_guj"></h3>
+                        <h3 class="text-xl sm:text-2xl font-extrabold font-gujarati text-slate-900 leading-tight"
+                            x-text="member?.name_guj"></h3>
                         <template x-if="member?.name_eng">
                             <p class="text-xs text-slate-400 font-medium" x-text="member?.name_eng"></p>
                         </template>
@@ -539,18 +565,22 @@
 
                     <!-- Designation Pill -->
                     <div>
-                        <span class="inline-block px-4 py-1.5 rounded-2xl bg-amber-600 text-white text-sm font-extrabold shadow-xs font-gujarati" x-text="member?.designation_guj"></span>
+                        <span
+                            class="inline-block px-4 py-1.5 rounded-2xl bg-amber-600 text-white text-sm font-extrabold shadow-xs font-gujarati"
+                            x-text="member?.designation_guj"></span>
                     </div>
 
                     <!-- Contact Actions -->
                     <div class="bg-slate-50 rounded-2xl p-4 border border-slate-200/80 space-y-3">
                         <template x-if="member?.mobile">
-                            <div class="flex items-center justify-between gap-2 p-2.5 bg-white rounded-xl border border-slate-200">
+                            <div
+                                class="flex items-center justify-between gap-2 p-2.5 bg-white rounded-xl border border-slate-200">
                                 <div class="flex items-center gap-2 text-slate-700 text-xs font-bold">
                                     <i class="fa-solid fa-phone text-amber-600 text-sm"></i>
                                     <span class="font-mono text-sm" x-text="member.mobile"></span>
                                 </div>
-                                <a :href="'tel:' + member.mobile" class="px-3 py-1.5 rounded-lg bg-amber-600 text-white text-xs font-bold hover:bg-amber-700 transition-colors font-gujarati flex items-center gap-1">
+                                <a :href="'tel:' + member.mobile"
+                                    class="px-3 py-1.5 rounded-lg bg-amber-600 text-white text-xs font-bold hover:bg-amber-700 transition-colors font-gujarati flex items-center gap-1">
                                     <i class="fa-solid fa-phone-volume"></i>
                                     <span>કોલ કરો</span>
                                 </a>
@@ -558,12 +588,14 @@
                         </template>
 
                         <template x-if="member?.email">
-                            <div class="flex items-center justify-between gap-2 p-2.5 bg-white rounded-xl border border-slate-200">
+                            <div
+                                class="flex items-center justify-between gap-2 p-2.5 bg-white rounded-xl border border-slate-200">
                                 <div class="flex items-center gap-2 text-slate-700 text-xs font-bold truncate">
                                     <i class="fa-solid fa-envelope text-amber-600 text-sm"></i>
                                     <span class="truncate" x-text="member.email"></span>
                                 </div>
-                                <a :href="'mailto:' + member.email" class="px-3 py-1.5 rounded-lg bg-slate-900 text-white text-xs font-bold hover:bg-slate-800 transition-colors font-gujarati">
+                                <a :href="'mailto:' + member.email"
+                                    class="px-3 py-1.5 rounded-lg bg-slate-900 text-white text-xs font-bold hover:bg-slate-800 transition-colors font-gujarati">
                                     ઈમેલ
                                 </a>
                             </div>
@@ -576,7 +608,8 @@
 
                     <!-- Close Action Button -->
                     <div class="pt-1">
-                        <button @click="closeModal()" class="w-full py-3 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold rounded-2xl transition-colors font-gujarati">
+                        <button @click="closeModal()"
+                            class="w-full py-3 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold rounded-2xl transition-colors font-gujarati">
                             બંધ કરો (Close)
                         </button>
                     </div>
@@ -591,14 +624,16 @@
             @keydown.escape.window="closeAdModal()">
             <div class="relative w-full max-w-3xl max-h-[92vh] bg-white rounded-3xl overflow-hidden shadow-2xl border border-amber-500/40 flex flex-col"
                 @click.away="closeAdModal()">
-                
+
                 <!-- Modal Header -->
-                <div class="px-6 py-4 bg-gradient-to-r from-amber-950 via-amber-900 to-slate-950 text-white flex items-center justify-between">
+                <div
+                    class="px-6 py-4 bg-gradient-to-r from-amber-950 via-amber-900 to-slate-950 text-white flex items-center justify-between">
                     <div class="flex items-center gap-2 min-w-0">
                         <i class="fa-solid fa-rectangle-ad text-amber-400 text-lg"></i>
                         <h3 class="text-base sm:text-lg font-bold font-gujarati truncate" x-text="activeAdTitle"></h3>
                     </div>
-                    <button @click="closeAdModal()" class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors flex-shrink-0">
+                    <button @click="closeAdModal()"
+                        class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors flex-shrink-0">
                         <i class="fa-solid fa-xmark text-lg"></i>
                     </button>
                 </div>
@@ -606,7 +641,8 @@
                 <!-- Full Size Graphic View (Scrollable / Zoom Container) -->
                 <div class="p-4 bg-amber-50/50 flex-grow overflow-auto flex items-center justify-center min-h-[300px]">
                     <template x-if="activeAdImage">
-                        <img :src="activeAdImage" :alt="activeAdTitle" class="max-w-full max-h-[72vh] object-contain rounded-2xl shadow-md border border-slate-200">
+                        <img :src="activeAdImage" :alt="activeAdTitle"
+                            class="max-w-full max-h-[72vh] object-contain rounded-2xl shadow-md border border-slate-200">
                     </template>
                     <template x-if="!activeAdImage">
                         <div class="p-12 text-center text-slate-500 font-gujarati font-bold" x-text="activeAdTitle"></div>
@@ -616,12 +652,14 @@
                 <!-- Modal Footer -->
                 <div class="p-4 bg-white border-t border-slate-200 flex items-center justify-between gap-4">
                     <template x-if="activeAdLink">
-                        <a :href="activeAdLink" target="_blank" rel="noopener" class="px-5 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-700 text-white text-xs sm:text-sm font-bold transition-colors font-gujarati flex items-center gap-2 shadow-sm">
+                        <a :href="activeAdLink" target="_blank" rel="noopener"
+                            class="px-5 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-700 text-white text-xs sm:text-sm font-bold transition-colors font-gujarati flex items-center gap-2 shadow-sm">
                             <span>લીંક પર જાઓ (Visit Target Link)</span>
                             <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
                         </a>
                     </template>
-                    <button @click="closeAdModal()" class="ml-auto px-6 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs sm:text-sm font-bold rounded-xl transition-colors font-gujarati">
+                    <button @click="closeAdModal()"
+                        class="ml-auto px-6 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs sm:text-sm font-bold rounded-xl transition-colors font-gujarati">
                         બંધ કરો (Close)
                     </button>
                 </div>

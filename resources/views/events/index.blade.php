@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
-@section('title', ($type === 'upcoming' ? 'આગામી કાર્યક્રમો' : 'ગત કાર્યક્રમો') . ' - શ્રી દશા સોરાઠિયા વણિક સમાજ')
+@section('title', ($type === 'upcoming' ? 'આગામી કાર્યક્રમો' : 'ગત કાર્યક્રમો') . ' - શ્રી દશા સોરઠિયા વણિક જ્ઞાતિ
+    સમાજ')
 
 @section('content')
     <x-page-header :icon="$type === 'upcoming' ? 'fa-solid fa-calendar-days' : 'fa-solid fa-images'" :title="$type === 'upcoming' ? 'આગામી કાર્યક્રમો (Upcoming Events)' : 'ગત કાર્યક્રમો આર્કાઇવ (Past Events Archive)'" subtitle="સમાજના આયોજનો અને મહોત્સવો" />

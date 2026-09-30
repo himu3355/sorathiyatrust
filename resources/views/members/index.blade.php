@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'સભ્ય ડિરેક્ટરી - શ્રી દશા સોરાઠિયા વણિક સમાજ')
+@section('title', 'સભ્ય ડિરેક્ટરી - શ્રી દશા સોરઠિયા વણિક જ્ઞાતિ સમાજ')
 
 @section('content')
     <x-page-header icon="fa-solid fa-users" title="સમાજ સભ્ય ડિરેક્ટરી (Community Members Directory)"

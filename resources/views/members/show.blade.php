@@ -2,7 +2,7 @@
 
 @section('meta_title', ($member->gujarati_name ?? $member->name) . ' - સભ્ય પ્રોફાઇલ')
 @section('meta_description', ($member->gujarati_name ?? $member->name) . ($member->designation ? ' - ' .
-    $member->designation : '') . ' - શ્રી દશા સોરાઠિયા વણિક સમાજ (મહાજન), રાજકોટ.')
+    $member->designation : '') . ' - શ્રી દશા સોરઠિયા વણિક જ્ઞાતિ સમાજ (મહાજન), રાજકોટ.')
     @if ($member->photo_path)
         @section('og_image', Storage::url($member->photo_path))
     @endif

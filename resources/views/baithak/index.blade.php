@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'શ્રી મહાપ્રભુજીના ૮૪ બેઠકજીના સરનામાં તેમજ ટેલિફોન નંબર - શ્રી દશા સોરાઠિયા વણિક સમાજ (મહાજન), રાજકોટ')
+@section('title', 'શ્રી મહાપ્રભુજીના ૮૪ બેઠકજીના સરનામાં તેમજ ટેલિફોન નંબર - શ્રી દશા સોરઠિયા વણિક જ્ઞાતિ સમાજ (મહાજન),
+    રાજકોટ')
 @section('meta_description', 'શ્રી મહાપ્રભુજીના ૮૪ બેઠકજીના સંપૂર્ણ સરનામાં, ટેલિફોન નંબર અને મુખ્યજીઓની માહિતી.')
 
 @section('content')
@@ -46,15 +47,18 @@
                                 <th class="py-4 px-4 text-center font-bold w-16 border-b border-amber-500/30">નં.</th>
                                 <th class="py-4 px-4 font-bold w-36 sm:w-48 border-b border-amber-500/30">ગામનું નામ</th>
                                 <th class="py-4 px-6 font-bold border-b border-amber-500/30">શ્રી બેઠકજીના સરનામા</th>
-                                <th class="py-4 px-6 font-bold w-56 sm:w-72 border-b border-amber-500/30">ટેલિફોન-મોબાઇલ નં. / મુખ્યજી</th>
+                                <th class="py-4 px-6 font-bold w-56 sm:w-72 border-b border-amber-500/30">ટેલિફોન-મોબાઇલ નં.
+                                    / મુખ્યજી</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-slate-100 text-xs sm:text-sm font-gujarati">
                             @foreach ($baithaks as $b)
-                                <tr class="hover:bg-amber-50/40 transition-colors {{ $b->is_apragat ? 'bg-slate-50/60' : '' }}">
+                                <tr
+                                    class="hover:bg-amber-50/40 transition-colors {{ $b->is_apragat ? 'bg-slate-50/60' : '' }}">
                                     <!-- Baithak Number -->
                                     <td class="py-4 px-4 text-center align-top font-bold">
-                                        <span class="w-9 h-9 rounded-2xl {{ $b->is_apragat ? 'bg-slate-200 text-slate-700' : 'bg-amber-600 text-white shadow-xs' }} font-bold inline-flex items-center justify-center font-mono">
+                                        <span
+                                            class="w-9 h-9 rounded-2xl {{ $b->is_apragat ? 'bg-slate-200 text-slate-700' : 'bg-amber-600 text-white shadow-xs' }} font-bold inline-flex items-center justify-center font-mono">
                                             {{ $b->number }}
                                         </span>
                                     </td>
@@ -63,7 +67,8 @@
                                     <td class="py-4 px-4 align-top font-bold text-slate-900 leading-snug">
                                         <div class="text-sm sm:text-base text-amber-900">{{ $b->city_village_guj }}</div>
                                         @if ($b->is_apragat)
-                                            <span class="inline-block mt-1 px-2 py-0.5 rounded-md bg-slate-200 text-slate-700 text-[10px] font-bold">
+                                            <span
+                                                class="inline-block mt-1 px-2 py-0.5 rounded-md bg-slate-200 text-slate-700 text-[10px] font-bold">
                                                 અપ્રગટ બેઠક
                                             </span>
                                         @endif
@@ -77,14 +82,16 @@
                                     <!-- Contact Info & Mukhyaji -->
                                     <td class="py-4 px-6 align-top space-y-1.5">
                                         @if ($b->contact_person_guj)
-                                            <div class="font-bold text-slate-900 flex items-center gap-1.5 text-xs sm:text-sm">
+                                            <div
+                                                class="font-bold text-slate-900 flex items-center gap-1.5 text-xs sm:text-sm">
                                                 <i class="fa-solid fa-user text-amber-600 text-xs"></i>
                                                 <span>{{ $b->contact_person_guj }}</span>
                                             </div>
                                         @endif
 
                                         @if ($b->contact_numbers)
-                                            <div class="font-mono text-slate-700 font-semibold flex items-start gap-1.5 text-xs">
+                                            <div
+                                                class="font-mono text-slate-700 font-semibold flex items-start gap-1.5 text-xs">
                                                 <i class="fa-solid fa-phone text-amber-600 text-xs mt-0.5"></i>
                                                 <span class="leading-relaxed">{{ $b->contact_numbers }}</span>
                                             </div>
@@ -106,8 +113,10 @@
                 {{ $baithaks->links() }}
             </div>
         @else
-            <div class="bg-white rounded-3xl p-12 text-center text-slate-600 border border-slate-200 shadow-sm space-y-4 font-gujarati">
-                <div class="w-16 h-16 mx-auto rounded-full bg-amber-50 text-amber-600 flex items-center justify-center text-2xl">
+            <div
+                class="bg-white rounded-3xl p-12 text-center text-slate-600 border border-slate-200 shadow-sm space-y-4 font-gujarati">
+                <div
+                    class="w-16 h-16 mx-auto rounded-full bg-amber-50 text-amber-600 flex items-center justify-center text-2xl">
                     <i class="fa-solid fa-building-columns"></i>
                 </div>
                 <h3 class="text-lg font-bold text-slate-900">કોઈ બેઠકજી મળી નથી (No Baithakji record found)</h3>

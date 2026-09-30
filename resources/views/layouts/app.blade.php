@@ -10,23 +10,23 @@
     <link rel="apple-touch-icon" href="{{ asset('images/sorathiya-trust-logo.png') }}">
 
     <!-- Primary Meta Tags -->
-    <title>@yield('meta_title', 'શ્રી દશા સોરાઠિયા વણિક સમાજ (મહાજન), રાજકોટ - Community Trust')</title>
-    <meta name="description" content="@yield('meta_description', 'શ્રી દશા સોરાઠિયા વણિક સમાજ (મહાજન), રાજકોટ - સત્તાવાર ડિજિટલ પોર્ટલ, સભ્ય ડિરેક્ટરી અને સમાચાર.')">
+    <title>@yield('meta_title', 'શ્રી દશા સોરઠિયા વણિક જ્ઞાતિ સમાજ (મહાજન), રાજકોટ - Community Trust')</title>
+    <meta name="description" content="@yield('meta_description', 'શ્રી દશા સોરઠિયા વણિક જ્ઞાતિ સમાજ (મહાજન), રાજકોટ - સત્તાવાર ડિજિટલ પોર્ટલ, સભ્ય ડિરેક્ટરી અને સમાચાર.')">
     <link rel="canonical" href="@yield('canonical_url', url()->current())">
 
     <!-- Open Graph / Facebook / WhatsApp Meta Tags -->
-    <meta property="og:site_name" content="શ્રી દશા સોરાઠિયા વણિક સમાજ (મહાજન), રાજકોટ">
+    <meta property="og:site_name" content="શ્રી દશા સોરઠિયા વણિક જ્ઞાતિ સમાજ (મહાજન), રાજકોટ">
     <meta property="og:type" content="@yield('og_type', 'website')">
     <meta property="og:url" content="@yield('canonical_url', url()->current())">
-    <meta property="og:title" content="@yield('meta_title', 'શ્રી દશા સોરાઠિયા વણિક સમાજ (મહાજન), રાજકોટ')">
-    <meta property="og:description" content="@yield('meta_description', 'શ્રી દશા સોરાઠિયા વણિક સમાજ (મહાજન), રાજકોટ - સત્તાવાર ડિજિટલ પોર્ટલ, સભ્ય ડિરેક્ટરી અને સમાચાર.')">
+    <meta property="og:title" content="@yield('meta_title', 'શ્રી દશા સોરઠિયા વણિક જ્ઞાતિ સમાજ (મહાજન), રાજકોટ')">
+    <meta property="og:description" content="@yield('meta_description', 'શ્રી દશા સોરઠિયા વણિક જ્ઞાતિ સમાજ (મહાજન), રાજકોટ - સત્તાવાર ડિજિટલ પોર્ટલ, સભ્ય ડિરેક્ટરી અને સમાચાર.')">
     <meta property="og:image" content="@yield('og_image', asset('images/sorathiya-trust-logo.png'))">
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="@yield('canonical_url', url()->current())">
-    <meta name="twitter:title" content="@yield('meta_title', 'શ્રી દશા સોરાઠિયા વણિક સમાજ (મહાજન), રાજકોટ')">
-    <meta name="twitter:description" content="@yield('meta_description', 'શ્રી દશા સોરાઠિયા વણિક સમાજ (મહાજન), રાજકોટ - સત્તાવાર ડિજિટલ પોર્ટલ.')">
+    <meta name="twitter:title" content="@yield('meta_title', 'શ્રી દશા સોરઠિયા વણિક જ્ઞાતિ સમાજ (મહાજન), રાજકોટ')">
+    <meta name="twitter:description" content="@yield('meta_description', 'શ્રી દશા સોરઠિયા વણિક જ્ઞાતિ સમાજ (મહાજન), રાજકોટ - સત્તાવાર ડિજિટલ પોર્ટલ.')">
     <meta name="twitter:image" content="@yield('og_image', asset('images/sorathiya-trust-logo.png'))">
 
     <!-- Vite CSS / Tailwind -->
@@ -48,11 +48,12 @@
         <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
             <div class="flex items-center gap-2 font-medium">
                 <span class="inline-block w-2 h-2 rounded-full bg-amber-300 animate-pulse"></span>
-                <span>શ્રી દશા સોરાઠિયા વણિક સમાજ (મહાજન), રાજકોટ</span>
+                <span>શ્રી દશા સોરઠિયા વણિક જ્ઞાતિ સમાજ (મહાજન), રાજકોટ</span>
             </div>
             <div class="flex items-center gap-4 text-amber-100 font-medium">
                 @if ($phone = \App\Models\SiteSetting::get('phone_number', '+91 98765 43210'))
-                    <a href="tel:{{ str_replace(' ', '', $phone) }}" class="flex items-center gap-1.5 hover:text-white transition-colors">
+                    <a href="tel:{{ str_replace(' ', '', $phone) }}"
+                        class="flex items-center gap-1.5 hover:text-white transition-colors">
                         <i class="fa-solid fa-phone-volume text-amber-300"></i>
                         <span>{{ $phone }}</span>
                     </a>
@@ -73,17 +74,18 @@
             <div class="flex justify-between items-center h-16 sm:h-20 lg:h-28 py-2">
                 <!-- Header Logo & Brand Title Link -->
                 <a href="{{ route('home') }}" class="flex items-center gap-2.5 sm:gap-3.5 group py-1"
-                    title="શ્રી દશા સોરાઠિયા વણિક સમાજ (મહાજન), રાજકોટ">
+                    title="શ્રી દશા સોરઠિયા વણિક જ્ઞાતિ સમાજ (મહાજન), રાજકોટ">
                     <div
                         class="w-11 h-11 sm:w-16 sm:h-16 lg:w-24 lg:h-24 rounded-xl lg:rounded-2xl bg-amber-600 p-1 lg:p-2 shadow-md border border-amber-500/60 flex items-center justify-center group-hover:scale-105 transition-transform trust-badge-glow flex-shrink-0">
                         <img src="{{ asset('images/sorathiya-trust-logo.png') }}"
-                            alt="શ્રી દશા સોરાઠિયા વણિક સમાજ (મહાજન), રાજકોટ" class="w-full h-full object-contain">
+                            alt="શ્રી દશા સોરઠિયા વણિક જ્ઞાતિ સમાજ (મહાજન), રાજકોટ"
+                            class="w-full h-full object-contain">
                     </div>
                     <!-- Brand Title Text: Visible ONLY on Mobile/Tablet (Hidden on Desktop lg:hidden) -->
                     <div class="block lg:hidden">
                         <span
                             class="block text-sm sm:text-base font-bold text-slate-900 leading-tight group-hover:text-amber-700 transition-colors">
-                            શ્રી દશા સોરાઠિયા વણિક સમાજ
+                            શ્રી દશા સોરઠિયા વણિક જ્ઞાતિ સમાજ
                         </span>
                         <span class="block text-[10px] sm:text-xs font-semibold text-amber-700 tracking-wider">
                             મહાજન, રાજકોટ
@@ -241,15 +243,18 @@
                 <!-- Trust Overview -->
                 <div class="space-y-4 md:col-span-1">
                     <div class="flex items-center gap-3">
-                        <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-amber-600 p-1.5 shadow-md border border-amber-400/40 flex items-center justify-center flex-shrink-0">
-                            <img src="{{ asset('images/sorathiya-trust-logo.png') }}" alt="શ્રી દશા સોરાઠિયા વણિક સમાજ" class="w-full h-full object-contain">
+                        <div
+                            class="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-amber-600 p-1.5 shadow-md border border-amber-400/40 flex items-center justify-center flex-shrink-0">
+                            <img src="{{ asset('images/sorathiya-trust-logo.png') }}"
+                                alt="શ્રી દશા સોરઠિયા વણિક જ્ઞાતિ સમાજ" class="w-full h-full object-contain">
                         </div>
                         <h3 class="text-lg font-bold text-white leading-tight">
-                            શ્રી દશા સોરાઠિયા વણિક સમાજ
+                            શ્રી દશા સોરઠિયા વણિક જ્ઞાતિ સમાજ
                         </h3>
                     </div>
                     <p class="text-xs sm:text-sm text-slate-400 leading-relaxed font-gujarati">
-                        શ્રી દશા સોરાઠિયા વણિક સમાજ (મહાજન), રાજકોટ. સમાજ કલ્યાણ, શિક્ષણ, સંસ્કૃતિ અને વિકાસ અર્થે સમર્પિત.
+                        શ્રી દશા સોરઠિયા વણિક જ્ઞાતિ સમાજ (મહાજન), રાજકોટ. સમાજ કલ્યાણ, શિક્ષણ, સંસ્કૃતિ અને વિકાસ અર્થે
+                        સમર્પિત.
                     </p>
                     <!-- Social Media Links -->
                     <div class="flex items-center gap-3 pt-2">
@@ -295,13 +300,16 @@
                                 (Home)</a></li>
                         <li><a href="{{ route('about') }}#committee"
                                 class="hover:text-amber-300 transition-colors flex items-center gap-2"><i
-                                    class="fa-solid fa-chevron-right text-[10px] text-amber-500"></i> હોદ્દેદારો અને કારોબારી સભ્યો</a></li>
+                                    class="fa-solid fa-chevron-right text-[10px] text-amber-500"></i> હોદ્દેદારો અને
+                                કારોબારી સભ્યો</a></li>
                         <li><a href="{{ route('baithak.index') }}"
                                 class="hover:text-amber-300 transition-colors flex items-center gap-2"><i
-                                    class="fa-solid fa-chevron-right text-[10px] text-amber-500"></i> શ્રી મહાપ્રભુજીના ૮૪ બેઠકજી</a></li>
+                                    class="fa-solid fa-chevron-right text-[10px] text-amber-500"></i> શ્રી મહાપ્રભુજીના
+                                ૮૪ બેઠકજી</a></li>
                         <li><a href="{{ route('gallery.index') }}"
                                 class="hover:text-amber-300 transition-colors flex items-center gap-2"><i
-                                    class="fa-solid fa-chevron-right text-[10px] text-amber-500"></i> તસવીર અને વીડિયો ગેલેરી</a></li>
+                                    class="fa-solid fa-chevron-right text-[10px] text-amber-500"></i> તસવીર અને વીડિયો
+                                ગેલેરી</a></li>
                         <li><a href="{{ route('news.index') }}"
                                 class="hover:text-amber-300 transition-colors flex items-center gap-2"><i
                                     class="fa-solid fa-chevron-right text-[10px] text-amber-500"></i> સમાચાર અને
@@ -311,7 +319,8 @@
 
                 <!-- Directory & Trust Info Links -->
                 <div>
-                    <h4 class="text-xs font-extrabold text-amber-400 uppercase tracking-widest mb-4">વસ્તીપત્રક અને માહિતી
+                    <h4 class="text-xs font-extrabold text-amber-400 uppercase tracking-widest mb-4">વસ્તીપત્રક અને
+                        માહિતી
                     </h4>
                     <ul class="space-y-2.5 text-sm font-medium">
                         <li><a href="{{ route('members.index') }}"
@@ -336,7 +345,10 @@
                 <div class="space-y-3 text-sm">
                     <h4 class="text-xs font-extrabold text-amber-400 uppercase tracking-widest mb-4">ટ્રસ્ટ સંપર્ક
                         (Contact)</h4>
-                    @if ($officeAddr = \App\Models\SiteSetting::get('office_address', 'મહાજન વાડી, રાજકોટ, ગુજરાત.'))
+                    @if (
+                        $officeAddr = \App\Models\SiteSetting::get(
+                            'office_address',
+                            'માલવયા વાડી વિરલ બેટરી ની બાજુમાં, ધરતી હોન્ડા ની સામે, ગોંડલ રોડ, રાજકોટ'))
                         <p class="text-slate-400 text-xs sm:text-sm flex items-start gap-2.5">
                             <i class="fa-solid fa-location-dot text-amber-400 mt-1"></i>
                             <span>{{ $officeAddr }}</span>
@@ -360,7 +372,7 @@
             <!-- Footer Bottom Bar -->
             <div
                 class="pt-8 border-t border-slate-800/80 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-500">
-                <p>© {{ date('Y') }} શ્રી દશા સોરાઠિયા વણિક સમાજ (મહાજન), રાજકોટ. સર્વાધિકાર સુરક્ષિત.</p>
+                <p>© {{ date('Y') }} શ્રી દશા સોરઠિયા વણિક જ્ઞાતિ સમાજ (મહાજન), રાજકોટ. સર્વાધિકાર સુરક્ષિત.</p>
                 <p class="font-medium text-amber-400/90 flex items-center gap-1.5">
                     <i class="fa-solid fa-hands-praying text-amber-400"></i>
                     <span>સમાજ સેવા એ જ પ્રભુ સેવા</span>

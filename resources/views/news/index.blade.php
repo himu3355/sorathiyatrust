@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'સમાચાર - શ્રી દશા સોરાઠિયા વણિક સમાજ')
+@section('title', 'સમાચાર - શ્રી દશા સોરઠિયા વણિક જ્ઞાતિ સમાજ')
 
 @section('content')
     <x-page-header icon="fa-solid fa-newspaper" title="સમાચાર અને વિગત (News & Updates)"

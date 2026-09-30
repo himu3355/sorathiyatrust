@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('meta_title', $news->title . ' - શ્રી દશા સોરાઠિયા વણિક સમાજ')
+@section('meta_title', $news->title . ' - શ્રી દશા સોરઠિયા વણિક જ્ઞાતિ સમાજ')
 @section('meta_description', Str::limit(strip_tags($news->summary ?? $news->content), 155))
 @section('og_type', 'article')
 @if ($news->image_path)
@@ -17,7 +17,8 @@
             <!-- Main News Article Content -->
             <div class="lg:col-span-2 space-y-6 bg-white p-6 sm:p-10 rounded-3xl border border-slate-200/80 shadow-sm">
                 @if ($news->image_path)
-                    <div class="rounded-2xl overflow-hidden bg-slate-950/90 p-2 sm:p-3 border border-slate-800 shadow-md flex items-center justify-center">
+                    <div
+                        class="rounded-2xl overflow-hidden bg-slate-950/90 p-2 sm:p-3 border border-slate-800 shadow-md flex items-center justify-center">
                         <img src="{{ Storage::url($news->image_path) }}" alt="{{ $news->title }}"
                             class="w-full max-h-[540px] object-contain rounded-xl" loading="eager">
                     </div>
@@ -57,9 +58,11 @@
                             @foreach ($recentNews as $recent)
                                 <div class="flex items-start gap-3 group">
                                     @if ($recent->image_path)
-                                        <div class="w-16 h-16 rounded-xl bg-slate-900 p-0.5 border border-slate-200 flex-shrink-0 flex items-center justify-center overflow-hidden">
+                                        <div
+                                            class="w-16 h-16 rounded-xl bg-slate-900 p-0.5 border border-slate-200 flex-shrink-0 flex items-center justify-center overflow-hidden">
                                             <img src="{{ Storage::url($recent->image_path) }}" alt="{{ $recent->title }}"
-                                                class="w-full h-full object-cover rounded-lg group-hover:scale-105 transition-transform" loading="lazy">
+                                                class="w-full h-full object-cover rounded-lg group-hover:scale-105 transition-transform"
+                                                loading="lazy">
                                         </div>
                                     @else
                                         <div

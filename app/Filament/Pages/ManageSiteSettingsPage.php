@@ -36,7 +36,7 @@ class ManageSiteSettingsPage extends Page
             'twitter_url' => SiteSetting::get('twitter_url', 'https://x.com/'),
             'phone_number' => SiteSetting::get('phone_number', '+91 98765 43210'),
             'contact_email' => SiteSetting::get('contact_email', 'info@trustwebsite.org'),
-            'office_address' => SiteSetting::get('office_address', 'મહાજન વાડી, રાજકોટ, ગુજરાત.'),
+            'office_address' => SiteSetting::get('office_address', 'માલવયા વાડી વિરલ બેટરી ની બાજુમાં, ધરતી હોન્ડા ની સામે, ગોંડલ રોડ, રાજકોટ'),
             'stat_members_label' => SiteSetting::get('stat_members_label', '૧૫૦૦+'),
             'stat_years_label' => SiteSetting::get('stat_years_label', '૫૦+'),
             'stat_events_label' => SiteSetting::get('stat_events_label', '૨૫+'),

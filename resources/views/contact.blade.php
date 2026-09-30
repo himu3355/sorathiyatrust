@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
-@section('title', 'સંપર્ક - શ્રી દશા સોરાઠિયા વણિક સમાજ')
+@section('title', 'સંપર્ક - શ્રી દશા સોરઠિયા વણિક જ્ઞાતિ સમાજ')
 
 @section('content')
     <x-page-header icon="fa-solid fa-address-book" title="સંપર્ક કરો (Contact Us)"
-        subtitle="શ્રી દશા સોરાઠિયા વણિક સમાજ (મહાજન), રાજકોટ" />
+        subtitle="શ્રી દશા સોરઠિયા વણિક જ્ઞાતિ સમાજ (મહાજન), રાજકોટ" />
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
@@ -19,7 +19,7 @@
                         <i class="fa-solid fa-landmark text-amber-600 text-lg mt-0.5"></i>
                         <span>
                             <strong>મહાજન વાડી:</strong><br>
-                            શ્રી દશા સોરાઠિયા વણિક સમાજ (મહાજન),<br>
+                            શ્રી દશા સોરઠિયા વણિક જ્ઞાતિ સમાજ (મહાજન),<br>
                             રાજકોટ, ગુજરાત - ૩૬૦૦૦૧.
                         </span>
                     </p>
