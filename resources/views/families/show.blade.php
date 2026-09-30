@@ -104,8 +104,8 @@
                         <!-- Member Header -->
                         <div class="p-5 border-b border-slate-100 flex items-center gap-4 bg-amber-50/30">
                             <div
-                                class="w-14 h-14 rounded-2xl gradient-header text-white border border-amber-400/40 font-extrabold text-xl flex items-center justify-center shadow-md flex-shrink-0 font-gujarati">
-                                {{ $member->initials }}
+                                class="w-14 h-14 rounded-2xl gradient-header text-white border border-amber-400/40 text-2xl flex items-center justify-center shadow-md flex-shrink-0">
+                                <i class="fa-solid fa-user"></i>
                             </div>
                             <div>
                                 <h3
