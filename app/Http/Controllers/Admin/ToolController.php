@@ -31,11 +31,12 @@ class ToolController extends Controller
             // Add UTF-8 BOM for Gujarati characters in Excel
             fprintf($handle, chr(0xEF).chr(0xBB).chr(0xBF));
 
-            fputcsv($handle, ['Family Code', 'Main Member (Gujarati)', 'Main Member (English)', 'Surname (Gujarati)', 'Surname (English)', 'Village', 'Address', 'Mobile']);
+            fputcsv($handle, ['ID', 'Family Code', 'Main Member (Gujarati)', 'Main Member (English)', 'Surname (Gujarati)', 'Surname (English)', 'Village', 'Address', 'Mobile']);
 
             Family::active()->chunk(100, function ($families) use ($handle) {
                 foreach ($families as $f) {
                     fputcsv($handle, [
+                        $f->id,
                         $f->family_code,
                         $f->main_member_name_guj,
                         $f->main_member_name_eng,
